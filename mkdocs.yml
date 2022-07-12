@@ -1,0 +1,15 @@
+site_name: EPRIK for CARA
+theme:
+  name: material
+  favicon: assets/favicon.ico
+  palette:
+    scheme: matchbox
+extra_css:
+  - stylesheets/extra.css
+nav:
+  - index.md
+  - EPR Configuration: 'epr-config.md'
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
