@@ -1,4 +1,4 @@
-site_name: EPRIK for CARA
+site_name: EPR Integration Kit for CARA
 theme:
   name: material
   favicon: assets/favicon.ico
@@ -8,7 +8,8 @@ extra_css:
   - stylesheets/extra.css
 nav:
   - index.md
-  - EPR Configuration: 'epr-config.md'
+  - EPRIK Configuration: 'eprik-config.md'
+  - EPRIK Usecases: 'usecases.md'
 markdown_extensions:
   - admonition
   - attr_list

@@ -3,7 +3,18 @@
 This documentation describes how the EPR Integration Kit can be used to test
 the integration of a primary system with the [CARA](https://www.cara.ch/) integration system. 
 
-The Integration Kit (short **EPRIK**) provides the following functionality:
+The CARA integration system is available at [https://epr.cara.int.post-ehealth.ch](https://epr.cara.int.post-ehealth.ch). 
+
+To access the integration system you will need to sign an NDA with [CARA](https://www.cara.ch/) and provide an OID concept for your organization,
+in return you will get:
+
+- an HCP test user for which you need an online authentication yourself (e.g. HIN ID) and connect that HCP test user with your online authentication
+- two test patients
+- access to the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
+
+This will allow you to start the integration of the primary system.
+
+The Integration Kit (short **EPRIK**) provides the following [functionality](usecases.md):
 
 - Authenticate an User and obtain an IdP assertion
 - Proxy and log IHE transactions without client certificates and with basic validation of request / response 
@@ -14,7 +25,7 @@ The Integration Kit (short **EPRIK**) provides the following functionality:
 </figure>
 
 This allows a primary system to do a stepwise integration with the EPR. The integration kit is only
-an add-on during development, testing and is not used with a production environment.
+an add-on during development, testing and **CANNOT BE** used with a production environment.
 
 !!! danger
 
