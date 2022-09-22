@@ -56,7 +56,7 @@ reference IdP Token with [SOAP header](requests/sts-idp-soapheader.http):
    <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
    <eprik:IDP-Assertion-ID xmlns:eprik="http://ahdis.ch/eprik">5688</eprik:IDP-Assertion-ID> 
    ...
-   </env.Header>
+   </env:Header>
 ```
 
 if you add it to a ITI-xxx transaction for document query or publication the STS call will be executed before with PurposeOfUse set to "NORM" and  Role to "HCP" and the XUA Assertion will be inserted into the [request](requests/iti-18-gassmann-idp.http):

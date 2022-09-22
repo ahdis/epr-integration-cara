@@ -10,6 +10,7 @@ nav:
   - index.md
   - EPRIK Configuration: 'eprik-config.md'
   - EPRIK Usecases: 'usecases.md'
+  - Primary System Integration: 'primarysystems-epr.md'
 markdown_extensions:
   - admonition
   - attr_list
