@@ -4,8 +4,8 @@ For a deep EPR integration into a primary systems the following usecases should 
 2. Search for patients in the community
 3. Register a patient from the primary system in the community
 4. Query and retrieve documents for a patient from the EPR including authorization
-5. Publish documents for a patient by a healthcare professional or a technical user
-
+5. Publish documents for a patient by a healthcare professional
+   
 e-health-suisse has described the different steps with examples [here](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/techniciens.html). Please find below additional information relevant for CARA and EPRIK.
 
 ## 1. Integrate the strong authentication into the primary system with and IdP
@@ -60,7 +60,7 @@ To retrieve documents from a patients EPR the IHE XDS.b profile and transactions
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/6a6ee447-a842-44f6-bc29-b8a35d14c5e1). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
 
 
-## 5. Publish documents for a patient by a healthcare professional or a technical user
+## 5. Publish documents for a patient by a healthcare professional
 
 To provide documents and metadata about the documents the IHE XDS.b profile and transactions needs to be used. See detailed description[here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/ProvideAndRegister.md).
 

@@ -29,13 +29,6 @@ You can then search for the request on [eprik-cara](http://test.ahdis.ch/eprik-c
 
 If you click on 'format XML' it will pretty print the request / response (do not this for assertions which are signed when you wan't to reuse them). If you click on the 'Response' tab you get the response message. If an Assertion was provided you would see it in the 'Assertion tab'. If the request failed internally you will see additional information in the 'Runtime Exception' tab. The status 'Response valid' is the EPRIK internal validation of the request, it does not guarantee that the request is correct and accepted by the CARA integration system.
 
-To add an ATNA Audit Event you can send it to the unsecured tcp endpoint.
-
-```
-nc -u 34.65.112.202 8080 < ./docs/requests/iti-47-atna.xml
-```
-TODO: not working yet ...
-
 ## Use the IdP Assertion from EPRIK 
 For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP assertion which you can use for retrieving the XUA assertion token if your primary system is not integrated yet with the IdP.
 
@@ -71,10 +64,5 @@ curl --request POST \
 
 !!! danger
 
-    The IdP Token is currently valid only for 5 minutes, and you will have to close / reopen the browser, otherwise you will get back the same token which is not valid anymore for the STS
-
-
-## Use the TCU Assertion from EPRIK that you can publish a document
-
-TODO
+    The IdP Token is  valid only for 5 minutes, and you will have to close / reopen the browser, otherwise you will get back the same token which is not valid anymore for the STS
 
