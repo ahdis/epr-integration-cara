@@ -65,3 +65,5 @@ EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/index.html#/tr
 To provide documents and metadata about the documents the IHE XDS.b profile and transactions needs to be used. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/ProvideAndRegister.md).
 
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/78b7b807-b9db-4314-8463-ffc5a9a6fdf6). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add metadata for the document.
+
+The portal displays the metadata provided in the publication. The patient name is only visible if it is provided in PID-5 in [sourcePatientInfo](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.3.2.23). [example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/5c197a2b-c4f3-4da9-bc12-27f9fffe1185)
