@@ -1,0 +1,58 @@
+POST https://ws.b2b.cara.int.post-ehealth.ch/rcdc/Rcdc/ HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/soap+xml;charset=UTF-8;action="getPatientDocumentList"
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:rcdc="http://rcdc.ehealth.post.ch/">
+   <soap:Header>
+  	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+            <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="_d2c3b3c4-2c2a-4917-89be-ddfc280448fd" IssueInstant="2022-11-10T13:40:44.156Z" Version="2.0" xsi:type="saml2:AssertionType"><saml2:Issuer>Post.CH B2B STS</saml2:Issuer><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><ds:Reference URI="#_d2c3b3c4-2c2a-4917-89be-ddfc280448fd"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xsd"/></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>ptN+6l1bwBFJWR85qR9lAVcaCwA=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>WD5TdObj/qkkl5GvTMfR8lKs0kkkMplhkc/qO9M3gW3zX+5CtS2JSvMaD9mqQKPXaH3pfj6Xji5lVe27v5+8dI5AkLZ/0buvZBfGJdS+d6xhthvSGFyr0N4yVEWPWeQIcvVxVlHy/1ho3XwggLHhJEkFukZeUa3+WROk+x0jenb1xaMpPbqVqRnNSFBk8duJZ16tOHXBAtnRe+E4N3w78jBzm/RGaT8bmu1cBpQJS7uEGTwXgJUTcEjEETaMH3VoZtcqnS5E4ncLbadnYWCgVXIH8PX+8pJpYEVO8yqyMrgM23RV6M+BJ9fJ0MWHY6Uj7JF7C2YdIUVp8F1b+Edkk0KAU+Vs0SzX0JDr3EsjoR9TvUuDoLqxJo4XlsmN9XbQvb/+WaxbCPDM8tLTKRNaTGE7lmrAacuLNBF5XHLELpl9cv5a//GvE38DmXtbkUCVrieWAz9vjbHnypsVXUIhpVAmC6bjeCYlkkGg1kOXVdO00PQtQAfCRLPQe2rMLf4OkfpJPyw4/xEdFQMxZmm6neKRxDh6oiVU2GTPchVynnurKvs0bWh7laK5bsqN78YJWeEPeEotYWis8WKqaHE/jla2E9NHRPhMnySFEHvMpvHoPiP8p0qEDJF/SGYQU2DRsCuTaulruWJiSk1E/7bN9BA7rHaznP0nT3XFGkJdFQo=</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIIejCCBmKgAwIBAgIUPZDJ83EAOX2HWQpnEbt4lnjzu0IwDQYJKoZIhvcNAQELBQAwXDELMAkG
+A1UEBhMCQ0gxFTATBgNVBAoTDFN3aXNzU2lnbiBBRzE2MDQGA1UEAxMtU3dpc3NTaWduIFJTQSBT
+TUlNRSBOQ1AgZXh0ZW5kZWQgSUNBIDIwMjEgLSAxMB4XDTIyMDQyMTEyNTcxMloXDTI1MDQyMTEy
+NTcxMlowgaYxCzAJBgNVBAYTAkNIMQ0wCwYDVQQIEwRCZXJuMRMwEQYDVQQKEwpQb3N0IENIIEFH
+MRwwGgYDVQQLExNFLUhlYWx0aCBPcGVyYXRpb25zMSowKAYJKoZIhvcNAQkBFhtvcGVyYXRpb25z
+LmUtaGVhbHRoQHBvc3QuY2gxKTAnBgNVBAMTIHBzZXVkbzogU0FNTCBTaWduZXIgQ2FyYSBCMkIg
+SU5UMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsS1P4HDjd7KXTAZbc0NI8xENhYDR
+Ayq417JGX7DIJVIPpi8JNb8HxJQnG/dmpv6p0Kmr78nQ7nrdQiuJqXpeInitSfIInYKBalNiaN0c
+t2r+uHpzvLKVIJwXbSxO7AmyftNqKGDpfGCP+tZ3BrFtbUJdLVtBa2x3+YcVGCxfUOD4A7cpGi0V
+WqQTk3VH6jR/EbqV8f+MftLllIhRmzg20eXxrZRn7rVZioxUhTrNN4BRMz7e19E3VV3vAf5KOq/W
+l0MWpkmLMwA/KARV6oSS2GStDCTY7nD2dth+MKiAbFi90sD65T7a7GWc0CH2z1rj5y7wkX9ecQhQ
+atuUDpM3ulUpilJhNbe2w5blWStT2vfpjz+q2c+QOyRITwd1FjZOBpE8x5uzpdTg7FOm9JetPr7/
+Ip+2yoWBhX0VMaC9KuiQdfwmxAd5zeyIMJwnAnezM7dA3BAW4vZWAYr5phgmAXoiePF0K9MyhZX0
+8MBAF/vEUWf8lfAd2VMD1VuDcsuI5Oz+tJYDuKdjqEwfp33sFG1+wU3VVjyFuO6KyXIPomnu4ycg
+Lm78WW+yJoAS4So5DEW+qi5xplln0tMf2qBkdj7qmVSy1L4/RDnh+Jym0FeBj+kweHw85GIH95lH
+I647giKMIzuFWxzo1TgppQu37EWZR5a28wOtcfDbxRx4NskCAwEAAaOCAucwggLjMCYGA1UdEQQf
+MB2BG29wZXJhdGlvbnMuZS1oZWFsdGhAcG9zdC5jaDAOBgNVHQ8BAf8EBAMCA/gwNQYDVR0lBC4w
+LAYIKwYBBQUHAwIGCCsGAQUFBwMEBgorBgEEAYI3CgMEBgorBgEEAYI3FAICMB0GA1UdDgQWBBTk
+ieOG+DjixYxz356CTq+Yv+aQGzAfBgNVHSMEGDAWgBQrZhpjBBkDpxn8NefDuNE2j06aQTCB/wYD
+VR0fBIH3MIH0MEegRaBDhkFodHRwOi8vY3JsLnN3aXNzc2lnbi5uZXQvMkI2NjFBNjMwNDE5MDNB
+NzE5RkMzNUU3QzNCOEQxMzY4RjRFOUE0MTCBqKCBpaCBooaBn2xkYXA6Ly9kaXJlY3Rvcnkuc3dp
+c3NzaWduLm5ldC9DTj0yQjY2MUE2MzA0MTkwM0E3MTlGQzM1RTdDM0I4RDEzNjhGNEU5QTQxJTJD
+Tz1Td2lzc1NpZ24lMkNDPUNIP2NlcnRpZmljYXRlUmV2b2NhdGlvbkxpc3Q/YmFzZT9vYmplY3RD
+bGFzcz1jUkxEaXN0cmlidXRpb25Qb2ludDBnBgNVHSAEYDBeMFIGCGCFdAFZAgENMEYwRAYIKwYB
+BQUHAgEWOGh0dHBzOi8vcmVwb3NpdG9yeS5zd2lzc3NpZ24uY29tL1N3aXNzU2lnbl9DUFNfU01J
+TUUucGRmMAgGBgQAj3oBATCBxgYIKwYBBQUHAQEEgbkwgbYwZAYIKwYBBQUHMAKGWGh0dHA6Ly9z
+d2lzc3NpZ24ubmV0L2NnaS1iaW4vYXV0aG9yaXR5L2Rvd25sb2FkLzJCNjYxQTYzMDQxOTAzQTcx
+OUZDMzVFN0MzQjhEMTM2OEY0RTlBNDEwTgYIKwYBBQUHMAGGQmh0dHA6Ly9vY3NwLnN3aXNzc2ln
+bi5uZXQvMkI2NjFBNjMwNDE5MDNBNzE5RkMzNUU3QzNCOEQxMzY4RjRFOUE0MTANBgkqhkiG9w0B
+AQsFAAOCAgEAIySm+Dk1B+19IewjO1tvEd7d9jw+DT8C24WFJ0QEluZSNovJRGa2ng6Y9zNscibJ
+exS9wdGJlBfcRFnobFsiT+NZF0g22PW0XKZla0R2C33Ob0Sh/B+5aEVCGMzk2o52qrbTrEu6NqgN
+6P+iVk4NYXocXAAwgLIiETYfW/2h0z9Z2r/aIv1dGO0yQSgy3wVmDPjmlQq4tjoHMi3+sKYjEi+v
+3NGwI8TVHt/UU85xTqRAj++7n87rFy+JlEVCbOZNWi8fjQgW5v18B3d6RQhUGWgvs/2CpLmEC1GE
+xZSrGfoqGKIdPZFBIlZH5ztni1x7Iu3fFqCLmq1boAgR6KYR2+cwOrMpNZXIdvqdtjUULx60qLXs
+tLqvl/0fl5Ex+BdA8VXseMPPfM/cBYTObrAHYwsMHw/kkpm16VXwuhXCgBaqSxR5WTmIbgY5z7YT
+5bAqE2/tjz62MmuAa7kZE7t6TCLyTcYJ4wE9Cg48+1a5llD8IfSLUW17+DeNDW80eT8kX1CIXYbt
+GkM8kr1wqC+IVbDs2UmY+ohuBMf06i9rImi98hz6bA2Lc0bAw7wgwDeeYdTmHUXsD5lLeKeONTYp
+Vdkf+F+VV+PNX/f9dvrzr8hGF3CBmfWUDSh/ZZkBj3/vFkLMWZ5T85MJsLa9TnEqjh44KgRLhFMi
+DJfhfNnBiDg=</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature><saml2:Subject><saml2:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">2.16.756.5.30.1.191.0.1:1666870018123</saml2:NameID><saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"/></saml2:Subject><saml2:Conditions NotBefore="2022-11-10T13:40:44.156Z" NotOnOrAfter="2022-11-10T13:50:44.156Z"><saml2:AudienceRestriction><saml2:Audience>http://post.ch/ehealth/b2b</saml2:Audience></saml2:AudienceRestriction></saml2:Conditions><saml2:AuthnStatement AuthnInstant="2022-11-10T13:40:44.156Z"><saml2:AuthnContext><saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml2:AuthnContextClassRef></saml2:AuthnContext></saml2:AuthnStatement><saml2:AttributeStatement><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:subject-id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue>Oliver Egger</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:subject:role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue><hl7:Role xmlns:hl7="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPD Akteure" displayName="Healthcare Professional" xsi:type="hl7:CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue>unknown</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization-id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue>urn:oid:3.14.15.926</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue>unknown^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue><hl7:PurposeOfUse xmlns:hl7="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal" xsi:type="hl7:CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:ihe:iti:xca:2010:homeCommunityId" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue>urn:oid:2.16.756.5.30.1.191.0.1</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:gs1:gln" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue xsi:type="xsd:string">2000040030829</saml2:AttributeValue></saml2:Attribute></saml2:AttributeStatement></saml2:Assertion>
+ 
+	</wsse:Security>
+   </soap:Header>
+   <soap:Body>
+        <GetDocumentListRequest xmlns="http://post.ch/ehealth/cia/rcdc">
+            <Recipient>
+                <GLN>2000040030829</GLN>
+            </Recipient>
+        </GetDocumentListRequest>
+    </soap:Body>
+</soap:Envelope>

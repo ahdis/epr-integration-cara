@@ -1,0 +1,110 @@
+<wsdl:definitions name="RecipientCentricDocumentConsumer" targetNamespace="http://post.ch/ehealth/cia/rcdc" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:rcdc="http://post.ch/ehealth/cia/rcdc" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://post.ch/ehealth/cia/rcdc" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+      <xs:complexType name="Patient">
+        <xs:sequence>
+          <xs:element name="ID" type="xs:string"/>
+          <xs:element name="NAVS13" type="xs:string" minOccurs="0"/>
+          <xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+          <xs:element name="LastName" type="xs:string" minOccurs="0"/>
+          <xs:element name="BirthDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Author">
+        <xs:sequence>
+          <xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+          <xs:element name="LastName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Recipient">
+        <xs:sequence>
+          <xs:element name="GLN" type="xs:string"/>
+          <xs:element name="ParentGLN" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Document">
+        <xs:sequence>
+          <xs:element name="UniqueID" type="xs:string"/>
+          <xs:element name="GroupUUID" type="xs:string" minOccurs="0"/>
+          <xs:element name="Patient" type="rcdc:Patient"/>
+          <xs:element name="Author" type="rcdc:Author"/>
+          <xs:element name="Title" type="xs:string" minOccurs="0"/>
+          <xs:element name="SubmissionTime" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDocumentListRequest">
+        <xs:sequence>
+          <xs:element name="Recipient" type="rcdc:Recipient"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDocumentListResponse">
+        <xs:sequence>
+          <xs:element name="Document" type="rcdc:Document" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteDocumentListRequest">
+        <xs:sequence>
+          <xs:element name="Recipient" type="rcdc:Recipient"/>
+          <xs:element name="UniqueID" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeleteDocumentListResponse">
+        <xs:sequence>
+          <xs:element name="DeletedCount" type="xs:unsignedInt"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDocumentListRequest" type="rcdc:GetDocumentListRequest"/>
+      <xs:element name="GetDocumentListResponse" type="rcdc:GetDocumentListResponse"/>
+      <xs:element name="DeleteDocumentListRequest" type="rcdc:DeleteDocumentListRequest"/>
+      <xs:element name="DeleteDocumentListResponse" type="rcdc:DeleteDocumentListResponse"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDocumentListRequestMessage">
+    <wsdl:part name="body" element="rcdc:GetDocumentListRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetDocumentListResponseMessage">
+    <wsdl:part name="body" element="rcdc:GetDocumentListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentListRequestMessage">
+    <wsdl:part name="body" element="rcdc:DeleteDocumentListRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentListResponseMessage">
+    <wsdl:part name="body" element="rcdc:DeleteDocumentListResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="Rcdc_PortType">
+    <wsdl:operation name="GetDocumentList">
+      <wsdl:input message="rcdc:GetDocumentListRequestMessage" wsaw:Action="http://post.ch/ehealth/cia/rcdc/GetDocumentList"/>
+      <wsdl:output message="rcdc:GetDocumentListResponseMessage" wsaw:Action="http://post.ch/ehealth/cia/rcdc/GetDocumentListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocumentList">
+      <wsdl:input message="rcdc:DeleteDocumentListRequestMessage" wsaw:Action="http://post.ch/ehealth/cia/rcdc/DeleteDocumentList"/>
+      <wsdl:output message="rcdc:DeleteDocumentListResponseMessage" wsaw:Action="http://post.ch/ehealth/cia/rcdc/DeleteDocumentListResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Rcdc_Binding" type="rcdc:Rcdc_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDocumentList">
+      <soap12:operation soapActionRequired="false"/>
+      <wsdl:input name="GetDocumentListRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetDocumentListResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocumentList">
+      <soap12:operation soapActionRequired="false"/>
+      <wsdl:input name="DeleteDocumentListRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteDocumentListResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Rcdc_Service">
+    <wsdl:port binding="rcdc:Rcdc_Binding" name="Rcdc_Port">
+      <soap12:address location="http://servicelocation/Rcdc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

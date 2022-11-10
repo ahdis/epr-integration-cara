@@ -1,7 +1,7 @@
 ### ITI-18 with adding X-Eprik-IDP-Assertio 
 POST http://test.ahdis.ch/eprik-cara/services/stsEndpoint HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
-X-Eprik-IDP-Assertion-ID: 6592
+X-Eprik-IDP-Assertion-ID: 3960
 
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
    <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">

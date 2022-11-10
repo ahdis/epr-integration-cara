@@ -1,0 +1,24 @@
+### ITI-58 Query by GLN
+POST https://ws.b2b.cara.int.post-ehealth.ch/HPD/services/HPDService HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8;action="urn:ihe:iti:2010:ProviderInformationQuery"
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Action soap:mustUnderstand="1">urn:ihe:iti:2010:ProviderInformationQuery</wsa:Action>
+        <wsa:MessageID soap:mustUnderstand="1">uuid:39d8af31-8ce8-4511-a2f4-4da0f7243511</wsa:MessageID>
+        <wsa:To soap:mustUnderstand="1">https://ws.b2b.cara.int.post-ehealth.ch/HPD/services/HPDService</wsa:To>
+    </soap:Header>
+   <soap:Body>
+      <batchRequest xmlns="urn:oasis:names:tc:DSML:2:0:core">
+         <searchRequest requestID="e3a3e589-c504-44bb-9f5e-cd09ca79b178" dn="ou=HCProfessional,dc=HPD" derefAliases="neverDerefAliases" scope="wholeSubtree">
+            <filter>
+               <and>
+                  <equalityMatch name="sn">
+                     <value>Egger</value>
+                  </equalityMatch>
+               </and>
+            </filter>
+         </searchRequest>
+      </batchRequest>
+   </soap:Body>
+</soap:Envelope>
