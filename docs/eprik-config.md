@@ -47,7 +47,7 @@ Transaction  | EPRIK
 Host         | test.ahdis.ch  
 Port         | 443 (https) or 80 (http)    
 TRA PIX V3 [[ITI-44]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)   | /eprik-cara/services/tra/PIXPDQ/services/PIXPDQV3ManagerService
-TRA PIX V3 [[ITI-45]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)   | /eprik-cara/services/tra/PIXPDQ/services/
+TRA PIX V3 [[ITI-45]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)   | /eprik-cara/services/tra/PIXPDQ/services/PIXPDQV3ManagerService
 TRA HPD [[ITI-58]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-58.html)   | /eprik-cara/services/tra/HPD/services/HPDService/
 TRA HPD [[ITI-59]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html)   | /eprik-cara/services/tra/HPD/services/HPDService/
 TRA STS [[ITI-40]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-40.html)   |  /eprik-cara/services/tra/b2bsts/SecurityTokenService/

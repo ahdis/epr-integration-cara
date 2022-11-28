@@ -66,4 +66,23 @@ To provide documents and metadata about the documents the IHE XDS.b profile and 
 
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/78b7b807-b9db-4314-8463-ffc5a9a6fdf6). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add metadata for the document.
 
+### confidentiality code in metadata
+The patient can set the default level of confidentiality to normally accessible	, restricted accessible	or secret. This need to be taken into account when publishing ([sequence diagram](https://ehealthsuisse.ihe-europe.net/docs/sequence_diagrams/2_03_EPR_HPStoreDocuments.plantuml.png)). If a publication fails for normally accessible it has to be retried with restricted accessible. It is only possible to publish a document with confidentiality secret if the user has set the default confidentiality code to secret. To test this three different patients have been setup with different confidentiality codes: GASSMANN-IMHOLZ (normally accessible, EPR-SPID: 761337610916172626), SOARES JESUS (restricted accessible, EPR-SPID 761337618424274719) et Ratchawat (secret: EPR-SPID 761337611340275266)
+
+
+Publication with   | normal  | restricted  | secret          
+------------ | -------------  | ---------------   | ---------------
+Gassmann (normally accessible)         | ok  | ok | error
+SOARES JESUS (restricted accessible)         | error  | ok | error
+Ratchawat (secret)         | error  | error | ok
+
+
+### metadata in portal
+
 The portal displays the metadata provided in the publication. The patient name is only visible if it is provided in PID-5 in [sourcePatientInfo](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.3.2.23). [example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/5c197a2b-c4f3-4da9-bc12-27f9fffe1185)
+
+### provide a document with a technical user (TCU)
+
+Instead of using an authenticated user for publishing documents, the ERP allows to publish documents with a technical user [see factsheet in french](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/F/fiche-dinformation-utilisateur-technique-dep.pdf). You are required to create a client certificate for this technical user and let it register in the HPD. See the [developer platform](https://developer.post.ch/en/e-health/basic-epr-workflows) for exact steps.
+
+EPRIK allows you to work with a specific test technical user during integration. You can get the TCU IdP SAML2 assertion from [here](https://test.ahdis.ch/eprik-cara/camel/tcu). This assertion is valid for 10 minutes. With this assertion you can get then the XUA (STS) token for the XDS requests.
