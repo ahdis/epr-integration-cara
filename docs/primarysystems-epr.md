@@ -5,6 +5,7 @@ For a deep EPR integration into a primary systems the following usecases should 
 3. Register a patient from the primary system in the community
 4. Query and retrieve documents for a patient from the EPR including authorization
 5. Publish documents for a patient by a healthcare professional
+6. Providing AuditEvents
    
 e-health-suisse has described the different steps with examples [here](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/techniciens.html). Please find below additional information relevant for CARA and EPRIK.
 
@@ -86,3 +87,6 @@ The portal displays the metadata provided in the publication. The patient name i
 Instead of using an authenticated user for publishing documents, the ERP allows to publish documents with a technical user [see factsheet in french](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/F/fiche-dinformation-utilisateur-technique-dep.pdf). You are required to create a client certificate for this technical user and let it register in the HPD. See the [developer platform](https://developer.post.ch/en/e-health/basic-epr-workflows) for exact steps.
 
 EPRIK allows you to work with a specific test technical user during integration. You can get the TCU IdP SAML2 assertion from [here](https://test.ahdis.ch/eprik-cara/camel/tcu). This assertion is valid for 10 minutes. With this assertion you can get then the XUA (STS) token for the XDS requests, for the urn:e-health-suisse:principal-id you need to put the GLN to 2000040030829 when using EPRIK's technical user.
+
+## 6. Providing AuditEvents
+Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/0af38ea5-459e-4d05-980d-f6cbdb8af035)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/EVSClient/atna/validator.seam?standard=ATNA-IHE&extension=IHE) you can validate if the content of the AuditMessages is correct. 
