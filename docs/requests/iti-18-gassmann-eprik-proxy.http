@@ -44,7 +44,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 ### ITI-43 Download the first document via eprik-cara from above list
 
 #name iti43
-POST https://test.ahdis.ch/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+POST https://test.ahdis.ch/eprik-proxy-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
 Content-Type: multipart/related; boundary=uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce;type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="text/xml; charset=utf-8"
 
 --uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce
