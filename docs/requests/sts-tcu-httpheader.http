@@ -1,5 +1,5 @@
 ### ITI-18 with adding X-Eprik-IDP-Assertio 
-POST http://test.ahdis.ch/eprik-cara/services/stsEndpoint HTTP/1.1
+POST https://test.ahdis.ch/eprik-proxy-cara/camel/cara/stsEndpoint HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 X-Eprik-IDP-Assertion-ID: tcu1
 
