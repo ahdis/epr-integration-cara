@@ -2,17 +2,17 @@ The EPRIK can help you speed up or test the development against the integration 
 
 1. Use http(s) endpoints without the need to use client certificates
 2. Proxy functionality: See directly what you are sending to the integration system and receiving, including basic validation, this is available for SOAP webservices and ATNA Audit Events
-3. Use the IdP Assertion from EPRIK that you can test the STS (secure token service) or do document queries or publish documents
-4. Use the TCU Assertion from EPRIK that you can publish a document
+3. Use the IdP Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to do document queries or publish documents
+4. Use the TCU Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to publish a document via a technical user
 
 
 ## http(s) endpoints without the need to use client certificates and proxy functionality
 
 Adapt your webservice endpoints to the one provided in [eprik-config.md]. This allows you to use http or https endpoints without the need to use client certificates from the beginning and you can verify the if the different webservices are working. E.g. for a demographics query with PDQ V3 ITI-47, instead of using ***https://ws.epr.cara.int.post-ehealth.ch/UPIProxy/services/PIXPDQV3ManagerService*** endpoint you use ***http://test.ahdis.ch/eprik-cara/services/iti47Endpoint***. 
 
-To execute eute the examples you can either use [curl](https://curl.se/) or use the provided .http files if you have [VSCode](https://code.visualstudio.com/) with the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed.
+To execute the examples you can either use [curl](https://curl.se/) or use the provided .http files if you have [VSCode](https://code.visualstudio.com/) with the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed.
 
-[Demographics Query for GASSMANN](requests/iti-47-gassmann.http):
+[Demographics Query for GASSMANN](requests/iti-47-gassmann-eprik-proxy.http):
 
 ```
 curl --request POST \
@@ -46,9 +46,9 @@ nc -w1 -v 34.65.112.202 8080 < ./docs/requests/iti-47-atna-raw.txt
 and is afterwards visible in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cfefb940-1039-4f7a-bfa0-49359b2f2c6e) 
 
 ## Use the IdP Assertion from EPRIK 
-For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP assertion which you can use for retrieving the XUA assertion token if your primary system is not integrated yet with the IdP.
+For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP assertion which you can use for retrieving the SAML2 assertion token if your primary system is not integrated yet with the IdP.
 
-Authenticate with your Identity Provider on the top right. If you are authenticated successfully you can add either add the IdP Token directly to your request or reference it it via the HTTP header or within the SOAP header (replace x-eprik-idp-assertion-id with value received after authenticating).
+Authenticate with your Identity Provider on the top right. If you are authenticated successfully you can add either add the IdP Token directly to your request or reference it it via the HTTP header (replace x-eprik-idp-assertion-id with value received after authenticating).
 
 reference IdP Token with [HTTP header](requests/sts-idp-httpheader.http):
 ```
@@ -58,17 +58,6 @@ curl --request POST \
   --header 'x-eprik-idp-assertion-id: 6592' \
   --data '<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"><env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"><wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action><wsa:MessageID>6ed3440a-0164-49c4-b9d2-235422819e90</wsa:MessageID><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"></wsse:Security></env:Header><env:Body><wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"><wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</wst:RequestType><wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"><wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing"><wsa:Address>https://test.ahdis.ch/mag-cara</wsa:Address></wsa:EndpointReference></wsp:AppliesTo><wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType><wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2"><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">761337610916172626^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:anyType"><PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal Access" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema"><Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Healthcare professional" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute></wst:Claims></wst:RequestSecurityToken></env:Body></env:Envelope>'
 ```
-
-reference IdP Token with [SOAP header](requests/sts-idp-soapheader.http):
-
-```
-   <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
-   <eprik:IDP-Assertion-ID xmlns:eprik="http://ahdis.ch/eprik">5688</eprik:IDP-Assertion-ID> 
-   ...
-   </env:Header>
-```
-
-if you add it to a ITI-xxx transaction for document query or publication the STS call will be executed before with PurposeOfUse set to "NORM" and  Role to "HCP" and the XUA Assertion will be inserted into the [request](requests/iti-18-gassmann-idp.http):
 
 ```
 curl --request POST \

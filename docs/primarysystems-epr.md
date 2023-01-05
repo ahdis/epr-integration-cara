@@ -19,6 +19,13 @@ If you have a test user you can [use the IdP Assertion from EPRIK](usecases/#use
 
 ## 2. Search for patients in the community
 
+### 2.1 Check if the patient has an EPR based on AHVN13/NAVS
+
+With the PIX V3 query You can use AHVN13/NAVS13 to check if the patient has an EPR (EPR-SPID is returned), and if the patient
+is already registered in the community (MPI-PID is returned). See example [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/d34f0a4f-cf1a-4155-a0d4-f5c915a725ea) for patient Gassmann, which returns EPR-SPID and MPI-PID in asOtherIDs element. For a test patient who has no EPR (as of 4.1.2023) with AHVN13 7560521127080 no EPR-SPID and MPI-PID is returned, see [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/38972f41-33ab-4809-be91-faf44362eada). For a test patient who has an EPR but not in CARA int (as of 4.1.2023) with AHVN13 7560520619845 only EPR-SPID is returned, see [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/b8291740-b464-45de-ac25-176e28a6a4a6). 
+
+### 2.2 Demographics Query
+
 A search for a a patient is done via a demographics query. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PDQ.md). 
 
 EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/e86d22ce-647d-4d1d-a611-6ae2464683ae). This example search is done on the family name, other demographics query parameters are possible. Please note that Swiss Extension requires that an error is returned if more than 5 matched would be returned. You need to provide creationTime, sender OID and receiver OID in addition to the query parameters in the request. For the communication you need a client certificate but with EPRIK a client certificate is not necessary. 
@@ -26,13 +33,13 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/t
 
 ## 3. Register a patient from the primary system in the community and query the patient community id
 
-### Register local patient Id in the community
+### 3.1 Register local patient Id in the community
 
 Register a patient in a community. Primary systems need to use this transaction to register patient data and then to be able to provide and retrieve documents to the patients EPR. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXFeed.md).
 
 EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/22915696-7258-4c3f-b223-658deb4a8c88). This example registers the local id from the primary system P001 of the patient identity domain 2.16.756.5.30.1.999.90 in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client certificate is not necessary.
 
-### Query 
+### 3.2 Query MPI-PID and EPR-SPID based on local ID 
 
 The primary systems needs to query the master patient ID (MPI-ID) for patients to retrieve or provide documents for, based on the local id registered above. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md).
 
@@ -40,25 +47,31 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/t
 
 ## 4. Query and retrieve documents for a patient from the EPR
 
-### Query
-Retrieve the document metadata for the documents stored in a patients EPR. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RegistryStoredQuery.md).
-
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ab4049f8-ba33-4d84-b9a5-d094ce4117aa). For the Query the MPI-ID of the patient needs to be added. This example requests includes the security token necessary. With the EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary.
-
-### Authorization
+### 4.1 Authorization
 
 To query and retrieve documents the HCP needs to be authorized based on the IdP token, the patient (resourceID with EPR-SPID), purposeOfUse (NORM, EMER) and role (HCP).
 See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/GetXAssertion.md).
 
 EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/b62996b2-da1b-49ba-98f1-e64d7123154e).
 
-Example STS requests with [IdP](requests/sts.http), [EPRIK-httpheader](requests/sts-idp-httpheader.http) or [EPRIK-soapheader](requests/sts-idp-soapheader.http).
+Example STS requests with [IdP](requests/sts.http) or [EPRIK-httpheader](requests/sts-idp-httpheader.http).
 
-### Retrieve
+### 4.2a Query documents from the CARA community
+Retrieve the document metadata for the documents stored in a patients EPR for the CARA community. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RegistryStoredQuery.md).
+
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ab4049f8-ba33-4d84-b9a5-d094ce4117aa). For the Query the MPI-ID of the patient needs to be added. This example requests includes the security token necessary. With the EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary.
+
+### 4.2b Query documents from remote communities
+To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the initiating gateway has to be called with an IIT-18 query. The next version of EPRIK will support the Initiating Gateway service endpoint. Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.
+
+### 4.3a Retrieve documents from the CARA community
 
 To retrieve documents from a patients EPR the IHE XDS.b profile and transactions needs to be used. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RetrieveDocumentSet.md).
 
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/6a6ee447-a842-44f6-bc29-b8a35d14c5e1). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
+
+### 4.3b Retrieve documents from remote communities
+To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. The next version of EPRIK will support the Initiating Gateway service endpoint.
 
 
 ## 5. Publish documents for a patient by a healthcare professional

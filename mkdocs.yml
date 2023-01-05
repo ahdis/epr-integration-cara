@@ -12,6 +12,7 @@ nav:
   - EPRIK Usecases: 'usecases.md'
   - EPR Primary System Integration: 'primarysystems-epr.md'
   - Transferts Integration: 'transferts.md'
+  - FAQ: 'faq.md'
 markdown_extensions:
   - admonition
   - attr_list
