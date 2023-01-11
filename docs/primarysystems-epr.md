@@ -62,7 +62,7 @@ Retrieve the document metadata for the documents stored in a patients EPR for th
 EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ab4049f8-ba33-4d84-b9a5-d094ce4117aa). For the Query the MPI-ID of the patient needs to be added. This example requests includes the security token necessary. With the EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary.
 
 ### 4.2b Query documents from remote communities
-To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the initiating gateway has to be called with an IIT-18 query. The next version of EPRIK will support the Initiating Gateway service endpoint. Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.
+To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the initiating gateway has to be called with an IIT-18 query. EPRIK example [request, response](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/fc3082b6-fbdf-4211-813c-2507a4854108). Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.
 
 ### 4.3a Retrieve documents from the CARA community
 
@@ -71,7 +71,7 @@ To retrieve documents from a patients EPR the IHE XDS.b profile and transactions
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/6a6ee447-a842-44f6-bc29-b8a35d14c5e1). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
 
 ### 4.3b Retrieve documents from remote communities
-To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. The next version of EPRIK will support the Initiating Gateway service endpoint.
+To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. EPRIK example [request, response](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/cb470a7b-f7b8-4449-a417-9620cc09a909).
 
 
 ## 5. Publish documents for a patient by a healthcare professional

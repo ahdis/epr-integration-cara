@@ -1,6 +1,6 @@
 ### GET an STS Token for GLN 2000040030829
 # @name sts 
-POST https://ws.b2b.cara.int.post-ehealth.ch/b2bsts/SecurityTokenService/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/b2bsts/SecurityTokenService/ HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
@@ -21,12 +21,9 @@ Content-Type: application/soap+xml;charset=UTF-8
 </soapenv:Envelope>
 
 ### Use above assertion token and sen a document to GLN 2000040030829
-POST https://ws.b2b.cara.int.post-ehealth.ch/rcdc/SourceAdaptor/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/rcdc/SourceAdaptor/ HTTP/1.1
 Accept-Encoding: gzip,deflate
 Content-Type: multipart/related; type="application/soap+xml"; start="<rootpart@soapui.org>"; boundary="----=_Part_29_451432138.1668027732807"
-MIME-Version: 1.0
-Host: ws.b2b.cara.int.post-ehealth.ch
-Accept-Encoding: gzip,deflate
 
 ------=_Part_29_451432138.1668027732807
 Content-Type: application/soap+xml; charset=UTF-8

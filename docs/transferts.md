@@ -16,7 +16,8 @@ Retrieval of medical documents requires an authorization token (SAML assertion).
 EPRIK supports the development during the integration with a predefined HCP configured that the primary systems can use
 the transaction without authentication / authorization.
 
-1. An authorization token can be received for HCP 2000040030829
-2. Send a document with HCP 2000040030829 as recipient and sender
-3. Receive the document list for HCP 2000040030829
-4. Download the document for HCP 2000040030829  
+1. An authorization token can be received for HCP 2000040030829 [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/b9ea0e8f-e6f9-4a05-821d-62a3d81bb732)
+2. Send a document with HCP 2000040030829 as recipient and sender [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/ebee3a52-196d-4f79-9096-7416bddcc6b1)
+3. Receive the document list for HCP 2000040030829 [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/d049c82f-4a43-405d-a55d-00972b3da34f)
+4. Download the document for HCP 2000040030829 [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/41ff6501-2762-415f-8bf2-b7d4a635f313)
+5. Delete a document for HCP 2000040030829 [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/88c7c97a-7fa5-4be2-a907-ade126b2b2f4) (TODO: update after transaction name has been added)
