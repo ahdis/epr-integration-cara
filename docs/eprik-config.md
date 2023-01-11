@@ -32,7 +32,7 @@ HPD [[ITI-59]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html)   | /eprik-
 CH:PPQ [[PPQ-1]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf)   |  /eprik-proxy-cara/cara/HPD/services/PR
 CH:PPQ [[PPQ-2]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf)   | /eprik-proxy-cara/cara/HPD/services/PR
 XUA [[ITI-40]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E1_DE_Ausgabe_4.pdf)   | /eprik-proxy-cara/camel/cara/EPDSTS/services/SecurityTokenService
-TCU SAML2 | /eprik-cara/camel/tcu
+TCU SAML2 | /eprik-proxy-cara/camel/tcu
 ATNA [[ITI-20]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html)   | 34.65.112.202:8080 unsecured TCP according to [RFC5425](https://www.rfc-editor.org/rfc/rfc5425)
 
 You find an overview of the current relevant specifications and the associated links for the Swiss Electronic Patient Record EPR also [here](https://www.e-health-suisse.ch/en/technik-semantik/epr-projectathon/epr-programming-aids/relevant-specifications.html) and in the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
@@ -53,8 +53,8 @@ TRA PIX V3 [[ITI-45]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)   | /
 TRA HPD [[ITI-58]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-58.html)   | /eprik-proxy-cara/camel/tra/HPD/services/HPDService/
 TRA HPD [[ITI-59]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html)   | /eprik-proxy-cara/camel/tra/HPD/services/HPDService/
 TRA STS [[ITI-40]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-40.html)   |  /eprik-proxy-cara/camel/tra/b2bsts/SecurityTokenService/
-TRA TCU STS | /eprik-cara/camel/tra/2000040030829
-TRA [submitDocuments](transferts/wsdl/SourceAdaptorService.wsdl)* | /eprik-cara/services/tra/rcdc/SourceAdaptor/
+TRA TCU STS | /eprik-proxy-cara/camel/tra/2000040030829
+TRA [submitDocuments](transferts/wsdl/SourceAdaptorService.wsdl)* | /eprik-proxy-cara/camel/tra/rcdc/SourceAdaptor/
 TRA [GetDocumentList](transferts/wsdl/RecipientCentricDocumentConsumer.wsdl)* | /eprik-proxy-cara/camel/tra/rcdc/Rcdc/
 TRA XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)*   |  /eprik-proxy-cara/camel/tra/Registry/services/RegistryService
 TRA XDS [[ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)*   | /eprik-proxy-cara/camel/tra/Repository/services/RepositoryService
