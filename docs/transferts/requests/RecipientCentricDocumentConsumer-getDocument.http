@@ -71,3 +71,26 @@ Content-Type: application/soap+xml;charset=UTF-8
       </ns3:RetrieveDocumentSetRequest>
    </soapenv:Body>
 </soapenv:Envelope>
+
+### deleteDocumentList
+POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:rcdc="http://rcdc.ehealth.post.ch/">
+   <soap:Header>
+  	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+ 
+	</wsse:Security>
+   </soap:Header>
+   <soap:Body>
+        <DeleteDocumentListRequest xmlns="http://post.ch/ehealth/cia/rcdc">
+            <Recipient>
+                <GLN>2000040030829</GLN>
+            </Recipient>
+            <UniqueID>{{rcdc.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='GetDocumentListResponse']/*[local-name()='Document'][1]/*[local-name()='UniqueID']}}</UniqueID>
+        </DeleteDocumentListRequest>
+    </soap:Body>
+</soap:Envelope>

@@ -10,11 +10,12 @@ Authentication between primary systems and CARA endpoints is done via client cer
 
 Retrieval of medical documents requires an authorization token (SAML assertion). The assertion must be requested by the system from the B2B STS with the client certificate containing the GLN. The assertion validity period of the B2B STS is 15 minutes.
 
+The integration system is can be found [here](https://b2b.cara.int.post-ehealth.ch/).
+
 
 ## eprik integration with transferts (tra)
 
-EPRIK supports the development during the integration with a predefined HCP configured that the primary systems can use
-the transaction without authentication / authorization.
+EPRIK supports the development during the integration with the predefined HCP **2000040030829** configured that the primary systems can use the transaction without authentication / authorization.
 
 1. An authorization token can be received for HCP 2000040030829 [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/b9ea0e8f-e6f9-4a05-821d-62a3d81bb732)
 2. Send a document with HCP 2000040030829 as recipient and sender [request](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/ebee3a52-196d-4f79-9096-7416bddcc6b1)

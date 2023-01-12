@@ -4,11 +4,10 @@ This documentation describes how the EPR Integration Kit can be used to test
 the integration of a primary system with the [CARA](https://www.cara.ch/) integration system.
 
 CARA offers different services:
-- EPR
-- Transferts
-- PMP (eMedication Service)
 
-The CARA integration system is available at [https://epr.cara.int.post-ehealth.ch](https://epr.cara.int.post-ehealth.ch). 
+- EPR [https://epr.cara.int.post-ehealth.ch](https://epr.cara.int.post-ehealth.ch)
+- Transferts [https://b2b.cara.int.post-ehealth.ch/](https://b2b.cara.int.post-ehealth.ch/).
+- PMP (eMedication Service)
 
 To access the integration system you will need to sign a contract/CGUE with [CARA](https://www.cara.ch/) and provide an OID concept for your organization,
 in return you will get:
@@ -17,7 +16,7 @@ in return you will get:
 - two test patients
 - access to the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
 
-This will allow you to start the integration of the primary system for the EPR.
+This will allow you to start the integration of the primary system.
 
 The Integration Kit (short **EPRIK**) provides the following [functionality](usecases.md):
 
