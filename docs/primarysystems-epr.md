@@ -68,17 +68,17 @@ To retrieve the document metadata for the documents stored in a patients EPR but
 
 To retrieve documents from a patients EPR the IHE XDS.b profile and transactions needs to be used. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RetrieveDocumentSet.md).
 
-EPRIK example [request,response](https://test.ahdis.ch/eprik-proxy-cara/#/transaction/0f099043-ebc1-4726-8b97-4c48d358d0b5). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
+EPRIK example [request,response](https://test.ahdis.ch/eprik-proxy-cara/#/transaction/d09272fc-a1e9-48e0-bde7-7d38be403b4e). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
 
 ### 4.3b Retrieve documents from remote communities
-To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. EPRIK example [request, response](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/cb470a7b-f7b8-4449-a417-9620cc09a909).
+To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. EPRIK example [request, response](https://test.ahdis.ch/eprik-proxy-cara/index.html#/transaction/fbacef09-bad2-4f7e-b476-912d183c631f.
 
 
 ## 5. Publish documents for a patient by a healthcare professional
 
 To provide documents and metadata about the documents the IHE XDS.b profile and transactions needs to be used. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/ProvideAndRegister.md).
 
-EPRIK example [request,response](https://test.ahdis.ch/eprik-proxy-cara/#/transaction/1cc38621-ce9c-443b-b0a4-494f5b69dde4). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add metadata for the document.
+EPRIK example [request,response](https://test.ahdis.ch/eprik-proxy-cara/#/transaction/5e770d0b-db8c-4fda-8ed5-8a2128a162c8). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add metadata for the document.
 
 ### confidentiality code in metadata
 The patient can set the default level of confidentiality to normally accessible	, restricted accessible	or secret. This need to be taken into account when publishing ([sequence diagram](https://ehealthsuisse.ihe-europe.net/docs/sequence_diagrams/2_03_EPR_HPStoreDocuments.plantuml.png)). If a publication fails for normally accessible it has to be retried with restricted accessible. It is only possible to publish a document with confidentiality secret if the user has set the default confidentiality code to secret. To test this three different patients have been setup with different confidentiality codes: GASSMANN-IMHOLZ (normally accessible, EPR-SPID: 761337610916172626), SOARES JESUS (restricted accessible, EPR-SPID 761337618424274719) et Ratchawat (secret: EPR-SPID 761337611340275266)

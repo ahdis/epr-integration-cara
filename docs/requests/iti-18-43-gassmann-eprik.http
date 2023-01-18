@@ -4,7 +4,7 @@
 # @name sts 
 POST http://test.ahdis.ch/eprik-cara/services/stsEndpoint HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
-X-Eprik-IDP-Assertion-ID: 4627
+X-Eprik-IDP-Assertion-ID: 9687
 
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
    <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
@@ -46,7 +46,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 
 #name iti43
 POST https://test.ahdis.ch/eprik-cara/services/iti43Endpoint HTTP/1.1
-Content-Type: multipart/related; boundary=uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce;type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="text/xml; charset=utf-8"
+Content-Type: multipart/related; boundary=uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce;type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 
 --uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce
 Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"

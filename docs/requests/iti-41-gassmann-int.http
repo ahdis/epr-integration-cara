@@ -76,7 +76,7 @@ mAhkgBoo/J9MEvo/YMnqHj8S2SFmGq1inWcoEkzbR+xsqHQydxVhjXdaDyXqXzzZt6Q=</ds:X509Cer
 
 #name iti41
 POST https://ws.epr.cara.int.post-ehealth.ch/Repository/services/RepositoryService HTTP/1.1
-Content-Type: multipart/related; boundary="uuid:71766996-d9d7-484d-868d-8658c0c85d9a";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="text/xml; charset=utf-8"
+Content-Type: multipart/related; boundary="uuid:71766996-d9d7-484d-868d-8658c0c85d9a";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 
 --uuid:71766996-d9d7-484d-868d-8658c0c85d9a
 Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"

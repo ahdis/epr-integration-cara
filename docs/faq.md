@@ -10,6 +10,16 @@ check that in the SOAP WS:Header the Address element is in the same nampespace a
     </a:ReplyTo>
 ```
 
+### Content-Type returned not multipart/related but application/xml 
+
+TI-TF says that one should use multipart/related, see https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html#3.43.5.1.1.1, verify that you have start-info="application/soap+xml; charset=utf-8" (or no start-info)
+
+e.g:
+
+```
+Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
+```
+
 ### IdP HIN ID
 
 1. you need to have a GLN assigned to the HIN user that, otherwise the STS [ITI-40] will not work since the NameID is not known
