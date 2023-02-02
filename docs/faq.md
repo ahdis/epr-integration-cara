@@ -20,6 +20,11 @@ e.g:
 Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 ```
 
+### spurios STS error 500 with TCU
+
+if some STS TCU requests work and some not, check that you are in sync with the ntp time server, even below second differencds can provoke
+that the assertion could be in the future for the STS (notBefore element, see [issue](https://github.com/ahdis/ch-emed-pmp/issues/40)
+
 ### IdP HIN ID
 
 1. you need to have a GLN assigned to the HIN user that, otherwise the STS [ITI-40] will not work since the NameID is not known
