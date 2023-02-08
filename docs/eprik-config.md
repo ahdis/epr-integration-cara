@@ -17,10 +17,10 @@ Transaction  | EPRIK
 Host         | test.ahdis.ch  
 Port         | 443 (https) or 80 (http)    
 XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)   |  /eprik-proxy-cara/camel/cara/Registry/services/RegistryService 
-XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html) Initiating Gateway  |  /XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)   |  /eprik-proxy-cara/camel/cara/XCA/services/InitiatingGatewayService  
+XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html) Initiating Gateway  |  /eprik-proxy-cara/camel/cara/XCA/services/InitiatingGatewayService  
 XDS [[ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)   | /eprik-proxy-cara/camel/cara/Repository/services/RepositoryService
 XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)   | /eprik-proxy-cara/camel/cara/Repository/services/RepositoryService
-XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html) Initiating Gateway  | XCA/services/InitiatingGatewayService
+XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html) Initiating Gateway  | /eprik-proxy-cara/camel/XCA/services/InitiatingGatewayService
 XDS MU [[ITI-57]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html)   | /eprik-proxy-cara/camel/cara//Registry/services/RegistryService
 XDS RMU [[ITI-92]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-92.html)   | /eprik-proxy-cara/camel/cara//Registry/services/RegistryService
 XDS-I RAD [[ITI-69]](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2.pdf)   | /eprik-proxy-cara/camel/cara/Repository/services/RepositoryService
@@ -33,7 +33,7 @@ CH:PPQ [[PPQ-1]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsst
 CH:PPQ [[PPQ-2]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf)   | /eprik-proxy-cara/cara/HPD/services/PR
 XUA [[ITI-40]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E1_DE_Ausgabe_4.pdf)   | /eprik-proxy-cara/camel/cara/EPDSTS/services/SecurityTokenService
 TCU SAML2 | /eprik-proxy-cara/camel/tcu
-ATNA [[ITI-20]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html)   | 34.65.112.202:8080 unsecured TCP according to [RFC5425](https://www.rfc-editor.org/rfc/rfc5425)
+ATNA [[ITI-20]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html)   | 34.65.166.228:8080 unsecured TCP according to [RFC5425](https://www.rfc-editor.org/rfc/rfc5425)
 
 You find an overview of the current relevant specifications and the associated links for the Swiss Electronic Patient Record EPR also [here](https://www.e-health-suisse.ch/en/technik-semantik/epr-projectathon/epr-programming-aids/relevant-specifications.html) and in the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
 

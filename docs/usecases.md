@@ -43,7 +43,7 @@ EPRIK offers an endpoint for unauthenticated transport receiver and sender accor
 with netcat the above message can be directly sent to eprik:
 
 ```
-nc -w1 -v 34.65.112.202 8080 < ./docs/requests/iti-47-atna-raw.txt 
+nc -w1 -v 34.65.166.228 8080 < ./docs/requests/iti-47-atna-raw.txt 
 ```
 
 and is afterwards visible in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cfefb940-1039-4f7a-bfa0-49359b2f2c6e) 

@@ -104,6 +104,4 @@ EPRIK allows you to work with a specific test technical user during integration.
 
 ## 6. Providing AuditEvents
 
-Note: eprik-proxy-cara does not currently not support AuditEvent, they will end up in eprik-cara until implemented.
-
 Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/0af38ea5-459e-4d05-980d-f6cbdb8af035)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/EVSClient/atna/validator.seam?standard=ATNA-IHE&extension=IHE) you can validate if the content of the AuditMessages is correct. 

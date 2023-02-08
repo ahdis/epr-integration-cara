@@ -1,4 +1,4 @@
-# pmp
+# CARA’s eMedication service (PMP)
 
 See [CARA's eMedication IG](https://cara-ch.github.io/emed-service-guide/).
 
