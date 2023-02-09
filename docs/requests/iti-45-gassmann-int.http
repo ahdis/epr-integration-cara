@@ -1,5 +1,5 @@
 ### PIXv3 Query ITI-45
-POST http://test.ahdis.ch/eprik-cara/services/iti45Endpoint HTTP/1.1
+POST https://ws.epr.cara.int.post-ehealth.ch/UPIProxy/services/PIXPDQV3ManagerService HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201309UV02</Action><MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:177ba6dc-fc2b-460f-a563-af4d3fc83d55</MessageID><To xmlns="http://www.w3.org/2005/08/addressing">http://test.ahdis.ch/eprik-cara/services/iti45Endpoint</To><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo></soap:Header><soap:Body><PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">

@@ -1,6 +1,6 @@
 ### GET an STS Token for GLN 2000040030829
 # @name sts 
-POST https://ws.b2b.cara.int.post-ehealth.ch/b2bsts/SecurityTokenService/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/b2bsts/SecurityTokenService/ HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
@@ -21,8 +21,8 @@ Content-Type: application/soap+xml;charset=UTF-8
 </soapenv:Envelope>
 
 ### Use above assertion token and sen a document to GLN 2000040030829
-POST https://ws.b2b.cara.int.post-ehealth.ch/rcdc/SourceAdaptor/ HTTP/1.1
-Accept-Encoding: gzip,deflate
+### note slash at the end is important and you need to updated sourceDocumentID
+POST https://test.ahdis.ch/eprik-cara/camel/tra/rcdc/SourceAdaptor/ HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8;action="urn:submitDocuments"
 
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
@@ -97,7 +97,7 @@ Content-Type: application/soap+xml;charset=UTF-8;action="urn:submitDocuments"
                </practiceSettingCode>
                <serviceStartTime>2020-09-27T08:58:56.773+01:00</serviceStartTime> <!-- start of "s[0xc3][0xa9]jour" -->
                <serviceStopTime>2020-09-27T08:58:56.773+01:00</serviceStopTime> <!-- end of "s[0xc3][0xa9]jour" -->
-               <sourceDocumentID>2.16.756.5.30.1.122.1.9.200.1.1</sourceDocumentID> <!-- HVS source document ID ^ id for the document -->
+               <sourceDocumentID>2.16.756.5.30.1.122.1.9.200.1.1.2</sourceDocumentID> <!-- HVS source document ID ^ id for the document -->
                <title>Test Document DSH 2023.01.12 09:11</title>
                <typeCode>
                   <codingScheme>2.16.840.1.113883.6.96</codingScheme>
