@@ -2,7 +2,7 @@
 ### to get the token (will be only valid for short time)
 
 # @name sts 
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/cara/EPDSTS/services/SecurityTokenService HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/cara/EPDSTS/services/SecurityTokenService HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
@@ -75,7 +75,7 @@ mAhkgBoo/J9MEvo/YMnqHj8S2SFmGq1inWcoEkzbR+xsqHQydxVhjXdaDyXqXzzZt6Q=</ds:X509Cer
 ### ITI-41 Publish Document Set
 
 #name iti41
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
 Content-Type: multipart/related; boundary="uuid:71766996-d9d7-484d-868d-8658c0c85d9a";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 
 --uuid:71766996-d9d7-484d-868d-8658c0c85d9a

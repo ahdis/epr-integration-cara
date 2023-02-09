@@ -1,6 +1,6 @@
 ### GET an STS Token for GLN 2000040030829
 # @name sts 
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/b2bsts/SecurityTokenService/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/b2bsts/SecurityTokenService/ HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
@@ -22,7 +22,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 
 ### getPatientDocumentList
 # @name rcdc
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
 Accept-Encoding: gzip,deflate
 Content-Type: application/soap+xml;charset=UTF-8;action="getPatientDocumentList"
 
@@ -45,7 +45,7 @@ Content-Type: application/soap+xml;charset=UTF-8;action="getPatientDocumentList"
 
 
 ### getPatientDocument
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/Repository/services/RepositoryService HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/Repository/services/RepositoryService HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
@@ -73,7 +73,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 </soapenv:Envelope>
 
 ### deleteDocumentList
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
 Accept-Encoding: gzip,deflate
 Content-Type: application/soap+xml;charset=UTF-8
 

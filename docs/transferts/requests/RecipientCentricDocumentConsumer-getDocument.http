@@ -73,7 +73,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 </soapenv:Envelope>
 
 ### deleteDocumentList
-POST https://test.ahdis.ch/eprik-proxy-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
+POST https://test.ahdis.ch/eprik-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
 Accept-Encoding: gzip,deflate
 Content-Type: application/soap+xml;charset=UTF-8
 
