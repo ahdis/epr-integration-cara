@@ -20,7 +20,7 @@ Content-Type: application/soap+xml;charset=UTF-8
         </device>
     </sender>
     <controlActProcess classCode="CACT" moodCode="EVN">
-        <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.18"/>
+        <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.6"/>
         <subject contextConductionInd="false" typeCode="SUBJ">
             <registrationEvent classCode="REG" moodCode="EVN">
                 <statusCode code="active"/>

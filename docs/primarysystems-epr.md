@@ -22,7 +22,7 @@ If you have a test user you can [use the IdP Assertion from EPRIK](usecases/#use
 ### 2.1 Check if the patient has an EPR based on AHVN13/NAVS
 
 With the PIX V3 query You can use AHVN13/NAVS13 to check if the patient has an EPR (EPR-SPID is returned), and if the patient
-is already registered in the community (MPI-PID is returned). See example [request](https://test.ahdis.ch/eprik-cara/#/transaction/78f83316-07f4-4e42-85d7-36dcf7d75302) for patient Gassmann, which returns EPR-SPID and MPI-PID in asOtherIDs element. For a test patient who has no EPR (as of 4.1.2023) with AHVN13 7560521127080 no EPR-SPID and MPI-PID is returned, see [request](https://test.ahdis.ch/eprik-cara/#/transaction/4a5cd599-e8f4-48e6-9eca-132505261e72). For a test patient who has an EPR but not in CARA int (as of 4.1.2023) with AHVN13 7560520619845 only EPR-SPID is returned, see [request](https://test.ahdis.ch/eprik-cara/#/transaction/6d1a9917-dd2f-469b-b790-aa24d4d68474). 
+is already registered in the community (MPI-PID is returned). See example [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/469de5e7-7998-4fac-94ea-4d128b91ba78) for patient Gassmann, which returns EPR-SPID and MPI-PID in the id elements. For a test patient who has no EPR (as of 31.3.2023) with AHVN13 7560739410295 no EPR-SPID and MPI-PID is returned, see [request](https://test.ahdis.ch/eprik-cara/#/transaction/8a1323d4-3f0c-470d-89f6-d16126fd3dea). If the the AHVN13 is not found, an Application Error (AE) will be [returned](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ccdc62d8-7451-49fe-99c3-846091713f41). For a test patient who has an EPR but not in CARA int (as of 31.3.2023) with AHVN13 7560520619845 only EPR-SPID is returned, see [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ac000d64-e795-400c-8bcb-63a889a7bfc4). 
 
 ### 2.2 Demographics Query
 
@@ -52,7 +52,7 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction
 To query and retrieve documents the HCP needs to be authorized based on the IdP token, the patient (resourceID with EPR-SPID), purposeOfUse (NORM, EMER) and role (HCP).
 See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/GetXAssertion.md).
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/0a830c65-abdb-44f9-b250-9dc82adca668).
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/a6b31484-c1d4-4701-9f0d-58e837e9eab6).
 
 Example STS requests with [IdP](requests/sts-eprik.http) or [EPRIK-httpheader](requests/sts-idp-httpheader-eprik.http).
 

@@ -31,7 +31,7 @@ HPD [[ITI-58]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-58.html)   | /eprik-c
 HPD [[ITI-59]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html)   | /eprik-cara/cara/HPD/services/HPDService
 CH:PPQ [[PPQ-1]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf)   |  /eprik-cara/cara/HPD/services/PR
 CH:PPQ [[PPQ-2]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf)   | /eprik-cara/cara/HPD/services/PR
-XUA [[ITI-40]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E1_DE_Ausgabe_4.pdf)   | /eprik-cara/camel/cara/EPDSTS/services/SecurityTokenService
+XUA [[ITI-40]](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E1_DE_Ausgabe_4.pdf)   | /eprik-cara/camel/cara/STS/services/SecurityTokenService
 TCU SAML2 | /eprik-cara/camel/tcu
 ATNA [[ITI-20]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html)   | 34.65.166.228:8080 unsecured TCP according to [RFC5425](https://www.rfc-editor.org/rfc/rfc5425)
 

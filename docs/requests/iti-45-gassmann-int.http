@@ -20,7 +20,7 @@ Content-Type: application/soap+xml;charset=UTF-8
         </device>
     </sender>
     <controlActProcess classCode="CACT" moodCode="EVN">
-        <code code="PRPA_TE201309UV02" displayName="2.16.840.1.113883.1.18"/>
+        <code code="PRPA_TE201309UV02" codeSystem="2.16.840.1.113883.1.6"/>
         <authorOrPerformer typeCode="AUT">
             <assignedPerson classCode="ASSIGNED">
                 <id root="2.16.756.5.30.1.196.3.2.1"/>

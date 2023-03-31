@@ -56,7 +56,7 @@ Authenticate with your Identity Provider on the top right. If you are authentica
 reference IdP Token with [HTTP header](requests/sts-idp-httpheader-eprik.http):
 ```
 curl --request POST \
-  --url https://test.ahdis.ch/eprik-cara/camel/cara/EPDSTS/services/SecurityTokenService \
+  --url https://test.ahdis.ch/eprik-cara/camel/cara/STS/services/SecurityTokenService \
   --header 'content-type: application/soap+xml;charset=UTF-8' \
   --header 'user-agent: vscode-restclient' \
   --header 'x-eprik-idp-assertion-id: 4790' \

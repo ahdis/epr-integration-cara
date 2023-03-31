@@ -2,3 +2,6 @@ site
 docs/transferts/requests/client.cer
 docs/transferts/requests/client.key
 tests
+hci
+medisupport
+.DS_Store

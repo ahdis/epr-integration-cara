@@ -14,6 +14,7 @@ nav:
   - Transferts Integration: 'transferts.md'
   - PMP Integration: 'pmp.md'
   - FAQ: 'faq.md'
+  - Changelog: 'changelog.md'
 markdown_extensions:
   - admonition
   - attr_list
