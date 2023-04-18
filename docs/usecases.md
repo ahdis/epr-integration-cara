@@ -32,12 +32,10 @@ If you click on 'format XML' it will pretty print the request / response (do not
 
 ## proxy ATNA messages
 
-Note: eprik-cara does not currently not support AuditEvent, they will end up in eprik-cara until implemented.
-
-EPRIK offers an endpoint for unauthenticated transport receiver and sender according to [rfc5425](https://www.rfc-editor.org/rfc/rfc5425#section-5.3). The protocol requires that message length is sent first and then the other syslog parameters defined by [ITI-20](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2), see [example](requests/iti-47-atna-raw.txt):
+EPRIK offers an endpoint for unauthenticated transport receiver and sender according to [rfc5425](https://www.rfc-editor.org/rfc/rfc5425#section-5.3). The protocol requires that message length is sent first and then the other syslog parameters defined by [ITI-20](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2), see [example](requests/iti-47-atna-raw.txt).
 
 ```
-2164 <85>1 2022-11-08T09:45:44.603Z matchbox.test - - IHE+RFC-3881 - <?xml version="1.0" encoding="UTF-8"?><AuditMessage>...
+2164 <85>1 2023-04-18T09:04:00.603Z matchbox.test - - IHE+RFC-3881 - <?xml version="1.0" encoding="UTF-8"?><AuditMessage> ...
 ```
 
 with netcat the above message can be directly sent to eprik:
@@ -46,14 +44,17 @@ with netcat the above message can be directly sent to eprik:
 nc -w1 -v 34.65.166.228 8080 < ./docs/requests/iti-47-atna-raw.txt 
 ```
 
-and is afterwards visible in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cfefb940-1039-4f7a-bfa0-49359b2f2c6e) 
+and is afterwards visible in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152), see tab "headers" for detailed syslog protocol information. 
+
 
 ## Use the IdP Assertion from EPRIK 
+
 For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP assertion which you can use for retrieving the SAML2 assertion token if your primary system is not integrated yet with the IdP.
 
 Authenticate with your Identity Provider on the top right. If you are authenticated successfully you can add either add the IdP Token directly to your request or reference it it via the HTTP header (replace x-eprik-idp-assertion-id with value received after authenticating).
 
 reference IdP Token with [HTTP header](requests/sts-idp-httpheader-eprik.http):
+
 ```
 curl --request POST \
   --url https://test.ahdis.ch/eprik-cara/camel/cara/STS/services/SecurityTokenService \
