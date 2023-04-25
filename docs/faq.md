@@ -25,6 +25,10 @@ Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f
 if some STS TCU requests work and some not, check that you are in sync with the ntp time server, even below second differencds can provoke
 that the assertion could be in the future for the STS (notBefore element, see [issue](https://github.com/ahdis/ch-emed-pmp/issues/40)
 
+### ITI-41: HTTP Error code 500 (soap:body no line breaks in requests)
+
+2024-04-25: if the soap body is formatted with line breaks in the request, the request will not go through the back end (warning: empty request) and an http error 500 is returned.
+
 ### IdP HIN ID
 
 1. you need to have a GLN assigned to the HIN user that, otherwise the STS [ITI-40] will not work since the NameID is not known
