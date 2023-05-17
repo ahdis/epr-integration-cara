@@ -1,0 +1,38 @@
+### https://test.ahdis.ch/eprik-cara/index.html#/transaction/db5e0aa9-e2c0-4de5-a2d6-75ba9a39e25b
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<soap:Header>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:accece9c-1ba6-4291-ab04-c19103338cf4</MessageID>
+		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
+		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+			<Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+		</ReplyTo>
+	</soap:Header>
+	<soap:Body>
+		<batchRequest xmlns="urn:oasis:names:tc:DSML:2:0:core" requestID="1357846720">
+			<searchRequest dn="ou=HCRegulatedOrganization,dc=HPD" scope="singleLevel" derefAliases="neverDerefAliases" requestID="1095340955">
+				<filter>
+					<or>
+						<substrings name="hcIdentifier">
+							<initial>RefData:OID:2.16.756.5.30.1.128</initial>
+						</substrings>
+						<substrings name="hcIdentifier">
+							<initial>RefData:OID:2.16.756.5.30.1.196</initial>
+						</substrings>
+					</or>
+				</filter>
+				<attributes>
+					<attribute name="hcIdentifier"/>
+				</attributes>
+			</searchRequest>
+		</batchRequest>
+	</soap:Body>
+</soap:Envelope>
