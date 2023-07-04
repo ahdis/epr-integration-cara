@@ -1,0 +1,73 @@
+### Add an healthcare professional to the HPD
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:urn="urn:oasis:names:tc:DSML:2:0:core">
+    <soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Action>urn:ihe:iti:2010:ProviderInformationFeed</wsa:Action>
+        <wsa:MessageID>uuid:b646d33a-e3fe-11ed-b77e-da66d518a963</wsa:MessageID>
+        <wsa:To>http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</wsa:To>
+    </soap:Header>
+    <soap:Body>
+        <batchRequest requestID="1234" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+            <addRequest dn="uid=Post0919:030122161403748,ou=HCProfessional,dc=HPD,o=BAG,c=CH" requestID="4321">
+                <attr name="uid">
+                    <value>Post0919:030122161403748</value>
+                </attr>
+                <attr name="hcIdentifier">
+                    <value>RefData:GLN:5171999941111:ACTIVE</value>
+                </attr>
+                <attr name="hcProfession">
+                    <value>BAG:2.16.840.1.113883.6.96:309343006</value>
+                </attr>
+                <attr name="displayname">
+                    <value>Hugo Scharf_2585</value>
+                </attr>
+                <attr name="givenName">
+                    <value>Hcp_1</value>
+                </attr>
+                <attr name="sn">
+                    <value>Scharf_2585</value>
+                </attr>
+                <attr name="HcRegistrationStatus">
+                    <value>Unknown</value>
+                </attr>
+                <attr name="objectClass">
+                    <value>HCProfessional</value>
+                    <value>HPDProvider</value>
+                    <value>inetOrgPerson</value>
+                    <value>organizationalPerson</value>
+                    <value>person</value>
+                    <value>top</value>
+                    <value>naturalPerson</value>
+                </attr>
+                <attr name="cn">
+                    <value>Hugo, Hcp_1,Post0919:030122161403748 </value>
+                </attr>
+                <attr name="hpdProviderStatus">
+                    <value>ACTIVE</value>
+                </attr>
+                <attr name="title">
+                    <value>Dr. med.</value>
+                </attr>
+                <attr name="hpdProviderLanguageSupported">
+                    <value>de</value>
+                </attr>
+                <attr name="gender">
+                    <value>M</value>
+                </attr>
+                <attr name="telephoneNumber">
+                    <value>0041760060090474</value>
+                </attr>
+                <attr name="facsimileTelephoneNumber">
+                    <value>0041767460696998</value>
+                </attr>
+            </addRequest>
+        </batchRequest>
+    </soap:Body>
+</soap:Envelope>
