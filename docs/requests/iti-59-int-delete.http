@@ -1,4 +1,4 @@
-### Delete an healthcare professional from the HPD
+### Delete an entry
 
 POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
 content-type: application/soap+xml; charset=UTF-8
@@ -15,7 +15,7 @@ pragma: no-cache
     </soap:Header>
     <soap:Body>
         <batchRequest requestID="1234" xmlns="urn:oasis:names:tc:DSML:2:0:core">
-            <delRequest dn="uid=Post0919:030122161403748,ou=HCProfessional,dc=HPD,o=BAG,c=CH" requestID="4321"/>
+            <delRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH"/>
         </batchRequest>
     </soap:Body>
 </soap:Envelope>

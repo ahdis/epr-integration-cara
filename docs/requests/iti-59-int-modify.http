@@ -1,0 +1,59 @@
+### Modify an healthcare professional
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<soap:Header>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:9a770a33-15af-41b2-94a1-d2c3fa340813</MessageID>
+		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
+		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+			<Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+		</ReplyTo>
+	</soap:Header>
+   <soap:Body>
+      <batchRequest requestID="12345-create" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+         <modifyRequest dn="uid=Cara:12345,ou=HCProfessional,dc=HPD,o=CARA,c=CH">
+            <modification name="hcIdentifier" operation="add">
+               <value>CARA:localId:1234566666:active</value>
+            </modification>
+            
+            <modification name="title" operation="delete"/>
+            
+            <modification name="telephoneNumber" operation="replace">
+            	<value>076 371 42 20</value>
+            </modification>
+            
+         </modifyRequest>
+      </batchRequest>
+
+   </soap:Body>
+</soap:Envelope>
+
+### Modify a relationship
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+   <soap:Body>
+      <batchRequest requestID="12345-create" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+         <modifyRequest dn="cn=relation1234,ou=Relationship,dc=HPD,o=CARA,c=CH">
+            
+            <modification name="member" operation="add">
+               <value>uid=Cara:12345,ou=HCProfessional,dc=HPD,o=CARA,c=CH</value>
+            </modification>
+            
+         </modifyRequest>
+      </batchRequest>
+   </soap:Body>
+</soap:Envelope>

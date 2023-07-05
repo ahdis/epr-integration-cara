@@ -6,6 +6,7 @@ For a deep EPR integration into a primary systems the following usecases should 
 4. Query and retrieve documents for a patient from the EPR including authorization
 5. Publish documents for a patient by a healthcare professional
 6. Providing AuditEvents
+7. Query and update the Healthcare Professional Directory (HPD)
    
 e-health-suisse has described the different steps with examples [here](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/techniciens.html). Please find below additional information relevant for CARA and EPRIK.
 
@@ -105,3 +106,29 @@ EPRIK allows you to work with a specific test technical user during integration.
 ## 6. Providing AuditEvents
 
 Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/EVSClient/atna/validator.seam?standard=ATNA-IHE&extension=IHE) you can validate if the content of the AuditMessages is correct. See for sending messeage via syslog protocol also guidance about not using BOM in [IHE 3.20.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2). 
+
+## 7. Query and modify the Healthcare Professional Directory (HPD)
+
+The HPD is an LDAP directory, and interactions with it are wrapped in DSMLv2 objects.
+It contains three different objects: professionals (_ou=HCProfessional_), organizations (_ou=HCRegulatedOrganization_) and relationship between them (_ou=Relationship_).
+
+### 7.1 Query entries
+
+With the [ITI-58](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can query the Healthcare Professional Directory (HPD) for the entries you are interested in.
+You can query entries with LDAP filters on LDAP attributes and select the attributes to return.
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74), [request](request/iti-58-int-eprik.http).
+
+### 7.2 Add an entry
+
+With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can add an entry to the HPD with an _addRequest_.
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74), [request](request/iti-59-int-add.http).
+
+### 7.3 Modify an entry
+
+With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can update an entry in the HPD with a _modifyRequest_.
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/705d8021-bb71-4c7c-bc5c-debf0245d630), [request](request/iti-59-int-modify.http).
+
+### 7.4 Delete an entry
+
+With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can delete an entry from the HPD with a _delRequest_.
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cc0597ef-dd71-41bd-809d-105883fa5af4), [request](request/iti-59-int-delete.http).
