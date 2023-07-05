@@ -116,19 +116,19 @@ It contains three different objects: professionals (_ou=HCProfessional_), organi
 
 With the [ITI-58](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can query the Healthcare Professional Directory (HPD) for the entries you are interested in.
 You can query entries with LDAP filters on LDAP attributes and select the attributes to return.
-[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74), [request](request/iti-58-int-eprik.http).
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74), [request](https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-58-int-eprik.http).
 
 ### 7.2 Add an entry
 
 With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can add an entry to the HPD with an _addRequest_.
-[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74), [request](request/iti-59-int-add.http).
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/301e8560-1a1a-4a0d-ad4c-622847eccf29), [request](https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-add.http).
 
 ### 7.3 Modify an entry
 
 With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can update an entry in the HPD with a _modifyRequest_.
-[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/705d8021-bb71-4c7c-bc5c-debf0245d630), [request](request/iti-59-int-modify.http).
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/705d8021-bb71-4c7c-bc5c-debf0245d630), [request](https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-modify.http).
 
 ### 7.4 Delete an entry
 
 With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can delete an entry from the HPD with a _delRequest_.
-[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cc0597ef-dd71-41bd-809d-105883fa5af4), [request](request/iti-59-int-delete.http).
+[Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cc0597ef-dd71-41bd-809d-105883fa5af4), [request](https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-delete.http).
