@@ -21,8 +21,8 @@ XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html) Initiating G
 XDS [[ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)   | /eprik-cara/camel/cara/Repository/services/RepositoryService
 XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)   | /eprik-cara/camel/cara/Repository/services/RepositoryService
 XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html) Initiating Gateway  | /eprik-cara/camel/XCA/services/InitiatingGatewayService
-XDS MU [[ITI-57]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html)   | /eprik-cara/camel/cara//Registry/services/RegistryService
-XDS RMU [[ITI-92]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-92.html)   | /eprik-cara/camel/cara//Registry/services/RegistryService
+XDS MU [[ITI-57]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html)   | /eprik-cara/camel/cara/Registry/services/RegistryService
+XDS RMU [[ITI-92]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-92.html)   | /eprik-cara/camel/cara/Registry/services/RegistryService
 XDS-I RAD [[ITI-69]](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2.pdf)   | /eprik-cara/camel/cara/Repository/services/RepositoryService
 PIX V3 [[ITI-44]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)   | /eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService
 PIX V3 [[ITI-45]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)   | /eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService
