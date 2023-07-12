@@ -72,7 +72,7 @@ To retrieve documents from a patients EPR the IHE XDS.b profile and transactions
 EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/d09272fc-a1e9-48e0-bde7-7d38be403b4e). With  EPRIK you can do the user authentication there and reuse the token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and DocumentUniqueId.
 
 ### 4.3b Retrieve documents from remote communities
-To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/fbacef09-bad2-4f7e-b476-912d183c631f.
+To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query with the homeCommunityId added from result 4.2b. EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/fbacef09-bad2-4f7e-b476-912d183c631f).
 
 
 ## 5. Publish documents for a patient by a healthcare professional
@@ -85,12 +85,11 @@ EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/
 The patient can set the default level of confidentiality to normally accessible	, restricted accessible	or secret. This need to be taken into account when publishing ([sequence diagram](https://ehealthsuisse.ihe-europe.net/docs/sequence_diagrams/2_03_EPR_HPStoreDocuments.plantuml.png)). If a publication fails for normally accessible it has to be retried with restricted accessible. It is only possible to publish a document with confidentiality secret if the user has set the default confidentiality code to secret. To test this three different patients have been setup with different confidentiality codes: GASSMANN-IMHOLZ (normally accessible, EPR-SPID: 761337610916172626), SOARES JESUS (restricted accessible, EPR-SPID 761337618424274719) et Ratchawat (secret: EPR-SPID 761337611340275266)
 
 
-Publication with   | normal  | restricted  | secret          
------------- | -------------  | ---------------   | ---------------
-Gassmann (normally accessible)         | ok  | ok | error
-SOARES JESUS (restricted accessible)         | error  | ok | error
-Ratchawat (secret)         | error  | error | ok
-
+| Publication with                     | normal | restricted | secret |
+|--------------------------------------|--------|------------|--------|
+| Gassmann (normally accessible)       | ok     | ok         | error  |
+| SOARES JESUS (restricted accessible) | error  | ok         | error  |
+| Ratchawat (secret)                   | error  | error      | ok     |
 
 ### metadata in portal
 
@@ -105,7 +104,7 @@ EPRIK allows you to work with a specific test technical user during integration.
 
 ## 6. Providing AuditEvents
 
-Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/EVSClient/atna/validator.seam?standard=ATNA-IHE&extension=IHE) you can validate if the content of the AuditMessages is correct. See for sending messeage via syslog protocol also guidance about not using BOM in [IHE 3.20.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2). 
+Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/evs/atna/validator.seam?standard=21) you can validate if the content of the AuditMessages is correct. See for sending message via syslog protocol also guidance about not using BOM in [IHE 3.20.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2). 
 
 ## 7. Query and modify the Healthcare Professional Directory (HPD)
 
