@@ -27,7 +27,7 @@ is already registered in the community (MPI-PID is returned). See example [reque
 
 ### 2.2 Demographics Query
 
-A search for a a patient is done via a demographics query. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PDQ.md). 
+A search for a patient is done via a demographics query. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PDQ.md). 
 
 EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/c1228bb0-5f60-4ab7-8eb7-585ef2b7c276). This example search is done on the family name, other demographics query parameters are possible. Please note that Swiss Extension requires that an error is returned if more than 5 matched would be returned. You need to provide creationTime, sender OID and receiver OID in addition to the query parameters in the request. For the communication you need a client certificate but with EPRIK a client certificate is not necessary. 
 
@@ -104,7 +104,23 @@ EPRIK allows you to work with a specific test technical user during integration.
 
 ## 6. Providing AuditEvents
 
-Each IHE Transaction has AuditEvent requirements. This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152)). This AuditEvents need to be registered in the community. With [EVSClient](https://ehealthsuisse.ihe-europe.net/evs/atna/validator.seam?standard=21) you can validate if the content of the AuditMessages is correct. See for sending message via syslog protocol also guidance about not using BOM in [IHE 3.20.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2). 
+Each IHE Transaction has AuditEvent requirements.
+This is described for each transaction (see example for ITI-45 [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log) or in [eprik](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152)).
+This AuditEvents need to be registered in the community.
+With [EVSClient](https://ehealthsuisse.ihe-europe.net/evs/atna/validator.seam?standard=21) you can validate if the content of the AuditMessages is correct.
+See for sending message via syslog protocol also guidance about not using BOM in [IHE 3.20.4.1.2 Message Semantics](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2). 
+
+The specifications for generating the audit messages are given in the following documents:
+
+1. [DICOM PS3.15 A.5](https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.html): the 
+   foundation of audit messages.
+2. [IHE profile for each transaction](https://profiles.ihe.net/ITI/TF/Volume2/index.html): in the section 'Security 
+   Considerations' of each transaction, you'll find IHE requirements.
+3. [EPDV-EDI Annex 5 Complement 1](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes): there are some Swiss 
+   requirements too. §1.5.2 describes generic requirements and §1.6.4.3.5.1 describes requirements for transactions 
+   that use a SAML assertion (XUA).
+
+[EPD-by-example](https://github.com/ehealthsuisse/EPD-by-example) has some examples of audit messages.
 
 ## 7. Query and modify the Healthcare Professional Directory (HPD)
 
