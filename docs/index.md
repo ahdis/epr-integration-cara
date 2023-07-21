@@ -39,3 +39,10 @@ an add-on during development, testing and **CANNOT BE** used with a production e
 
     Use only test data and no real patient data! EPRIK is completely open 
     and every request / response to the integration system made is retrievable.
+
+### Configuration
+
+| Parameter            | Integration                         | Production                  |
+|----------------------|-------------------------------------|-----------------------------|
+| MPI OID              | 2.16.756.5.30.1.191.1.0.2.1         | 2.16.756.5.30.1.191.3.0.2.1 |
+| Repository unique ID | 2.16.756.5.30.1.191.1.0.12.1.101.31 |                             |
