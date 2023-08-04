@@ -2,7 +2,7 @@
 
 !!! note
 
-    29.3.2023: Release 5.0.0 on CARA INT: The EPR CARA integration version is newer then the production version, see [changelog](changelog.md) for differences.
+    29.3.2023: Release 5.0.0 on CARA INT: The EPR CARA integration version is newer than the production version, see [changelog](changelog.md) for differences.
 
 This documentation describes how the Integration Kit can be used to test
 the integration of a primary system with the [CARA](https://www.cara.ch/) integration system.
