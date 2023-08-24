@@ -9,7 +9,7 @@ pragma: no-cache
 
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
 	<soap:Header>
-		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationFeed</Action>
 		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:9a770a33-15af-41b2-94a1-d2c3fa340813</MessageID>
 		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
 		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
@@ -18,7 +18,7 @@ pragma: no-cache
 	</soap:Header>
    <soap:Body>
       <batchRequest requestID="12345" xmlns="urn:oasis:names:tc:DSML:2:0:core">
-         <addRequest dn="uid=Cara:12345,ou=HCProfessional,dc=HPD,o=CARA,c=CH">
+         <addRequest dn="uid=Cara:12345,ou=HCProfessional,dc=HPD,o=CARA,c=CH" requestID="54321">
             <attr name="uid">
                <value>Cara:12345</value>
             </attr>
@@ -92,7 +92,7 @@ pragma: no-cache
 
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
 	<soap:Header>
-		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationFeed</Action>
 		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:9a770a33-15af-41b2-94a1-d2c3fa340813</MessageID>
 		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
 		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
@@ -100,8 +100,8 @@ pragma: no-cache
 		</ReplyTo>
 	</soap:Header>
    <soap:Body>
-      <batchRequest requestID="12345-createorg" xmlns="urn:oasis:names:tc:DSML:2:0:core">
-         <addRequest dn="uid=1.2.3.4:org12345,ou=HCRegulatedOrganization,dc=HPD,o=CARA,c=CH">
+      <batchRequest requestID="12345" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+         <addRequest dn="uid=1.2.3.4:org12345,ou=HCRegulatedOrganization,dc=HPD,o=CARA,c=CH" requestID="54321">
             <attr name="uid">
                <value>1.2.3.4:org12345</value>
             </attr>
@@ -127,7 +127,7 @@ pragma: no-cache
 
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
 	<soap:Header>
-		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationFeed</Action>
 		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:9a770a33-15af-41b2-94a1-d2c3fa340813</MessageID>
 		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
 		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
@@ -135,8 +135,8 @@ pragma: no-cache
 		</ReplyTo>
 	</soap:Header>
    <soap:Body>
-      <batchRequest requestID="12345-create" xmlns="urn:oasis:names:tc:DSML:2:0:core">
-         <addRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH">
+      <batchRequest requestID="12345" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+         <addRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH" requestID="54321">
             <attr name="cn">
                <value>relation1234</value>
             </attr>

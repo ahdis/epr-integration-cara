@@ -15,7 +15,7 @@ pragma: no-cache
     </soap:Header>
     <soap:Body>
         <batchRequest requestID="1234" xmlns="urn:oasis:names:tc:DSML:2:0:core">
-            <delRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH"/>
+            <delRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH" requestID="54321"/>
         </batchRequest>
     </soap:Body>
 </soap:Envelope>
