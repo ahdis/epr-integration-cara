@@ -13,6 +13,7 @@ nav:
   - EPR Primary System Integration: 'primarysystems-epr.md'
   - Transferts Integration: 'transferts.md'
   - PMP Integration: 'pmp.md'
+  - CARA Requirements: 'requirements.md'
   - FAQ: 'faq.md'
   - Changelog: 'changelog.md'
 markdown_extensions:
