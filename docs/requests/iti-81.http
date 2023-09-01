@@ -1,0 +1,2 @@
+###
+GET https://epr.cara.int.post-ehealth.ch/ARR/fhir/AuditEvent?patient.identifier=test HTTP1./1
