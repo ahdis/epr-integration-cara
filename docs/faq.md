@@ -29,6 +29,12 @@ that the assertion could be in the future for the STS (notBefore element, see [i
 
 2024-04-25: if the soap body is formatted with line breaks in the request, the request will not go through the back end (warning: empty request) and an http error 500 is returned.
 
+### ITI-45: No MPI-PID in ITI-45 response if queried with AHVN13
+This is a data problem. Multiple local patients were either automatically or manually merged into the same master patient. 
+
+### ITI-45: No Patient data returned
+Verify that the receiver id in the hl7 v3 message contains the oid for the integration system (2.16.756.5.30.1.191.1.0.12.1.101.2);
+
 ### IdP HIN ID
 
 1. you need to have a GLN assigned to the HIN user that, otherwise the STS [ITI-40] will not work since the NameID is not known
