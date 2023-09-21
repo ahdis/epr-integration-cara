@@ -43,4 +43,4 @@ Verify that the receiver id in the hl7 v3 message contains the oid for the integ
 ### IdP TRUST ID
 
 1. if you authenticate with trust ID and eprik you have to provide the SAML2 NameID to be configured
-2. you can get test trust id [here](https://register-int.trustid.ch/trustid)
+2. you can get test trust id [here](https://register-int.trustid.ch/trustid) and manage it [here](https://my-int.trustid.ch) 
