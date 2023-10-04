@@ -1,14 +1,18 @@
 For a deep EPR integration into a primary systems the following usecases should be covered
 
-1. Integrate the strong authentication into the primary system with an IdP
-2. Search for patients in the community
-3. Register a patient from the primary system in the community
-4. Query and retrieve documents for a patient from the EPR including authorization
-5. Publish documents for a patient by a healthcare professional
-6. Providing AuditEvents
-7. Query and update the Healthcare Professional Directory (HPD)
-   
-e-health-suisse has described the different steps with examples [here](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/techniciens.html). Please find below additional information relevant for CARA and EPRIK.
+1. Integrate the strong authentication into the primary system with an IdP (Level 1)
+2. Search for patients in the community (Level 2.1)
+3. Register a patient from the primary system in the community (Level 2.1)
+4. Query and retrieve documents for a patient from the EPR including authorization (Level 2.2)
+5. Publish documents for a patient by a healthcare professional (Level 2.2)
+6. Providing AuditEvents (Level 2.1)
+7. Query and update the Healthcare Professional Directory (HPD) (Level 2.3)
+
+The levels of integration are described by eHealth Suisse, see checklist [[fr]](https://selbstdeklaration.e-health-suisse.ch/upload/documents/Aide_mise_oeuvre_checkliste_anbindung_primaesystemen_F.pdf) and [[de]](https://selbstdeklaration.e-health-suisse.ch/upload/documents/Umsetzungshilfe_Checklist_Anbindung_Primaersystemen.pdf).
+
+eHealth Suisse has described the different steps with examples [[fr]](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/responsables-informatiques.html), [[de]](https://www.e-health-suisse.ch/technik-semantik/epd-anbindung/informatikverantwortliche.html). 
+
+Please find below additional information relevant for CARA and EPRIK:
 
 ## 1. Integrate the strong authentication into the primary system with and IdP
 
@@ -101,6 +105,10 @@ Instead of using an authenticated user for publishing documents, the ERP allows 
 
 EPRIK allows you to work with a specific test technical user during integration. You can get the TCU IdP SAML2 assertion from [here](https://test.ahdis.ch/eprik-cara/camel/tcu). This assertion is valid for 10 minutes. With this assertion you can get then the XUA (STS) token for the XDS requests, for the urn:e-health-suisse:principal-id you need to put the GLN to 2000040030829 when using EPRIK's technical user. 
 [example](https://test.ahdis.ch/eprik-cara/#/transaction/e1159556-36e9-41c1-b9d4-740d21d0bf8b)
+
+### change metadata of existing documents (2.223)
+
+If a document has been added the metadata can be changed with the IHE Restricted Metadata Update Profile [(RMU)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RMU.pdf). See an example message here, where the document title is [changed](https://test.ahdis.ch/eprik-cara/index.html#/transaction/d6e2b67b-8f0f-44ca-b7f0-36e56391922c). A new ITI-18 query shows the changed [title (Line 312)](https://test.ahdis.ch/eprik-cara/index.html#/transaction/6ab0d5fb-6c20-4ee1-ae83-d82fbbf1ec32). If you are working with a Technical User you would need to store the DocumentEntry including entryUUID during the provide and register transaction, because you cannot read it with ITI-18.   
 
 ## 6. Providing AuditEvents
 
