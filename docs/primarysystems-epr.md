@@ -13,7 +13,7 @@ The levels of integration are described by eHealth Suisse, see checklist [[fr]](
 
 eHealth Suisse has described the different steps with examples [[fr]](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/responsables-informatiques.html), [[de]](https://www.e-health-suisse.ch/technik-semantik/epd-anbindung/informatikverantwortliche.html). 
 
-You find test patients which you can use for publication of documents [here](/testpatients/).
+You find test patients which you can use for publication of documents [here](../testpatients/).
 
 Please find below additional information relevant for CARA and EPRIK:
 

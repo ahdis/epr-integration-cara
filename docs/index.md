@@ -19,7 +19,7 @@ To access the integration system you will need to sign a contract/CGUE with [CAR
 in return you will get:
 
 - an HCP test user for which you need an online authentication yourself (e.g. HIN ID) and connect that HCP test user with your online authentication
-- two test patients for you with patient access, public test patients are listed [here](/testpatients/) 
+- two test patients for you with patient access, public test patients are listed [here](../testpatients/) 
 - access to the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health) for the EPR integration.
 
 This will allow you to start the integration of the primary system.
