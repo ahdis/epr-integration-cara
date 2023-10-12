@@ -7,10 +7,13 @@ For a deep EPR integration into a primary systems the following usecases should 
 5. Publish documents for a patient by a healthcare professional (Level 2.2)
 6. Providing AuditEvents (Level 2.1)
 7. Query and update the Healthcare Professional Directory (HPD) (Level 2.3)
+8. OID configuration
 
 The levels of integration are described by eHealth Suisse, see checklist [[fr]](https://selbstdeklaration.e-health-suisse.ch/upload/documents/Aide_mise_oeuvre_checkliste_anbindung_primaesystemen_F.pdf) and [[de]](https://selbstdeklaration.e-health-suisse.ch/upload/documents/Umsetzungshilfe_Checklist_Anbindung_Primaersystemen.pdf).
 
 eHealth Suisse has described the different steps with examples [[fr]](https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/responsables-informatiques.html), [[de]](https://www.e-health-suisse.ch/technik-semantik/epd-anbindung/informatikverantwortliche.html). 
+
+You find test patients which you can use for publication of documents [here](/testpatients/).
 
 Please find below additional information relevant for CARA and EPRIK:
 
@@ -155,3 +158,11 @@ With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_
 
 With the [ITI-59](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf) transaction, you can delete an entry from the HPD with a _delRequest_.
 [Example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/cc0597ef-dd71-41bd-809d-105883fa5af4), [request](https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-delete.http).
+
+### 8. OID Configuration
+
+| Parameter                   | Integration                          | Production                  |
+|-----------------------------|--------------------------------------|-----------------------------|
+| MPI OID Patient             | 2.16.756.5.30.1.191.1.0.2.1          | 2.16.756.5.30.1.191.3.0.2.1 |
+| HL7 v3 Receiver Device ID   | 2.16.756.5.30.1.191.1.0.12.1.101.2   | 2.16.756.5.30.1.191.3.0.12.1.101.2 |
+| Repository unique ID        | 2.16.756.5.30.1.191.1.0.12.1.101.31  |                             |
