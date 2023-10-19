@@ -46,3 +46,14 @@ Verify that the receiver id in the hl7 v3 message contains the oid for the integ
 
 1. if you authenticate with trust ID and eprik you have to provide the SAML2 NameID to be configured
 2. you can get test trust id [here](https://register-int.trustid.ch/trustid) and manage it [here](https://my-int.trustid.ch) 
+
+### Verify if TCU certificate is correctly installed
+for the [STS request](https://test.ahdis.ch/eprik-cara/#/transaction/1b60dd65-182a-4faf-8df7-edb70ef3184b) the public certificate is added in the `<ds:X509Certificate>` in the `<saml2:Assertion>`. You can get the fingerprint of it copying the content of the `<ds:X509Certificate>` into the echo '' part:
+
+```
+echo 'MII... =' | base64 -d | openssl x509 -noout -text -fingerprint -sha1
+```
+
+The resulting sha1 Fingerprint=73:85:78:C8:C8:0C:DE:5D:7A:3E:06:38:6B:80:6E:65:47:FB:61:18 can be checked in the cara admin portal if the certificate is available there. 
+For the STS request it is important that the oid attributed to the user/certificate (showing in parentheses) in also added in the STS request in the `<saml2:NameID>`.
+
