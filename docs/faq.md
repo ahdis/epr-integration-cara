@@ -22,10 +22,13 @@ Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f
 
 please check also that the `<xop:Include>` has no whitespace/linebreaks before or after the tag [source](https://profiles.ihe.net/ITI/TF/Volume2/ch-V.html#Appendix%20V:~:text=Example%20of%20XOP-,optimized,-content.%C2%A0%20NOTE%3A%C2%A0%20xop), with linebreaks you get an HTTP 500 error (currently the EPR Integration kit shows it all the time wrapped, verify it with download request).
 
-### spurios STS error 500 with TCU
+### STS error 500 with TCU
 
 if some STS TCU requests work and some not, check that you are in sync with the ntp time server, even below second differencds can provoke
 that the assertion could be in the future for the STS (notBefore element, see [issue](https://github.com/ahdis/ch-emed-pmp/issues/40))
+
+check also that you have no xml comments in request
+
 
 ### ITI-41: HTTP Error code 500 (soap:body no line breaks in requests)
 
