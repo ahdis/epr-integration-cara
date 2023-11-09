@@ -14,7 +14,7 @@ To execute the examples you can either use [curl](https://curl.se/) or use the p
 
 [Demographics Query for GASSMANN](requests/iti-47-gassmann-eprik.http):
 
-```
+```bash
 curl --request POST \
   --url https://test.ahdis.ch/eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService \
   --header 'content-type: application/soap+xml;charset=UTF-8' \
@@ -40,7 +40,7 @@ EPRIK offers an endpoint for unauthenticated transport receiver and sender accor
 
 with netcat the above message can be directly sent to eprik:
 
-```
+```bash
 nc -w1 -v 34.65.166.228 8080 < ./docs/requests/iti-47-atna-raw.txt 
 ```
 
@@ -55,7 +55,7 @@ Authenticate with your Identity Provider on the top right. If you are authentica
 
 reference IdP Token with [HTTP header](requests/sts-idp-httpheader-eprik.http):
 
-```
+```bash
 curl --request POST \
   --url https://test.ahdis.ch/eprik-cara/camel/cara/STS/services/SecurityTokenService \
   --header 'content-type: application/soap+xml;charset=UTF-8' \
