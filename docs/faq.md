@@ -2,17 +2,18 @@
 
 ### HTTP Error code 202 for SOAP Request (e.g. ITI-18)
 
-check that in the SOAP WS:Header the Address element is in the same nampespace as the ReplateTo Element:
+check that in the SOAP WS:Header the `<Address>` element is in the same nampespace as the `<ReplyTo>` Element:
 
 ```xml
-    <a:ReplyTo s:mustUnderstand="true" xmlns:a="http://www.w3.org/2005/08/addressing">
-      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
-    </a:ReplyTo>
+<a:ReplyTo s:mustUnderstand="true" xmlns:a="http://www.w3.org/2005/08/addressing">
+  <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+</a:ReplyTo>
 ```
 
 ### Content-Type returned not multipart/related but application/xml 
 
-TI-TF says that one should use multipart/related, see https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html#3.43.5.1.1.1, verify that you have start-info="application/soap+xml; charset=utf-8" (or no start-info)
+ITI-TF says that one should use _multipart/related_, see [ITI-43 §3.43.5.1.1.1](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html#3.43.5.1.1.1),
+verify that you have `start-info="application/soap+xml; charset=utf-8"` (or no `start-info`).
 
 e.g:
 
@@ -20,11 +21,12 @@ e.g:
 Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 ```
 
-please check also that the `<xop:Include>` has no whitespace/linebreaks before or after the tag [source](https://profiles.ihe.net/ITI/TF/Volume2/ch-V.html#Appendix%20V:~:text=Example%20of%20XOP-,optimized,-content.%C2%A0%20NOTE%3A%C2%A0%20xop), with linebreaks you get an HTTP 500 error (currently the EPR Integration kit shows it all the time wrapped, verify it with download request).
+Please check also that the `<xop:Include>` has no whitespace/linebreaks before or after the tag [source](https://profiles.ihe.net/ITI/TF/Volume2/ch-V.html#Appendix%20V:~:text=Example%20of%20XOP-,optimized,-content.%C2%A0%20NOTE%3A%C2%A0%20xop),
+with linebreaks you get an HTTP 500 error (currently the EPR Integration kit shows it all the time wrapped, verify it with download request).
 
 ### STS error 500 with TCU
 
-if some STS TCU requests work and some not, check that you are in sync with the ntp time server, even below second differencds can provoke
+if some STS TCU requests work and some not, check that you are in sync with the NTP time server, even below second differences can provoke
 that the assertion could be in the future for the STS (notBefore element, see [issue](https://github.com/ahdis/ch-emed-pmp/issues/40))
 
 check also that you have no xml comments in request
