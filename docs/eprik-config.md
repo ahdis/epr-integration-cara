@@ -11,7 +11,6 @@ By default it lists all transactions made during the day. You can filter by IHE 
 That the requests are routed through **EPRIK** the following endpoints need to be configured in your primary system
 for EPRIK instead of CARA INT for an EPR integration:
 
-
 | Transaction                                                                                                                                                                                                                                                          | EPRIK                                                                                           |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
 | Host                                                                                                                                                                                                                                                                 | test.ahdis.ch                                                                                   |
@@ -38,14 +37,15 @@ for EPRIK instead of CARA INT for an EPR integration:
 | SVS [[ITI-48]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-48.html)                                                                                                                                                                                                  | /eprik-cara/camel/cara/ValueSetRepository/services/ValueSetRepositoryService                    |
 | SVS [[ITI-60]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-60.html)                                                                                                                                                                                                  | /eprik-cara/camel/cara/ValueSetRepository/services/ValueSetRepositoryService                    |
 
-You find an overview of the current relevant specifications and the associated links for the Swiss Electronic Patient Record EPR also [here](https://www.e-health-suisse.ch/en/technik-semantik/epr-projectathon/epr-programming-aids/relevant-specifications.html) and in the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
-
+You find an overview of the current relevant specifications and the associated links for the Swiss Electronic Patient
+Record EPR
+also [here](https://www.e-health-suisse.ch/en/technik-semantik/epr-projectathon/epr-programming-aids/relevant-specifications.html)
+and in the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health).
 
 ## transferts (TRA) Endpoints
 
 That the requests are routed through **EPRIK** the following endpoints need to be configured in your primary system
 for EPRIK instead of CARA INT for an transferts integration:
-
 
 | Transaction                                                                   | EPRIK                                                        |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------|
@@ -64,12 +64,10 @@ for EPRIK instead of CARA INT for an transferts integration:
 
 * Webservice call needs STS token
 
-
 ## PMP Endpoints
 
 That the requests are routed through **EPRIK** the following endpoints need to be configured in your primary system
 for EPRIK instead of CARA INT for a PMP integration for the following XDS transactions:
-
 
 | Transaction                                                            | EPRIK                                         |
 |------------------------------------------------------------------------|-----------------------------------------------|

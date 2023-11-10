@@ -1,16 +1,22 @@
 The EPRIK can help you speed up or test the development against the integration system:
 
 1. Use http(s) endpoints without the need to use client certificates
-2. Proxy functionality: See directly what you are sending to the integration system and receiving, including basic validation, this is available for SOAP webservices and ATNA Audit Events
-3. Use the IdP Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to do document queries or publish documents
-4. Use the TCU Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to publish a document via a technical user
-
+2. Proxy functionality: See directly what you are sending to the integration system and receiving, including basic
+   validation, this is available for SOAP webservices and ATNA Audit Events
+3. Use the IdP Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to do document
+   queries or publish documents
+4. Use the TCU Assertion from EPRIK that you can get a XUA token from the STS (secure token service) to publish a
+   document via a technical user
 
 ## http(s) endpoints without the need to use client certificates and proxy functionality
 
-Adapt your webservice endpoints to the one provided in [eprik-config.md]. This allows you to use http or https endpoints without the need to use client certificates from the beginning and you can verify the if the different webservices are working.  
+Adapt your webservice endpoints to the one provided in [eprik-config.md]. This allows you to use http or https endpoints
+without the need to use client certificates from the beginning and you can verify the if the different webservices are
+working.
 
-To execute the examples you can either use [curl](https://curl.se/) or use the provided .http files if you have [VSCode](https://code.visualstudio.com/) with the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed.
+To execute the examples you can either use [curl](https://curl.se/) or use the provided .http files if you
+have [VSCode](https://code.visualstudio.com/) with
+the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension installed.
 
 [Demographics Query for GASSMANN](requests/iti-47-gassmann-eprik.http):
 
@@ -24,15 +30,25 @@ curl --request POST \
 
 ## Proxy functionality
 
-You can then search for the request on [eprik-cara](http://test.ahdis.ch/eprik-cara/), it shows ALL requests/responses which happened today. You can also adjust the filter criteria. If you click on 'show' you see the details of the request: 
+You can then search for the request on [eprik-cara](http://test.ahdis.ch/eprik-cara/), it shows ALL requests/responses
+which happened today. You can also adjust the filter criteria. If you click on 'show' you see the details of the
+request:
 
-  ![Image title](img/pdqv3-iti47.png)
+![Image title](img/pdqv3-iti47.png)
 
-If you click on 'format XML' it will pretty print the request / response (do not this for assertions which are signed when you wan't to reuse them). If you click on the 'Response' tab you get the response message. If an Assertion was provided you would see it in the 'Assertion tab'. If the request failed internally you will see additional information in the 'Runtime Exception' tab. The status 'Response valid' is the EPRIK internal validation of the request, it does not guarantee that the request is correct and accepted by the CARA integration system.
+If you click on 'format XML' it will pretty print the request / response (do not this for assertions which are signed
+when you wan't to reuse them). If you click on the 'Response' tab you get the response message. If an Assertion was
+provided you would see it in the 'Assertion tab'. If the request failed internally you will see additional information
+in the 'Runtime Exception' tab. The status 'Response valid' is the EPRIK internal validation of the request, it does not
+guarantee that the request is correct and accepted by the CARA integration system.
 
 ## proxy ATNA messages
 
-EPRIK offers an endpoint for unauthenticated transport receiver and sender according to [rfc5425](https://www.rfc-editor.org/rfc/rfc5425#section-5.3). The protocol requires that message length is sent first and then the other syslog parameters defined by [ITI-20](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2), see [example](requests/iti-47-atna-raw.txt).
+EPRIK offers an endpoint for unauthenticated transport receiver and sender according
+to [rfc5425](https://www.rfc-editor.org/rfc/rfc5425#section-5.3). The protocol requires that message length is sent
+first and then the other syslog parameters defined
+by [ITI-20](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2),
+see [example](requests/iti-47-atna-raw.txt).
 
 ```
 2164 <85>1 2023-04-18T09:04:00.603Z matchbox.test - - IHE+RFC-3881 - <?xml version="1.0" encoding="UTF-8"?><AuditMessage> ...
@@ -44,14 +60,19 @@ with netcat the above message can be directly sent to eprik:
 nc -w1 -v 34.65.166.228 8080 < ./docs/requests/iti-47-atna-raw.txt 
 ```
 
-and is afterwards visible in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152), see tab "headers" for detailed syslog protocol information. 
+and is afterwards visible
+in [eprik-cara atna example](https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152),
+see tab "headers" for detailed syslog protocol information.
 
+## Use the IdP Assertion from EPRIK
 
-## Use the IdP Assertion from EPRIK 
+For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP
+assertion which you can use for retrieving the SAML2 assertion token if your primary system is not integrated yet with
+the IdP.
 
-For document access you need to have an assertion which is based on a IdP token. EPRKIT allows you to get the IdP assertion which you can use for retrieving the SAML2 assertion token if your primary system is not integrated yet with the IdP.
-
-Authenticate with your Identity Provider on the top right. If you are authenticated successfully you can add either add the IdP Token directly to your request or reference it it via the HTTP header (replace x-eprik-idp-assertion-id with value received after authenticating).
+Authenticate with your Identity Provider on the top right. If you are authenticated successfully you can add either add
+the IdP Token directly to your request or reference it it via the HTTP header (replace x-eprik-idp-assertion-id with
+value received after authenticating).
 
 reference IdP Token with [HTTP header](requests/sts-idp-httpheader-eprik.http):
 

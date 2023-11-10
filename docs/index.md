@@ -13,21 +13,26 @@ CARA offers different services:
 
 - EPR [https://epr.cara.int.post-ehealth.ch](https://epr.cara.int.post-ehealth.ch)
 - Transferts [https://b2b.cara.int.post-ehealth.ch/](https://b2b.cara.int.post-ehealth.ch/).
-- PMP (eMedication Service) [https://cara-ch.github.io/emed-service-guide/](https://cara-ch.github.io/emed-service-guide/)
+- PMP (eMedication
+  Service) [https://cara-ch.github.io/emed-service-guide/](https://cara-ch.github.io/emed-service-guide/)
 
-To access the integration system you will need to sign a contract/CGUE with [CARA](https://www.cara.ch/) and provide an OID concept for your organization,
+To access the integration system you will need to sign a contract/CGUE with [CARA](https://www.cara.ch/) and provide an
+OID concept for your organization,
 in return you will get:
 
-- an HCP test user for which you need an online authentication yourself (e.g. HIN ID) and connect that HCP test user with your online authentication
-- two test patients for you with patient access, public test patients are listed [here](testpatients.md) 
-- access to the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health) for the EPR integration.
+- an HCP test user for which you need an online authentication yourself (e.g. HIN ID) and connect that HCP test user
+  with your online authentication
+- two test patients for you with patient access, public test patients are listed [here](testpatients.md)
+- access to the [Post E-Health Platform – developer portal](https://developer.post.ch/en/e-health) for the EPR
+  integration.
 
 This will allow you to start the integration of the primary system.
 
-The [Integration Kit](https://test.ahdis.ch/eprik-cara/index.html) (short **EPRIK**) provides the following [functionality](usecases.md):
+The [Integration Kit](https://test.ahdis.ch/eprik-cara/index.html) (short **EPRIK**) provides the
+following [functionality](usecases.md):
 
 - Authenticate an User and obtain an IdP assertion
-- Proxy and log IHE transactions without client certificates and with basic validation of request / response 
+- Proxy and log IHE transactions without client certificates and with basic validation of request / response
 
 <figure markdown>
   ![Image title](img/eprik-architecture.png){ width="499" }
