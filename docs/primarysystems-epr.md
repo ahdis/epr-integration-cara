@@ -45,7 +45,7 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction
 
 Register a patient in a community. Primary systems need to use this transaction to register patient data and then to be able to provide and retrieve documents to the patients EPR. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXFeed.md).
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/12754ece-dbcd-4ad8-ab26-9199262399dc). This example registers the local id from the primary system P003 of the patient identity domain 2.16.756.5.30.1.999.90 in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client certificate is not necessary.
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/12754ece-dbcd-4ad8-ab26-9199262399dc). This example registers the local id from the primary system P003 of the patient identity domain 2.16.756.5.30.1.145.1.3 in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client certificate is not necessary.
 
 ### 3.2 Query MPI-PID and EPR-SPID based on local ID 
 

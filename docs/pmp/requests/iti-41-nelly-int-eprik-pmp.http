@@ -208,7 +208,7 @@ Content-ID: <6d40de10-352b-4832-a5c1-5baa8e216793-10@urn:ihe:iti:xds-b:2007>
         "id": "MonikaWegmueller",
         "identifier": [
           {
-            "system": "urn:oid:2.16.756.5.30.1.999.90",
+            "system": "urn:oid:2.16.756.5.30.1.145.1.3",
             "value": "CARAPMP001",
             "type": {
               "coding": [
@@ -338,7 +338,7 @@ Content-ID: <6d40de10-352b-4832-a5c1-5baa8e216793-10@urn:ihe:iti:xds-b:2007>
         "id": "MonikaWegmuellerRecipient",
         "identifier": [
           {
-            "system": "urn:oid:2.16.756.5.30.1.999.90",
+            "system": "urn:oid:2.16.756.5.30.1.145.1.3",
             "value": "CARAPMP001",
             "type": {
               "coding": [
