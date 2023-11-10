@@ -30,13 +30,13 @@ If you have a test user you can [use the IdP Assertion from EPRIK](usecases/#use
 ### 2.1 Check if the patient has an EPR based on AHVN13/NAVS
 
 With the PIX V3 query You can use AHVN13/NAVS13 to check if the patient has an EPR (EPR-SPID is returned), and if the patient
-is already registered in the community (MPI-PID is returned). See example [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/469de5e7-7998-4fac-94ea-4d128b91ba78) for patient Gassmann, which returns EPR-SPID and MPI-PID in the id elements. For a test patient who has no EPR (as of 31.3.2023) with AHVN13 7560739410295 no EPR-SPID and MPI-PID is returned, see [request](https://test.ahdis.ch/eprik-cara/#/transaction/8a1323d4-3f0c-470d-89f6-d16126fd3dea). If the the AHVN13 is not found, an Application Error (AE) will be [returned](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ccdc62d8-7451-49fe-99c3-846091713f41). For a test patient who has an EPR but not in CARA int (as of 31.3.2023) with AHVN13 7560520619845 only EPR-SPID is returned, see [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ac000d64-e795-400c-8bcb-63a889a7bfc4). 
+is already registered in the community (MPI-PID is returned). See example [request](https://test.ahdis.ch/eprik-cara/#/transaction/b7429b34-ffd5-4c57-a04a-702fab2f54b5) for patient Gassmann, which returns EPR-SPID and MPI-PID in the id elements. For a test patient who has no EPR (as of 31.3.2023) with AHVN13 7560739410295 no EPR-SPID and MPI-PID is returned, see [request](https://test.ahdis.ch/eprik-cara/#/transaction/8a1323d4-3f0c-470d-89f6-d16126fd3dea). If the the AHVN13 is not found, an Application Error (AE) will be [returned](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ccdc62d8-7451-49fe-99c3-846091713f41). For a test patient who has an EPR but not in CARA int (as of 31.3.2023) with AHVN13 7560520619845 only EPR-SPID is returned, see [request](https://test.ahdis.ch/eprik-cara/index.html#/transaction/ac000d64-e795-400c-8bcb-63a889a7bfc4). 
 
 ### 2.2 Demographics Query
 
 A search for a patient is done via a demographics query. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PDQ.md). 
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/c1228bb0-5f60-4ab7-8eb7-585ef2b7c276). This example search is done on the family name, other demographics query parameters are possible. Please note that Swiss Extension requires that an error is returned if more than 5 matched would be returned. You need to provide creationTime, sender OID and receiver OID in addition to the query parameters in the request. For the communication you need a client certificate but with EPRIK a client certificate is not necessary. 
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/cd50db51-d218-4157-8848-d2b28be8ae67). This example search is done on the family name, other demographics query parameters are possible. Please note that Swiss Extension requires that an error is returned if more than 5 matched would be returned. You need to provide creationTime, sender OID and receiver OID in addition to the query parameters in the request. For the communication you need a client certificate but with EPRIK a client certificate is not necessary. 
 
 
 ## 3. Register a patient from the primary system in the community and query the patient community id
@@ -45,13 +45,13 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction
 
 Register a patient in a community. Primary systems need to use this transaction to register patient data and then to be able to provide and retrieve documents to the patients EPR. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXFeed.md).
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/12754ece-dbcd-4ad8-ab26-9199262399dc). This example registers the local id from the primary system P003 of the patient identity domain 2.16.756.5.30.1.145.1.3 in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client certificate is not necessary.
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/a3e50707-6662-4fc4-a593-3ee7ea300c7c). This example registers the local id from the primary system P003 of the patient identity domain 2.16.756.5.30.1.145.1.3 in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client certificate is not necessary.
 
 ### 3.2 Query MPI-PID and EPR-SPID based on local ID 
 
 The primary systems needs to query the master patient ID (MPI-ID) for patients to retrieve or provide documents for, based on the local id registered above. See detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md).
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/12754ece-dbcd-4ad8-ab26-9199262399dc).
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/f9c72b8d-15d8-47df-81e1-cb38e082f6aa).
 
 ## 4. Query and retrieve documents for a patient from the EPR
 
