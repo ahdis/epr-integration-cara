@@ -100,7 +100,7 @@ Example STS requests with [IdP](requests/sts-eprik.http) or [EPRIK-httpheader](r
 Retrieve the document metadata for the documents stored in a patients EPR for the CARA community. See detailed
 description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RegistryStoredQuery.md).
 
-EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/978556fe-5dee-4d5b-ae07-2b50bbf753d4).
+EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/3ece4177-ab0a-47ab-9431-6ebad553aa75).
 For the Query the MPI-ID of the patient needs to be added. This example requests includes the security token necessary.
 With the EPRIK you can do the user authentication there and reuse the
 token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with
@@ -110,7 +110,7 @@ EPRIK a client certificate is not necessary.
 
 To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the
 initiating gateway has to be called with an IIT-18 query. EPRIK
-example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/fc3082b6-fbdf-4211-813c-2507a4854108).
+example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/b5e221c3-7f83-4418-a53d-1bfbe3500ad5).
 Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.
 
 ### 4.3a Retrieve documents from the CARA community
@@ -118,7 +118,7 @@ Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1
 To retrieve documents from a patients EPR the IHE XDS.b profile and transactions needs to be used. See detailed
 description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RetrieveDocumentSet.md).
 
-EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/d09272fc-a1e9-48e0-bde7-7d38be403b4e).
+EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/62065f91-91ec-4125-9dd8-aa8f3d90027a).
 With EPRIK you can do the user authentication there and reuse the
 token [see](usecases/#use-the-idp-assertion-from-eprik). For the communication you need a client certificate but with
 EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and
@@ -126,9 +126,9 @@ DocumentUniqueId.
 
 ### 4.3b Retrieve documents from remote communities
 
-To retrieve the documents stored in remote communities, the initiating gateway has to be called with an IIT-43 query
+To retrieve the documents stored in remote communities, the initiating gateway has to be called with an ITI-43 query
 with the homeCommunityId added from result 4.2b. EPRIK
-example [request, response](https://test.ahdis.ch/eprik-cara/index.html#/transaction/fbacef09-bad2-4f7e-b476-912d183c631f).
+example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/b5e221c3-7f83-4418-a53d-1bfbe3500ad5).
 
 ## 5. Publish documents for a patient by a healthcare professional
 
