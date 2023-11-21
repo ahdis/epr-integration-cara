@@ -35,6 +35,19 @@ have done the IdP integration yourself.
 
 ## 2. Search for patients in the community
 
+![Sequence diagram for managing identities](img/managing_identities.svg)
+
+This sequence diagram shows the preferred way of managing patient identities.
+The first case, *EPR set in PS* is the case where you have already linked your local patient identity to an EPR 
+patient identity and fed your local identifier to the MPI.
+To get the MPI-PID and the EPR-SPID, you just have to query the MPI with your local identifier (described in section 
+3.2).
+
+The second case, *EPR not set in PS*, is the case where you have to reconciliate the patient identities.
+You can query the MPI for patient demographics (like name, birthdate, gender, etc., described in section 2.2) and 
+manually match demographics.
+Once that is done, you can feed your patient local identifier to the MPI (described in section 3.1).
+
 ### 2.1 Check if the patient has an EPR based on AHVN13/NAVS
 
 With the PIX V3 query You can use AHVN13/NAVS13 to check if the patient has an EPR (EPR-SPID is returned), and if the
@@ -84,6 +97,14 @@ EPRIK example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction
 
 ## 4. Query and retrieve documents for a patient from the EPR
 
+![Sequence diagram for searching and retrieving documents](img/search_and_get.svg)
+
+This sequence diagram shows the search and retrieval of documents.
+Searching documents in CARA is described in section 4.2a, searching in other communities is described in section 4.2b.
+Retrieving a document is described in sections 4.3a and 4.3b, depending on the community.
+The PIXv3 query is shown as a reminder.
+For these calls, another mandatory step is the Get X-User Assertion call to get a XUA token from the EPR.
+
 ### 4.1 Authorization
 
 To query and retrieve documents the HCP needs to be authorized based on the IdP token, the patient (resourceID with
@@ -132,6 +153,10 @@ example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/b5e22
 
 ## 5. Publish documents for a patient by a healthcare professional
 
+![Sequence diagram for publishing documents](img/upload.svg)
+
+This sequence diagram shows the publication of a document by a healthcare professional.
+
 To provide documents and metadata about the documents the IHE XDS.b profile and transactions needs to be used. See
 detailed description [here](https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/ProvideAndRegister.md).
 
@@ -164,6 +189,10 @@ PID-5
 in [sourcePatientInfo](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.3.2.23). [example](https://test.ahdis.ch/eprik-cara/#/transaction/e1159556-36e9-41c1-b9d4-740d21d0bf8b)
 
 ### provide a document with a technical user (TCU)
+
+![Sequence diagram for publishing documents by a TCU](img/upload_tcu.svg)
+
+This sequence diagram shows the publication of a document by a technical user.
 
 Instead of using an authenticated user for publishing documents, the ERP allows to publish documents with a technical
 user [see factsheet in french](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/F/fiche-dinformation-utilisateur-technique-dep.pdf).
