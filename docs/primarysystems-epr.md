@@ -131,7 +131,7 @@ EPRIK a client certificate is not necessary.
 
 To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the
 initiating gateway has to be called with an IIT-18 query. EPRIK
-example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/b5e221c3-7f83-4418-a53d-1bfbe3500ad5).
+example [request, response](https://test.ahdis.ch/eprik-cara/#/transaction/c2e8503a-97c6-4446-b233-155d57cf8e5e).
 Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.
 
 ### 4.3a Retrieve documents from the CARA community
