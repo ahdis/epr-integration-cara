@@ -15,7 +15,8 @@ nav:
   - PMP Integration: 'pmp.md'
   - CARA Requirements: 'requirements.md'
   - FAQ: 'faq.md'
-  - Changelog: 'changelog.md'
+  - CARA INT Changelog: 'changelog.md'
+  - EPRIK Changelog: 'changelog_eprik.md'
 markdown_extensions:
   - admonition
   - attr_list
