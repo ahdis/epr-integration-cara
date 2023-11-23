@@ -1,4 +1,13 @@
 
+## Version 1.2.1 - 23/11/2023
+
+- Fixed error message in MTOM validation.
+- Improved error messages in ATNA validation.
+- Added pagination to results.
+- Only showing runtime status if error, or request and response statuses in the transaction list.
+- When clicking the status in the transaction list (e.g. "response" or "runtime"), the right tab will open.
+- Increased effort to match audit messages to their client.
+
 ## Version 1.2.0 - 22/11/2023
 
 - A changelog is now published.
