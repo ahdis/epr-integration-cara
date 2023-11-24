@@ -1,4 +1,9 @@
 
+## Version 1.2.2 - 24/11/2023
+
+- Fixed message content processing, where binary data in multipart messages would be corrupted.
+- Minor frontend improvements.
+
 ## Version 1.2.1 - 23/11/2023
 
 - Fixed error message in MTOM validation.
