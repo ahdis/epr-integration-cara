@@ -1,4 +1,11 @@
 
+## Version 1.2.3 - 29/11/2023
+
+- Implemented line numbering in highlighted codes.
+- Clients are now sorted by prefix in the list.
+- Validators don't stop anymore at the first error.
+- Added message for known issues with validators (IPF and EVSClient).
+- 
 ## Version 1.2.2 - 24/11/2023
 
 - Fixed message content processing, where binary data in multipart messages would be corrupted.
