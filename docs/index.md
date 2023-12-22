@@ -52,6 +52,9 @@ an add-on during development, testing and **CANNOT BE** used with a production e
 There are two different TLS connections with CARA INT you can test: the Syslog connection (to send ATNA messages) 
 and the webservices connection (to send IHE requests).
 
+In these tests, you have to use your own certificate and private key.
+Note that they may be stored in the same _[.pem](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail)_ file.
+
 ### Syslog connection
 
 You can test the Syslog connection with `openssl`:
