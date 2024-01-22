@@ -1,4 +1,11 @@
 
+## Version 1.2.4 - 22/01/2024
+
+- Improved performance of the frontend.
+- Improved the transaction validation display.
+- Updated the IDP icons.
+- Fixed an issue where the validation would not be run anymore.
+
 ## Version 1.2.3 - 29/11/2023
 
 - Implemented line numbering in highlighted codes.
