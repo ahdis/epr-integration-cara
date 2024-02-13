@@ -188,6 +188,8 @@ The portal displays the metadata provided in the publication. The patient name i
 PID-5
 in [sourcePatientInfo](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.3.2.23). [example](https://test.ahdis.ch/eprik-cara/#/transaction/e1159556-36e9-41c1-b9d4-740d21d0bf8b)
 
+The institution can be filtered by the portal only if the `authorInstitution` contains an OID in the XON.10 field.
+
 ### provide a document with a technical user (TCU)
 
 ![Sequence diagram for publishing documents by a TCU](img/upload_tcu.svg)

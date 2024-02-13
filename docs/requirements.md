@@ -18,3 +18,10 @@ Other PID fields are optional.
     </ValueList>
 </Slot>
 ```
+
+If using the `authorInstitution` attribute, the [HL7 V2.5 XON](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#t4.2.3.1.7-2)
+value SHALL contain the organization OID in the XON.10 field.
+
+```xml
+<rim:Value>Some Hospital^^^^^^^^^2.999.1.2.3.4.5.6.7.8.9.1789.45</rim:Value>
+```
