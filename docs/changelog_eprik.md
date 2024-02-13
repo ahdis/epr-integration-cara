@@ -1,4 +1,10 @@
 
+## Version 1.2.5 - 13/02/2024
+
+- Fixed display of binary data.
+- Improved performance of the frontend (again).
+- Added validation to authorInstitution in ITI-41 transactions.
+
 ## Version 1.2.4 - 22/01/2024
 
 - Improved performance of the frontend.
