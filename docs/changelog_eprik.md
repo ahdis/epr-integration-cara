@@ -1,4 +1,10 @@
 
+## Version 1.2.6 - 15/02/2024
+
+- Fixed code not displayed in Safari.
+- Hidden large binary blobs in the request and response.
+- Fixed the code auto-format switching.
+
 ## Version 1.2.5 - 13/02/2024
 
 - Fixed display of binary data.
