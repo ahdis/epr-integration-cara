@@ -218,6 +218,41 @@ changed [title (Line 312)](https://test.ahdis.ch/eprik-cara/index.html#/transact
 If you are working with a Technical User you would need to store the DocumentEntry including entryUUID during the
 provide and register transaction, because you cannot read it with ITI-18.
 
+### Replace a document
+
+To replace a document, the same ITI-41 transaction is used as for the publication of a new document, with the 
+addition of a specific `Association` element that shows which document is to be replaced:
+
+```xml
+<rim:Association associationType="urn:ihe:iti:2007:AssociationType:RPLC"
+                 sourceObject="urn:uuid:fa9b4f10-3ea1-436f-a988-ebbb8a2cfffc"
+                 targetObject="urn:uuid:42fbb7ad-fe7a-4585-95c6-15d91a476c40"
+                 id="(a unique id)"/>
+```
+
+EPRIK example [request,response](https://test.ahdis.ch/eprik-cara/#/transaction/5e770d0b-db8c-4fda-8ed5-8a2128a162c8).
+
+### Using entryUUIDs
+
+!!! warning
+
+    The documents entryUUIDs may change at any time: if the metadata changes (through an ITI-92 transaction, or if 
+    the patient changes the confidentiality level), or if the document is replaced, a new entryUUID will be generated.
+
+To change the metadata of a document, or to replace it with a new document, the entryUUID of the currently approved 
+DocumentEntry is required, and may be different from the submitted entryUUID in the original publication. In some 
+cases, it may prove impossible to retrieve the right entryUUID. In those cases, the help from CARA's administrators 
+can be requested, or the document may be republished as a new document.
+
+To retrieve the currently approved entryUUID of a document that has not been replaced, if a healthcare professional 
+is logged in, the ITI-18 search can be used with the document unique ID. If a technical user is logged in, there is 
+no possibility. Depending on the configured confidentiality levels, the document may not be returned in the search.
+
+To retrieve the currently approved entryUUID of a document that has been replaced, the ITI-18 _GetRelatedDocuments_ 
+search can be used to retrieve the document that replaced the original document. A loop may be needed, if the 
+document has been replaced multiple times.
+
+
 ## 6. Providing AuditEvents
 
 Each IHE Transaction has AuditEvent requirements.
