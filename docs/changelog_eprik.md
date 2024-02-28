@@ -1,3 +1,12 @@
+## Version 1.2.7 - 28/02/2024
+
+- Fixed connection with TrustID.
+- Fixed an issue where the validation would not run anymore (again).
+- Added milliseconds to the transaction details.
+- Uniformized the validator names.
+- Improved the exception messages when the Gazelle validator is not available.
+- Fix overflow in validation results.
+- Added simple validation of CH:XUA assertions.
 
 ## Version 1.2.6 - 15/02/2024
 
