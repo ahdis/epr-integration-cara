@@ -1,3 +1,9 @@
+## Version 1.2.8 - 08/03/2024
+
+- Added validation of ITI-45 PIXv3 queries.
+- Downgraded the validation error when PIX Feeding with an AHV-number to a warning #86.
+- Added a filter feature to search in requests and responses #39.
+
 ## Version 1.2.7 - 28/02/2024
 
 - Fixed connection with TrustID.
