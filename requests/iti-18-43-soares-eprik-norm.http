@@ -1,0 +1,62 @@
+### Need first to get an IDP Token, use https://test.ahdis.ch/eprik-cara/ to Login and adjust X-Eprik-IDP-Assertion-ID on Line 6
+
+# @name sts 
+POST https://test.ahdis.ch/eprik-cara/camel/cara/STS/services/SecurityTokenService HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+   <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
+   <wsa:MessageID>6ed3440a-0164-49c4-b9d2-235422819e90</wsa:MessageID>
+   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   </wsse:Security></env:Header>
+   <env:Body>
+      <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+         <wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</wst:RequestType>
+         <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+               <wsa:Address>https://test.ahdis.ch/mag-cara</wsa:Address>
+            </wsa:EndpointReference>
+         </wsp:AppliesTo>
+         <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+         <wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2">
+         <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">761337618424274719^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:anyType"><PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal Access" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema"><Role xmlns="urn:hl7-org:v3" code="PAT" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Healthcare professional" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute></wst:Claims>
+      </wst:RequestSecurityToken>
+   </env:Body>
+</env:Envelope>
+
+
+### ITI-18 request with above token
+
+# @name iti18
+POST https://test.ahdis.ch/eprik-cara/camel/cara/Registry/services/RegistryService  HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+
+</wsse:Security><Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:RegistryStoredQuery</Action><MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:33bb72fc-59d3-4525-8737-fba8bea73d7d</MessageID><To xmlns="http://www.w3.org/2005/08/addressing">http://test.ahdis.ch/eprik-cara/services/iti18Endpoint</To><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo></soap:Header><soap:Body><ns4:AdhocQueryRequest xmlns:ns6="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0" xmlns:ns5="urn:ihe:iti:xds-b:2007" xmlns:ns4="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" xmlns:ns3="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" xmlns:ns2="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"><ns4:ResponseOption returnType="LeafClass" returnComposedObjects="true"/><ns2:AdhocQuery id="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d"><ns2:Slot name="$XDSDocumentEntryPatientId"><ns2:ValueList><ns2:Value>'58ec3b25-ca51-4c67-b8c6-d7a208254227^^^&amp;2.16.756.5.30.1.191.1.0.2.1&amp;ISO'</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="$XDSDocumentEntryStatus"><ns2:ValueList><ns2:Value>('urn:oasis:names:tc:ebxml-regrep:StatusType:Approved')</ns2:Value></ns2:ValueList></ns2:Slot></ns2:AdhocQuery></ns4:AdhocQueryRequest></soap:Body></soap:Envelope>
+
+
+### ITI-43 Download the first document via eprik-cara from above list
+
+#name iti43
+POST https://test.ahdis.ch/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
+
+--uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce
+Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
+Content-Transfer-Encoding: binary
+Content-ID: <root.message@cxf.apache.org>
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+
+</wsse:Security><Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:RetrieveDocumentSet</Action><MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:c0fd273c-f092-4145-a411-e2db6598f21d</MessageID><To xmlns="http://www.w3.org/2005/08/addressing">http://test.ahdis.ch/eprik-cara/services/iti43Endpoint</To><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo></soap:Header><soap:Body><ns2:RetrieveDocumentSetRequest xmlns:ns7="urn:ihe:iti:rmd:2017" xmlns:ns6="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0" xmlns:ns5="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" xmlns:ns4="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" xmlns:ns3="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" xmlns:ns2="urn:ihe:iti:xds-b:2007">
+<ns2:DocumentRequest>
+   <ns2:RepositoryUniqueId>{{iti18.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='AdhocQueryResponse']/*[local-name()='RegistryObjectList'][1]/*[local-name()='ExtrinsicObject']/*[local-name()='Slot' and @name='repositoryUniqueId']/*[local-name()='ValueList']/*[local-name()='Value']}}</ns2:RepositoryUniqueId>
+   <ns2:DocumentUniqueId>{{iti18.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='AdhocQueryResponse']/*[local-name()='RegistryObjectList'][1]/*[local-name()='ExtrinsicObject']/*[local-name()='ExternalIdentifier' and ./*[local-name()='Name']/*[local-name()='LocalizedString']/@value='XDSDocumentEntry.uniqueId']/@value}}</ns2:DocumentUniqueId>
+</ns2:DocumentRequest></ns2:RetrieveDocumentSetRequest></soap:Body></soap:Envelope>
+--uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce--
