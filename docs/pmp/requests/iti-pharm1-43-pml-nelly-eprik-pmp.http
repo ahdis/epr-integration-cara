@@ -74,7 +74,7 @@ mAhkgBoo/J9MEvo/YMnqHj8S2SFmGq1inWcoEkzbR+xsqHQydxVhjXdaDyXqXzzZt6Q=</ds:X509Cer
 ### PHARM-1 for Medication List (PML)
 
 # @name iti18
-POST http://test.ahdis.ch/eprik-cara/camel/pmp/pmp2/services/cmpd/chpharm1  HTTP/1.1
+POST http://test.ahdis.ch/eprik-cara/camel/pmp-int/pmp2/services/cmpd/chpharm1  HTTP/1.1
 Content-Type: application/soap+xml;charset=UTF-8
 
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -86,7 +86,7 @@ Content-Type: application/soap+xml;charset=UTF-8
 ### ITI-43 Download the first document via eprik-cara from above list
 
 #name iti43
-POST http://test.ahdis.ch/eprik-cara/camel/pmp/pmp2/services/xds/iti43 HTTP/1.1
+POST http://test.ahdis.ch/eprik-cara/camel/pmp-int/pmp2/services/xds/iti43 HTTP/1.1
 Content-Type: multipart/related; boundary="uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
 
 --uuid:f42c35e4-54b2-45ca-8fda-ed58b11f6fce
