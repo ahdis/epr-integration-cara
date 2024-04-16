@@ -2,7 +2,7 @@
 
 See [CARA's eMedication IG](https://cara-ch.github.io/emed-service-guide/).
 
-You can access any logs also directly at https://pmp.posttenebrassilico.ch/pmp2/mhd/logs.
+You can access any logs also directly at https://ws-pmp-int.cara.ch/pmp/mhd/logs.
 
 ## eprik integration with pmp
 

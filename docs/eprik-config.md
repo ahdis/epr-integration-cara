@@ -73,11 +73,11 @@ for EPRIK instead of CARA INT for a PMP integration for the following XDS transa
 |----------------------------------------------------------------------------------------------------|-------------------------------------------------------|
 | Host                                                                                               | test.ahdis.ch                                         |
 | Port                                                                                               | 443 (https) or 80 (http)                              |
-| XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)                                | /eprik-cara/camel/pmp-int/pmp2/services/xds/iti18     |
-| XDS [[ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)                                | /eprik-cara/camel/pmp-int/pmp2/services/xds/iti41     |
-| XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)                                | /eprik-cara/camel/pmp-int/pmp2/services/xds/iti43     |
-| XDS MU [[ITI-57]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html)                             | /eprik-cara/camel/pmp-int/pmp2/services/xds/iti57     |
-| CMPD [[PHARM-1]](https://www.ihe.net/uploadedFiles/Documents/Pharmacy/IHE_Pharmacy_Suppl_CMPD.pdf) | /eprik-cara/camel/pmp-int/pmp2/services/cmpd/chpharm1 |
+| XDS [[ITI-18]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)                                | /eprik-cara/camel/pmp-int/pmp/services/xds/iti18      |
+| XDS [[ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)                                | /eprik-cara/camel/pmp-int/pmp/services/xds/iti41      |
+| XDS [[ITI-43]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)                                | /eprik-cara/camel/pmp-int/pmp/services/xds/iti43      |
+| XDS MU [[ITI-57]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html)                             | /eprik-cara/camel/pmp-int/pmp/services/xds/iti57      |
+| CMPD [[PHARM-1]](https://www.ihe.net/uploadedFiles/Documents/Pharmacy/IHE_Pharmacy_Suppl_CMPD.pdf) | /eprik-cara/camel/pmp-int/pmp/services/cmpd/chpharm1  |
 
 The other PMP host is available at the path `/eprik-cara/camel/pmp-dev/pmp/...`; see 
 https://cara-ch.github.io/emed-service-guide/endpoints/ for more details.
