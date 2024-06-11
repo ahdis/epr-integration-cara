@@ -1,3 +1,13 @@
+## Version 1.2.9 - 11/06/2024
+
+- Upgraded to Java 21 LTS.
+- The content search now also searches in the message headers #99.
+- Implemented the search by recipient #102.
+- Handled error when parsing the boundary in multipart messages #100.
+- Fixed a display issue in the transaction list for retina displays #106.
+- Fixed validation of RegistryError.location #91.
+- Implemented control of external validation by client, with automatic disabling after 8 hours #101.
+
 ## Version 1.2.8 - 08/03/2024
 
 - Added validation of ITI-45 PIXv3 queries.
