@@ -81,3 +81,12 @@ for EPRIK instead of CARA INT for a PMP integration for the following XDS transa
 
 The other PMP host is available at the path `/eprik-cara/camel/pmp-dev/pmp/...`; see 
 https://cara-ch.github.io/emed-service-guide/endpoints/ for more details.
+
+## External validation
+
+The EPRIK can use the Swiss EVS Client validator to validate various transactions and resources (like XUA assertions 
+and ATNA messages). Due to limited resources and rate limiting, the external validation is disabled by default. You 
+can enable it for a specific client in the _Clients_ table. It will stay enabled for 8 hours and will be disabled 
+automatically.
+
+If the external validation is not enabled, a warning will be shown in the _Validation_ part of the transaction details.
