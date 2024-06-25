@@ -19,6 +19,21 @@ system from the B2B STS with the client certificate containing the GLN. The asse
 
 The integration system is can be found [here](https://b2b.cara.int.post-ehealth.ch/).
 
+## Transactions
+
+- 104 – **Request Security Token** : Pour l'authentification et l'extraction du SAML assertion.
+- 100 - **PIXV3 Query** (ITI-45) : Pour rechercher un patient dans PIX Manager via le numéro 
+  AVS et récupérer ses identifiants s'il existe déjà dans la plateforme B2B CARA (optionnel)
+- 102 – **Provider Information Query** (ITI-58) : Pour rechercher le destinataire du/des document/s à échanger 
+  dans le HPD.
+- 106 – **submitDocuments** : Pour envoyer le/les document/s vers le RCDC.
+- 200 – **GetDocumentList** : Pour extraire la liste de documents à récupérer en tant que destinataire depuis le RCDC.
+- 202 – **Registry Stored Query** (ITI-18): Pour récupérer le/s métadonnée/s de/s patient/s d'appartenance de/s 
+  document/s depuis le XDS registry.
+- 204 – **Retrieve Document Set** (ITI-43): Pour récupérer le/s document/s depuis le RCDC.
+- 206 – **DeleteDocumentList** : Pour supprimer du RCDC tout document récupéré (à chaque fois que nous récupérons le/s 
+  document/s, nous vidons le RCDC).
+
 ## eprik integration with transferts (tra)
 
 EPRIK supports the development during the integration with the predefined HCP **2000040030829** configured that the
