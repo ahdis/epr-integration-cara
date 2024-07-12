@@ -1,0 +1,43 @@
+### SVS ITI-48
+POST http://test.ahdis.ch/eprik-cara/camel/cara/eprik/ValueSetRepository/services/ValueSetRepositoryService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:a="http://www.w3.org/2005/08/addressing">
+    <s:Header>
+        <a:Action s:mustUnderstand="1">urn:ihe:iti:2008:RetrieveValueSet</a:Action>
+        <a:MessageID>urn:uuid:0fbfdced-6c01-4d09-a110-2201afedaa02</a:MessageID>
+        <a:ReplyTo>
+            <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+        </a:ReplyTo>
+        <a:To s:mustUnderstand="1">https://ws.epr.cara.int.post-ehealth.ch/ValueSetRepository/services/ValueSetRepositoryService</a:To>
+    </s:Header>
+    <s:Body>
+        <RetrieveValueSetRequest xmlns="urn:ihe:iti:svs:2008">
+            <ValueSet id="2.16.756.5.30.1.127.3.10.1.42.2" />
+        </RetrieveValueSetRequest>
+    </s:Body>
+</s:Envelope>
+
+### SVS ITI-48
+POST http://test.ahdis.ch/eprik-cara/camel/cara/eprik/ValueSetRepository/services/ValueSetRepositoryService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:a="http://www.w3.org/2005/08/addressing">
+    <s:Header>
+        <a:Action s:mustUnderstand="1">urn:ihe:iti:2008:RetrieveValueSet</a:Action>
+        <a:MessageID>urn:uuid:0fbfdced-6c01-4d09-a110-2201afedaa02</a:MessageID>
+        <a:ReplyTo>
+            <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+        </a:ReplyTo>
+        <a:To s:mustUnderstand="1">https://ws.epr.cara.int.post-ehealth.ch/ValueSetRepository/services/ValueSetRepositoryService</a:To>
+    </s:Header>
+    <s:Body>
+        <RetrieveValueSetRequest xmlns="urn:ihe:iti:svs:2008">
+            <ValueSet id="2.16.756.5.30.1.191.1.0.12.1.101.9.10" />
+        </RetrieveValueSetRequest>
+    </s:Body>
+</s:Envelope>
