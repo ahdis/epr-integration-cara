@@ -87,6 +87,12 @@ in the MPI. You need to provide creationTime, sender OID and receiver OID in add
 EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client
 certificate is not necessary.
 
+
+!!! danger
+
+    Never feed a patient identifier with a domain that is not yours, and especially a domain equal to the configured
+    receiver OID of the plateform. It would make the patient unreachable from PDQ queries.
+
 ### 3.2 Query MPI-PID and EPR-SPID based on local ID
 
 The primary systems needs to query the master patient ID (MPI-ID) for patients to retrieve or provide documents for,

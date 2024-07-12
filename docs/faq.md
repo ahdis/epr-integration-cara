@@ -47,10 +47,12 @@ end (warning: empty request) and an http error 500 is returned, see xop:include 
 This is a data problem. Multiple local patients were either automatically or manually merged into the same master
 patient.
 
-### ITI-45: No Patient data returned
+### ITI-45/ITI-47: No Patient data returned
 
 Verify that the receiver id in the hl7 v3 message contains the oid for the integration system (
-2.16.756.5.30.1.191.1.0.12.1.101.2);
+2.16.756.5.30.1.191.1.0.12.1.101.2).
+You can also try to change the receiver OID to a random OID; if the patient data is returned, then someone fed a bad
+identifier to the patient and CARA needs to clean it manually.
 
 ### IdP HIN ID
 
