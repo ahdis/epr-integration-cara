@@ -1,0 +1,21 @@
+### Delete an entry
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:urn="urn:oasis:names:tc:DSML:2:0:core">
+    <soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Action>urn:ihe:iti:2010:ProviderInformationFeed</wsa:Action>
+        <wsa:MessageID>uuid:a5502416-e3b1-11ed-a92d-da66d518a963</wsa:MessageID>
+        <wsa:To>http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</wsa:To>
+    </soap:Header>
+    <soap:Body>
+        <batchRequest requestID="1234" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+            <delRequest dn="cn=relation1234,ou=Relationship,DC=HPD,O=CARA,C=CH" requestID="54321"/>
+        </batchRequest>
+    </soap:Body>
+</soap:Envelope>
