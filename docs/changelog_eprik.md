@@ -1,3 +1,17 @@
+## Version 1.2.11 - 06/09/2024
+
+- Made the recipient list load faster.
+- Improved the settings page.
+- Clarified wordings in the transaction details page.
+- Fixed the line numbering in the code editor, when a jump is performed.
+- Improved the display of info messages in the code editor.
+
+## Version 1.2.10 - 13/06/2024
+
+- Fixed display of binary data when the multipart boundary is not found #107.
+- Added a warning in the message validation when the external validation is disabled #108.
+- Fixed various small issues in the frontend.
+
 ## Version 1.2.9 - 11/06/2024
 
 - Upgraded to Java 21 LTS.
