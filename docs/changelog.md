@@ -1,3 +1,10 @@
+### 11.10.2024: Release 6.0.0 on CARA INT
+
+The integration system has been updated to 6.0.0 from 5.0.0 with the following changes:
+
+- STS: the `sha1` signature algorithm is no longer supported. Use the `sha256` algorithm instead.
+  The `sha1` digest algorithm is still supported, but you should migrate to `sha256` too.
+
 ### 29.3.2023: Release 5.0.0 on CARA INT
 
 The integration system has been updated to 5.0.0 from 3.7.0 with the following changes:
