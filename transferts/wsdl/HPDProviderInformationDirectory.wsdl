@@ -1,0 +1,72 @@
+<definitions name="HPDProviderInformationDirectory" targetNamespace="urn:ihe:iti:hpd:2010" xmlns:tns="urn:ihe:iti:hpd:2010" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ch-pidd="urn:ehealth-suisse:names:tc:CS:1" xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <documentation>IHE HPD Provider Information Directory</documentation>
+  <types>
+    <xsd:schema targetNamespace="urn:oasis:names:tc:DSML:2:0:core">
+      <xsd:include schemaLocation="DSMLv2.xsd"/>
+      <xsd:include schemaLocation="PIDD.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="ProviderInformationRequestMessage">
+    <documentation>Provider Information Query/Feed Request Message</documentation>
+    <part name="body" element="dsml:batchRequest"/>
+  </message>
+  <message name="ProviderInformationResponseMessage">
+    <documentation>Provider Information Query/Feed Response Message</documentation>
+    <part name="body" element="dsml:batchResponse"/>
+  </message>
+  <message name="ProviderInformationDownloadRequestMessage">
+    <part name="body" element="ch-pidd:downloadRequest"/>
+  </message>
+  <message name="ProviderInformationDownloadResponseMessage">
+    <part name="body" element="ch-pidd:downloadResponse"/>
+  </message>
+  <portType name="ProviderInformationDirectory_PortType">
+    <operation name="ProviderInformationQueryRequest">
+      <input message="tns:ProviderInformationRequestMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationQuery"/>
+      <output message="tns:ProviderInformationResponseMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationQueryResponse"/>
+    </operation>
+    <operation name="ProviderInformationFeedRequest">
+      <input message="tns:ProviderInformationRequestMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationFeed"/>
+      <output message="tns:ProviderInformationResponseMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationFeedResponse"/>
+    </operation>
+    <operation name="ProviderInformationDownloadRequest">
+      <input message="tns:ProviderInformationDownloadRequestMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationDownload"/>
+      <output message="tns:ProviderInformationDownloadResponseMessage" wsam:Action="urn:ihe:iti:2010:ProviderInformationDownloadResponse"/>
+    </operation>
+  </portType>
+  <binding name="ProviderInformationDirectory_Binding" type="tns:ProviderInformationDirectory_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ProviderInformationQueryRequest">
+      <soap12:operation soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ProviderInformationFeedRequest">
+      <soap12:operation soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ProviderInformationDownloadRequest">
+      <soap12:operation soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ProviderInformationDirectory_Service">
+    <port name="ProviderInformationDirectory_Port_Soap12" binding="tns:ProviderInformationDirectory_Binding">
+      <soap12:address location="https://localhost:8080/iti-58"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,34 @@
+### see https://coreruleset.org/ and https://coreruleset.org/docs/
+### but we have somethimes false positive ...
+
+GET https://sandbox.coreruleset.org/?file=/etc/passwd HTTP/1.1
+x-format-output: txt-matched-rules-extended
+
+### OK
+POST https://sandbox.coreruleset.org/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+x-format-output: txt-matched-rules-extended
+host: test.ahdis.ch
+content-type: multipart/related
+user-agent: WINDEV/26
+
+OK
+
+### FAILS
+
+###
+POST https://sandbox.coreruleset.org/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+x-format-output: txt-matched-rules-extended
+host: test.ahdis.ch
+content-type: multipart/related; type="application/xop+xml"; boundary="uuid:a082b02c-3ff9-40a5-9c87-9a9f460637f4"; start="<root.message@mediway.ch>"; start-info="application/soap+xml"
+user-agent: WINDEV/26
+
+FAILS
+
+
+###
+POST https://sandbox.coreruleset.org/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+x-format-output: txt-matched-rules-extended
+content-type: multipart/related; boundary="d06cb1b2-10c6-4d18-a444-99dafcc20aff"; type="application/xop+xml"; start="0.b1356ac174d34162ad146b35e03b6be5"; start-info="application/soap+xml"
+
+FAILS
+### 
