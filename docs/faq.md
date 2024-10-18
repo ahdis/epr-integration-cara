@@ -80,12 +80,3 @@ The resulting sha1 Fingerprint=73:85:78:C8:C8:0C:DE:5D:7A:3E:06:38:6B:80:6E:65:4
 admin portal if the certificate is available there.
 For the STS request it is important that the oid attributed to the user/certificate (showing in parentheses) in also
 added in the STS request in the `<saml2:NameID>`.
-
-### Logs ATNA with XUA
-
-The current platform has an issue processing ATNA logs with XUA information.
-Currently, you need to only provide one `ActiveParticipant` for the XUA, instead of two or three (as specified in the
-[Extension 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)).
-Otherwise, the log will not be properly processed, but discarded by the platform.
-
-This should be fixed with version 6.0 of the platform.
