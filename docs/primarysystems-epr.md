@@ -179,8 +179,8 @@ publishing ([sequence diagram](https://ehealthsuisse.ihe-europe.net/docs/sequenc
 If a publication fails for normally accessible it has to be retried with restricted accessible. It is only possible to
 publish a document with confidentiality secret if the user has set the default confidentiality code to secret. To test
 this three different patients have been setup with different confidentiality codes: GASSMANN-IMHOLZ (normally
-accessible, EPR-SPID: 761337613645876216), SOARES JESUS (restricted accessible, EPR-SPID 761337618424274719) et
-Ratchawat (secret: EPR-SPID 761337611340275266)
+accessible, EPR-SPID: 761337613645876216), SOARES JESUS (restricted accessible, EPR-SPID 761337616638768604) et
+Ratchawat (secret: EPR-SPID 761337610888245779)
 
 | Publication with                     | normal | restricted | secret |
 |--------------------------------------|--------|------------|--------|
