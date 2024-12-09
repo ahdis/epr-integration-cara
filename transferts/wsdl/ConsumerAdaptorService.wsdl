@@ -1,0 +1,1646 @@
+<wsdl:definitions targetNamespace="http://service.interfaces.sense.at" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax23="http://convert.interfaces.sense.at/xsd" xmlns:ns="http://service.interfaces.sense.at" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://interfaces.sense.at/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://convert.interfaces.sense.at/xsd">
+      <xs:complexType abstract="true" name="ConvertMethod">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="ConvertToCDALevel1">
+        <xs:complexContent>
+          <xs:extension base="ax23:ConvertMethod">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ConvertToPDF">
+        <xs:complexContent>
+          <xs:extension base="ax23:ConvertMethod">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ConvertXMLToCDAL2">
+        <xs:complexContent>
+          <xs:extension base="ax23:ConvertMethod">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="documentType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="version" type="xs:int"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.interfaces.sense.at" xmlns:ax22="http://interfaces.sense.at/xsd">
+      <xs:import namespace="http://interfaces.sense.at/xsd"/>
+      <xs:element name="validateSignature">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="documentToValidate" nillable="true" type="ax22:DocumentMetadata"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="validateSignatureResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ValidationResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveValueSet">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="valueSetOID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveValueSetResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:ValueSetResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveImages">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="studyRequests" nillable="true" type="ax22:StudyRequest"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="transferSyntaxUIDs" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="patientID" nillable="true" type="ax22:ID"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveImagesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:RetrieveImagesResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="documentsMetadata" nillable="true" type="ax22:DocumentMetadata"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:RetrieveDocumentsResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveCodes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveCodesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:CodeResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="issueAssertion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="issueAssertionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findRelatedDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="documentMetadata" nillable="true" type="ax22:DocumentMetadata"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="relationTypes" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findRelatedDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPreviousDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="documentMetadata" nillable="true" type="ax22:DocumentMetadata"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPreviousDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientsExtended">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+            <xs:element name="entriesPerPage" type="xs:int"/>
+            <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientsExtendedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindPatientsExtendedResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientsEnhanced">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+            <xs:element name="entriesPerPage" type="xs:int"/>
+            <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+            <xs:element name="searchExternalDomains" type="xs:boolean"/>
+            <xs:element name="restrictToSendingInstitution" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientsEnhancedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindPatientsEnhancedResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatients">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+            <xs:element name="entriesPerPage" type="xs:int"/>
+            <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+            <xs:element name="searchExternalDomains" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindPatientsResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatient">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+            <xs:element name="searchExternalDomains" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPatientResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindPatientResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findFolders">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="findFoldersFilter" nillable="true" type="ax22:FindFoldersFilter"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findFoldersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindFoldersResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsForFolder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="folder" nillable="true" type="ax22:Folder"/>
+            <xs:element minOccurs="0" name="findDocumentsFilter" nillable="true" type="ax22:FindDocumentsFilter"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsForFolderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByUniqueID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="uniqueIDs" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByUniqueIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByReferenceId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="referenceID" nillable="true" type="ax22:ReferenceID"/>
+            <xs:element minOccurs="0" name="filter" nillable="true" type="ax22:FindDocumentsFilter"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByReferenceIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByEntryUUID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entryUUID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsByEntryUUIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element minOccurs="0" name="findDocumentsFilter" nillable="true" type="ax22:FindDocumentsFilter"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:DocumentsSearchResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findAll">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax22:PatientInfo"/>
+            <xs:element name="searchExternal" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="sessionInfo" nillable="true" type="ax22:SessionInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findAllResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FindAllResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://interfaces.sense.at/xsd" xmlns:ax24="http://convert.interfaces.sense.at/xsd">
+      <xs:import namespace="http://convert.interfaces.sense.at/xsd"/>
+      <xs:import namespace="http://convert.interfaces.sense.at/xsd"/>
+      <xs:complexType name="DocumentMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="author" nillable="true" type="ax21:MedicalEmployee"/>
+          <xs:element minOccurs="0" name="availabilityStatus" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="classCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="confidentialityCodes" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="creationTime" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="department" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="documentAvailablity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="dynamicDocument" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="entryUUID" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="eventCodes" nillable="true" type="ax21:GenCode"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extraMetadata" nillable="true" type="ax21:ExtraMetadata"/>
+          <xs:element minOccurs="0" name="formatCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="hash" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="healthcareFacilityTypeCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="institution" nillable="true" type="ax21:Institution"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="intendedRecipients" nillable="true" type="ax21:Receiver"/>
+          <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="legalAuthenticator" nillable="true" type="ax21:MedicalEmployee"/>
+          <xs:element minOccurs="0" name="logicalID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="mimeType" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax21:PatientInfo"/>
+          <xs:element minOccurs="0" name="practiceSettingCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="referenceIdList" nillable="true" type="ax21:ReferenceID"/>
+          <xs:element minOccurs="0" name="repositoryID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="serviceStartTime" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="serviceStopTime" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="size" type="xs:long"/>
+          <xs:element minOccurs="0" name="sourceDocumentID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="subDepartment" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="uniqueID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="version" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MedicalEmployee">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="identifier" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="prefix" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="secondAndFurtherNames" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="speciality" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="extension" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="oid" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GenCode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codingScheme" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="displayName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExtraMetadata">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="key" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="values" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Institution">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="oid" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Receiver">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="identifier" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="medicalEmployee" nillable="true" type="ax21:MedicalEmployee"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PatientInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" nillable="true" type="ax21:PatientAddress"/>
+          <xs:element minOccurs="0" name="birthOrder" type="xs:int"/>
+          <xs:element minOccurs="0" name="birthdate" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="birthplace" nillable="true" type="ax21:PatientAddress"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="citizenship" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="deathDate" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="deathIndicator" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="driverLicenseNumber" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="externalDomainPatIDs" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="familyName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="givenName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="homeCommunityPatientID" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="maritalStatus" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="motherIdentifier" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="motherMaidenName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="multipleBirthIndicator" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="nationality" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="prefix" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="religion" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="secondAndFurtherNames" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="socialSecurityNumber" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="sourcePatientID" nillable="true" type="ax21:ID"/>
+          <xs:element minOccurs="0" name="suffix" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PatientAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="country" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="state" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReferenceID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assigningAuthority" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="department" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="receivingApplication" nillable="true" type="ax21:Realm"/>
+          <xs:element minOccurs="0" name="securityInformation" nillable="true" type="ax21:SecurityInformation"/>
+          <xs:element minOccurs="0" name="sendingApplication" nillable="true" type="ax21:Realm"/>
+          <xs:element minOccurs="0" name="sendingFacility" nillable="true" type="ax21:Realm"/>
+          <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="userLanguage" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="userRole" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Realm">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="oid" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SecurityInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="lastPatientContact" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="patientConsentVerified" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="purposeOfUse" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="securityToken" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="subjectAttributes" nillable="true" type="ax21:GenCode"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdaptorResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="errorList" nillable="true" type="ax21:AdaptorError"/>
+          <xs:element minOccurs="0" name="severity" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="success" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdaptorError">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="severity" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValidationResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="signatureAvailable" type="xs:boolean"/>
+              <xs:element minOccurs="0" name="valid" type="xs:boolean"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ValueSetResponse">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="codes" nillable="true" type="ax21:GenCode"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="StudyRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="instanceUID" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="seriesRequest" nillable="true" type="ax21:SeriesRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SeriesRequest">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="imageDocumentRequest" nillable="true" type="ax21:ImageDocumentRequest"/>
+          <xs:element minOccurs="0" name="seriesInstanceUID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ImageDocumentRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="documentUniqueID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="repositoryUniqueID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RetrieveImagesResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="images" nillable="true" type="ax21:DocumentContainer"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DocumentContainer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="documentUniqueID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RetrieveDocumentsResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documents" nillable="true" type="ax21:DocumentContainer"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CodeResponse">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="associationDocumentations" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="auditSources" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="classCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="codeListCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="confidentialityCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="contentTypeCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="eventCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="folderCodeLists" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="formatCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="healthcareFacilityTypeCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="institutions" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="mimeTypes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="practiceSettingCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="purposeOfUses" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="roleCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="typeCodes" nillable="true" type="ax21:GenCode"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DocumentsSearchResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentsMetaInformation" nillable="true" type="ax21:DocumentMetaInformation"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DocumentMetaInformation">
+        <xs:complexContent>
+          <xs:extension base="ax21:DocumentMetadata">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="parentDocument" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="parentDocumentAssociation" nillable="true" type="xs:string"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="parentFolders" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindPatientsExtendedResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="entriesPerPage" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="0" name="numberOfResults" nillable="true" type="xs:int"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="patients" nillable="true" type="ax21:ExtendedPatientInfo"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ExtendedPatientInfo">
+        <xs:complexContent>
+          <xs:extension base="ax21:PatientInfo">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="otherPatientIds" nillable="true" type="ax21:ID"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindPatientsEnhancedResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="entriesPerPage" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="0" name="numberOfResults" nillable="true" type="xs:int"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="patients" nillable="true" type="ax21:EnhancedPatientInfo"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EnhancedPatientInfo">
+        <xs:complexContent>
+          <xs:extension base="ax21:ExtendedPatientInfo">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="localPatient" type="xs:boolean"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="phoneNumbers" nillable="true" type="ax21:PhoneNumber"/>
+              <xs:element minOccurs="0" name="profileImage" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PhoneNumber">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="number" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="typeOfUse" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindPatientsResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="continuationPointer" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="entriesPerPage" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="0" name="numberOfResults" nillable="true" type="xs:int"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="patients" nillable="true" type="ax21:PatientInfo"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindPatientResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax21:PatientInfo"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="FilterParameter">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="availabilityStatus" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="searchExternalDomains" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindFoldersFilter">
+        <xs:complexContent>
+          <xs:extension base="ax21:FilterParameter">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="codes" nillable="true" type="ax21:GenCode"/>
+              <xs:element minOccurs="0" name="lastUpdateTime" nillable="true" type="ax21:TimeRange"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TimeRange">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="from" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="to" nillable="true" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindFoldersResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="folders" nillable="true" type="ax21:Folder"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Folder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availabilityStatus" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="codeList" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="entryUUID" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extraMetadata" nillable="true" type="ax21:ExtraMetadata"/>
+          <xs:element minOccurs="0" name="homeCommunityID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastUpdateTime" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="logicalID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="patientInfo" nillable="true" type="ax21:PatientInfo"/>
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="uniqueID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="version" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="FindDocumentsFilter">
+        <xs:complexContent>
+          <xs:extension base="ax21:FilterParameter">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="classCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element minOccurs="0" name="creationTime" nillable="true" type="ax21:TimeRange"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="eventCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="formatCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="healthcareFacilityTypeCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="institutions" nillable="true" type="ax21:Institution"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="practiceSettingCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element minOccurs="0" name="serviceStartTime" nillable="true" type="ax21:TimeRange"/>
+              <xs:element minOccurs="0" name="serviceStopTime" nillable="true" type="ax21:TimeRange"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindAllResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documents" nillable="true" type="ax21:DocumentMetaInformation"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="folders" nillable="true" type="ax21:FolderWithDocuments"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FolderWithDocuments">
+        <xs:complexContent>
+          <xs:extension base="ax21:Folder">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documents" nillable="true" type="ax21:FolderDocument"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FolderDocument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="associationAvailabilityStatus" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="associationEntryUUID" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="documentEntryUUID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AdminDocumentMetadata">
+        <xs:complexContent>
+          <xs:extension base="ax21:DocumentMetadata">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="parentDocument" nillable="true" type="ax21:AdminDocumentMetadata"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="relatedDocuments" nillable="true" type="ax21:RelatedDocumentMetadata"/>
+              <xs:element minOccurs="0" name="relationship" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="updateComment" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RelatedDocumentMetadata">
+        <xs:complexContent>
+          <xs:extension base="ax21:DocumentMetadata">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="associationAvailabilityStatus" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="associationEntryUUID" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="relationship" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateFolderResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="folder" nillable="true" type="ax21:Folder"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeleteResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Document">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="convertMethods" nillable="true" type="ax24:ConvertMethod"/>
+          <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="documentMetadata" nillable="true" type="ax21:DocumentMetadata"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="relatedDocuments" nillable="true" type="ax21:RelatedDocument"/>
+          <xs:element minOccurs="0" name="signDocument" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RelatedDocument">
+        <xs:complexContent>
+          <xs:extension base="ax21:Document">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="relationType" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FindHistoryResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="documentHistory" nillable="true" type="ax21:AdminDocumentMetadata"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MultiPatientQueryParameter">
+        <xs:complexContent>
+          <xs:extension base="ax21:FilterParameter">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="classCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="confidentialityCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element minOccurs="0" name="creationTime" nillable="true" type="ax21:TimeRange"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="eventCodeList" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="formatCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="healthcareFacilityTypeCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="institutions" nillable="true" type="ax21:Institution"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="patients" nillable="true" type="ax21:PatientInfo"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="practiceSettingCodes" nillable="true" type="ax21:GenCode"/>
+              <xs:element minOccurs="0" name="serviceStartTime" nillable="true" type="ax21:TimeRange"/>
+              <xs:element minOccurs="0" name="serviceStopTime" nillable="true" type="ax21:TimeRange"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="typeCodes" nillable="true" type="ax21:GenCode"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MultiPatientResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentReferences" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NotificationReceiver">
+        <xs:complexContent>
+          <xs:extension base="ax21:Receiver">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SubmissionInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="author" nillable="true" type="ax21:MedicalEmployee"/>
+          <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="contentTypeCode" nillable="true" type="ax21:GenCode"/>
+          <xs:element minOccurs="0" name="institution" nillable="true" type="ax21:Institution"/>
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SubmitDocumentsResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TransmissionReceiver">
+        <xs:complexContent>
+          <xs:extension base="ax21:Receiver">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="endpoint" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateResult">
+        <xs:complexContent>
+          <xs:extension base="ax21:AdaptorResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findDocumentsByUniqueIDRequest">
+    <wsdl:part name="parameters" element="ns:findDocumentsByUniqueID"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsEnhancedResponse">
+    <wsdl:part name="parameters" element="ns:findPatientsEnhancedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsRequest">
+    <wsdl:part name="parameters" element="ns:findDocuments"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllResponse">
+    <wsdl:part name="parameters" element="ns:findAllResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveValueSetResponse">
+    <wsdl:part name="parameters" element="ns:retrieveValueSetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsForFolderRequest">
+    <wsdl:part name="parameters" element="ns:findDocumentsForFolder"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveDocumentsResponse">
+    <wsdl:part name="parameters" element="ns:retrieveDocumentsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateSignatureRequest">
+    <wsdl:part name="parameters" element="ns:validateSignature"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllRequest">
+    <wsdl:part name="parameters" element="ns:findAll"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="issueAssertionResponse">
+    <wsdl:part name="parameters" element="ns:issueAssertionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findRelatedDocumentsResponse">
+    <wsdl:part name="parameters" element="ns:findRelatedDocumentsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveImagesResponse">
+    <wsdl:part name="parameters" element="ns:retrieveImagesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsByUniqueIDResponse">
+    <wsdl:part name="parameters" element="ns:findDocumentsByUniqueIDResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveValueSetRequest">
+    <wsdl:part name="parameters" element="ns:retrieveValueSet"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsByEntryUUIDRequest">
+    <wsdl:part name="parameters" element="ns:findDocumentsByEntryUUID"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsByEntryUUIDResponse">
+    <wsdl:part name="parameters" element="ns:findDocumentsByEntryUUIDResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="issueAssertionRequest">
+    <wsdl:part name="parameters" element="ns:issueAssertion"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsForFolderResponse">
+    <wsdl:part name="parameters" element="ns:findDocumentsForFolderResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsByReferenceIdRequest">
+    <wsdl:part name="parameters" element="ns:findDocumentsByReferenceId"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsExtendedResponse">
+    <wsdl:part name="parameters" element="ns:findPatientsExtendedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientResponse">
+    <wsdl:part name="parameters" element="ns:findPatientResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsResponse">
+    <wsdl:part name="parameters" element="ns:findPatientsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findRelatedDocumentsRequest">
+    <wsdl:part name="parameters" element="ns:findRelatedDocuments"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveCodesRequest">
+    <wsdl:part name="parameters" element="ns:retrieveCodes"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveCodesResponse">
+    <wsdl:part name="parameters" element="ns:retrieveCodesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateSignatureResponse">
+    <wsdl:part name="parameters" element="ns:validateSignatureResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientRequest">
+    <wsdl:part name="parameters" element="ns:findPatient"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPreviousDocumentsResponse">
+    <wsdl:part name="parameters" element="ns:findPreviousDocumentsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsExtendedRequest">
+    <wsdl:part name="parameters" element="ns:findPatientsExtended"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveImagesRequest">
+    <wsdl:part name="parameters" element="ns:retrieveImages"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsResponse">
+    <wsdl:part name="parameters" element="ns:findDocumentsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findFoldersRequest">
+    <wsdl:part name="parameters" element="ns:findFolders"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findFoldersResponse">
+    <wsdl:part name="parameters" element="ns:findFoldersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveDocumentsRequest">
+    <wsdl:part name="parameters" element="ns:retrieveDocuments"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsRequest">
+    <wsdl:part name="parameters" element="ns:findPatients"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findDocumentsByReferenceIdResponse">
+    <wsdl:part name="parameters" element="ns:findDocumentsByReferenceIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPreviousDocumentsRequest">
+    <wsdl:part name="parameters" element="ns:findPreviousDocuments"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPatientsEnhancedRequest">
+    <wsdl:part name="parameters" element="ns:findPatientsEnhanced"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ConsumerAdaptorServicePortType">
+    <wsdl:operation name="validateSignature">
+      <wsdl:input message="ns:validateSignatureRequest" wsaw:Action="urn:validateSignature"></wsdl:input>
+      <wsdl:output message="ns:validateSignatureResponse" wsaw:Action="urn:validateSignatureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCodes">
+      <wsdl:input message="ns:retrieveCodesRequest" wsaw:Action="urn:retrieveCodes"></wsdl:input>
+      <wsdl:output message="ns:retrieveCodesResponse" wsaw:Action="urn:retrieveCodesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAssertion">
+      <wsdl:input message="ns:issueAssertionRequest" wsaw:Action="urn:issueAssertion"></wsdl:input>
+      <wsdl:output message="ns:issueAssertionResponse" wsaw:Action="urn:issueAssertionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsEnhanced">
+      <wsdl:input message="ns:findPatientsEnhancedRequest" wsaw:Action="urn:findPatientsEnhanced"></wsdl:input>
+      <wsdl:output message="ns:findPatientsEnhancedResponse" wsaw:Action="urn:findPatientsEnhancedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatients">
+      <wsdl:input message="ns:findPatientsRequest" wsaw:Action="urn:findPatients"></wsdl:input>
+      <wsdl:output message="ns:findPatientsResponse" wsaw:Action="urn:findPatientsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatient">
+      <wsdl:input message="ns:findPatientRequest" wsaw:Action="urn:findPatient"></wsdl:input>
+      <wsdl:output message="ns:findPatientResponse" wsaw:Action="urn:findPatientResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findRelatedDocuments">
+      <wsdl:input message="ns:findRelatedDocumentsRequest" wsaw:Action="urn:findRelatedDocuments"></wsdl:input>
+      <wsdl:output message="ns:findRelatedDocumentsResponse" wsaw:Action="urn:findRelatedDocumentsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <wsdl:input message="ns:findDocumentsRequest" wsaw:Action="urn:findDocuments"></wsdl:input>
+      <wsdl:output message="ns:findDocumentsResponse" wsaw:Action="urn:findDocumentsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <wsdl:input message="ns:findAllRequest" wsaw:Action="urn:findAll"></wsdl:input>
+      <wsdl:output message="ns:findAllResponse" wsaw:Action="urn:findAllResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsExtended">
+      <wsdl:input message="ns:findPatientsExtendedRequest" wsaw:Action="urn:findPatientsExtended"></wsdl:input>
+      <wsdl:output message="ns:findPatientsExtendedResponse" wsaw:Action="urn:findPatientsExtendedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveValueSet">
+      <wsdl:input message="ns:retrieveValueSetRequest" wsaw:Action="urn:retrieveValueSet"></wsdl:input>
+      <wsdl:output message="ns:retrieveValueSetResponse" wsaw:Action="urn:retrieveValueSetResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsForFolder">
+      <wsdl:input message="ns:findDocumentsForFolderRequest" wsaw:Action="urn:findDocumentsForFolder"></wsdl:input>
+      <wsdl:output message="ns:findDocumentsForFolderResponse" wsaw:Action="urn:findDocumentsForFolderResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocuments">
+      <wsdl:input message="ns:retrieveDocumentsRequest" wsaw:Action="urn:retrieveDocuments"></wsdl:input>
+      <wsdl:output message="ns:retrieveDocumentsResponse" wsaw:Action="urn:retrieveDocumentsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findFolders">
+      <wsdl:input message="ns:findFoldersRequest" wsaw:Action="urn:findFolders"></wsdl:input>
+      <wsdl:output message="ns:findFoldersResponse" wsaw:Action="urn:findFoldersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByUniqueID">
+      <wsdl:input message="ns:findDocumentsByUniqueIDRequest" wsaw:Action="urn:findDocumentsByUniqueID"></wsdl:input>
+      <wsdl:output message="ns:findDocumentsByUniqueIDResponse" wsaw:Action="urn:findDocumentsByUniqueIDResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPreviousDocuments">
+      <wsdl:input message="ns:findPreviousDocumentsRequest" wsaw:Action="urn:findPreviousDocuments"></wsdl:input>
+      <wsdl:output message="ns:findPreviousDocumentsResponse" wsaw:Action="urn:findPreviousDocumentsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByReferenceId">
+      <wsdl:input message="ns:findDocumentsByReferenceIdRequest" wsaw:Action="urn:findDocumentsByReferenceId"></wsdl:input>
+      <wsdl:output message="ns:findDocumentsByReferenceIdResponse" wsaw:Action="urn:findDocumentsByReferenceIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveImages">
+      <wsdl:input message="ns:retrieveImagesRequest" wsaw:Action="urn:retrieveImages"></wsdl:input>
+      <wsdl:output message="ns:retrieveImagesResponse" wsaw:Action="urn:retrieveImagesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByEntryUUID">
+      <wsdl:input message="ns:findDocumentsByEntryUUIDRequest" wsaw:Action="urn:findDocumentsByEntryUUID"></wsdl:input>
+      <wsdl:output message="ns:findDocumentsByEntryUUIDResponse" wsaw:Action="urn:findDocumentsByEntryUUIDResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsumerAdaptorServiceHttpBinding" type="ns:ConsumerAdaptorServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="validateSignature">
+      <http:operation location="validateSignature"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCodes">
+      <http:operation location="retrieveCodes"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAssertion">
+      <http:operation location="issueAssertion"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsEnhanced">
+      <http:operation location="findPatientsEnhanced"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatients">
+      <http:operation location="findPatients"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatient">
+      <http:operation location="findPatient"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findRelatedDocuments">
+      <http:operation location="findRelatedDocuments"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <http:operation location="findDocuments"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <http:operation location="findAll"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsExtended">
+      <http:operation location="findPatientsExtended"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveValueSet">
+      <http:operation location="retrieveValueSet"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsForFolder">
+      <http:operation location="findDocumentsForFolder"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocuments">
+      <http:operation location="retrieveDocuments"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findFolders">
+      <http:operation location="findFolders"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByUniqueID">
+      <http:operation location="findDocumentsByUniqueID"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPreviousDocuments">
+      <http:operation location="findPreviousDocuments"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByReferenceId">
+      <http:operation location="findDocumentsByReferenceId"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveImages">
+      <http:operation location="retrieveImages"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByEntryUUID">
+      <http:operation location="findDocumentsByEntryUUID"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsumerAdaptorServiceSoap11Binding" type="ns:ConsumerAdaptorServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateSignature">
+      <soap:operation soapAction="urn:validateSignature" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCodes">
+      <soap:operation soapAction="urn:retrieveCodes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAssertion">
+      <soap:operation soapAction="urn:issueAssertion" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsEnhanced">
+      <soap:operation soapAction="urn:findPatientsEnhanced" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatients">
+      <soap:operation soapAction="urn:findPatients" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatient">
+      <soap:operation soapAction="urn:findPatient" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findRelatedDocuments">
+      <soap:operation soapAction="urn:findRelatedDocuments" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <soap:operation soapAction="urn:findDocuments" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <soap:operation soapAction="urn:findAll" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsExtended">
+      <soap:operation soapAction="urn:findPatientsExtended" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveValueSet">
+      <soap:operation soapAction="urn:retrieveValueSet" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsForFolder">
+      <soap:operation soapAction="urn:findDocumentsForFolder" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocuments">
+      <soap:operation soapAction="urn:retrieveDocuments" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findFolders">
+      <soap:operation soapAction="urn:findFolders" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByUniqueID">
+      <soap:operation soapAction="urn:findDocumentsByUniqueID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPreviousDocuments">
+      <soap:operation soapAction="urn:findPreviousDocuments" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByReferenceId">
+      <soap:operation soapAction="urn:findDocumentsByReferenceId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveImages">
+      <soap:operation soapAction="urn:retrieveImages" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByEntryUUID">
+      <soap:operation soapAction="urn:findDocumentsByEntryUUID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsumerAdaptorServiceSoap12Binding" type="ns:ConsumerAdaptorServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validateSignature">
+      <soap12:operation soapAction="urn:validateSignature" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCodes">
+      <soap12:operation soapAction="urn:retrieveCodes" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAssertion">
+      <soap12:operation soapAction="urn:issueAssertion" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsEnhanced">
+      <soap12:operation soapAction="urn:findPatientsEnhanced" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatients">
+      <soap12:operation soapAction="urn:findPatients" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatient">
+      <soap12:operation soapAction="urn:findPatient" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findRelatedDocuments">
+      <soap12:operation soapAction="urn:findRelatedDocuments" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <soap12:operation soapAction="urn:findDocuments" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <soap12:operation soapAction="urn:findAll" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPatientsExtended">
+      <soap12:operation soapAction="urn:findPatientsExtended" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveValueSet">
+      <soap12:operation soapAction="urn:retrieveValueSet" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsForFolder">
+      <soap12:operation soapAction="urn:findDocumentsForFolder" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocuments">
+      <soap12:operation soapAction="urn:retrieveDocuments" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findFolders">
+      <soap12:operation soapAction="urn:findFolders" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByUniqueID">
+      <soap12:operation soapAction="urn:findDocumentsByUniqueID" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPreviousDocuments">
+      <soap12:operation soapAction="urn:findPreviousDocuments" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByReferenceId">
+      <soap12:operation soapAction="urn:findDocumentsByReferenceId" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveImages">
+      <soap12:operation soapAction="urn:retrieveImages" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDocumentsByEntryUUID">
+      <soap12:operation soapAction="urn:findDocumentsByEntryUUID" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsumerAdaptorService">
+    <wsdl:port name="ConsumerAdaptorServiceHttpSoap12Endpoint" binding="ns:ConsumerAdaptorServiceSoap12Binding">
+      <soap12:address location="https://cara.int.post-ehealth.ch:26443/Consumer/services/ConsumerAdaptorService"/>
+    </wsdl:port>
+    <wsdl:port name="ConsumerAdaptorServiceHttpSoap11Endpoint" binding="ns:ConsumerAdaptorServiceSoap11Binding">
+      <soap:address location="https://cara.int.post-ehealth.ch:26443/Consumer/services/ConsumerAdaptorService"/>
+    </wsdl:port>
+    <wsdl:port name="ConsumerAdaptorServiceHttpEndpoint" binding="ns:ConsumerAdaptorServiceHttpBinding">
+      <http:address location="https://cara.int.post-ehealth.ch:26443/Consumer/services/ConsumerAdaptorService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
