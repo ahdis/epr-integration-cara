@@ -57,7 +57,7 @@ see [example](requests/iti-47-atna-raw.txt).
 with netcat the above message can be directly sent to eprik:
 
 ```bash
-nc -w1 -v 34.65.166.228 8080 < ./docs/requests/iti-47-atna-raw.txt 
+nc -w1 -v 37.156.40.86 8080 < ./docs/requests/iti-47-atna-raw.txt 
 ```
 
 and is afterwards visible

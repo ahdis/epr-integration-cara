@@ -2,6 +2,8 @@
 
 !!! note
 
+    05.05.2025 ATNA IP changed for eprik-cara, it is now 37.156.40.86
+
     22.9.2023 Release  5.0.2: No changes in API 
 
     29.3.2023: Release 5.0.0 on CARA INT: The EPR CARA integration version is newer than the production version, see [changelog](changelog.md) for differences.
