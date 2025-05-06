@@ -501,7 +501,7 @@ see <a href="../requests/iti-47-atna-raw.txt">example</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>2164 &lt;85&gt;1 2023-04-18T09:04:00.603Z matchbox.test - - IHE+RFC-3881 - &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;AuditMessage&gt; ...
 </code></pre></div>
 <p>with netcat the above message can be directly sent to eprik:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nc<span class="w"> </span>-w1<span class="w"> </span>-v<span class="w"> </span><span class="m">37</span>.156.40.86<span class="w"> </span><span class="m">8080</span><span class="w"> </span>&lt;<span class="w"> </span>./docs/requests/iti-47-atna-raw.txt<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nc<span class="w"> </span>-w1<span class="w"> </span>-v<span class="w"> </span>atna.test.ahdis.ch<span class="w"> </span><span class="m">8080</span><span class="w"> </span>&lt;<span class="w"> </span>./docs/requests/iti-47-atna-raw.txt<span class="w"> </span>
 </code></pre></div>
 <p>and is afterwards visible
 in <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152">eprik-cara atna example</a>,
