@@ -2,7 +2,7 @@
 
 !!! note
 
-    05.05.2025 ATNA IP changed for eprik-cara, it is now 37.156.40.86 (or atna.test.ahdis.ch)
+    10.06.2025 ATNA IP changed for eprik-cara, it is now 83.228.201.24 (or atna.test.ahdis.ch)
 
     22.9.2023 Release  5.0.2: No changes in API 
 
