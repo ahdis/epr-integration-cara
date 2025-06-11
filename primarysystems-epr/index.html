@@ -1,0 +1,1175 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../usecases/">
+      
+      
+        <link rel="next" href="../transferts/">
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>EPR Primary System Integration - EPR Integration Kit for CARA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="matchbox" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-integrate-the-strong-authentication-into-the-primary-system-with-and-idp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="EPR Integration Kit for CARA" class="md-header__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EPR Integration Kit for CARA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EPR Primary System Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EPR Integration Kit for CARA" class="md-nav__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    EPR Integration Kit for CARA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Primary system integration with CARA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eprik-config/" class="md-nav__link">
+        EPRIK Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usecases/" class="md-nav__link">
+        EPRIK Usecases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          EPR Primary System Integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        EPR Primary System Integration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-integrate-the-strong-authentication-into-the-primary-system-with-and-idp" class="md-nav__link">
+    1. Integrate the strong authentication into the primary system with and IdP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-search-for-patients-in-the-community" class="md-nav__link">
+    2. Search for patients in the community
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Search for patients in the community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-check-if-the-patient-has-an-epr-based-on-ahvn13navs" class="md-nav__link">
+    2.1 Check if the patient has an EPR based on AHVN13/NAVS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-demographics-query" class="md-nav__link">
+    2.2 Demographics Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-register-a-patient-from-the-primary-system-in-the-community-and-query-the-patient-community-id" class="md-nav__link">
+    3. Register a patient from the primary system in the community and query the patient community id
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Register a patient from the primary system in the community and query the patient community id">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-register-local-patient-id-in-the-community" class="md-nav__link">
+    3.1 Register local patient Id in the community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-query-mpi-pid-and-epr-spid-based-on-local-id" class="md-nav__link">
+    3.2 Query MPI-PID and EPR-SPID based on local ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-query-and-retrieve-documents-for-a-patient-from-the-epr" class="md-nav__link">
+    4. Query and retrieve documents for a patient from the EPR
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Query and retrieve documents for a patient from the EPR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-authorization" class="md-nav__link">
+    4.1 Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42a-query-documents-from-the-cara-community" class="md-nav__link">
+    4.2a Query documents from the CARA community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42b-query-documents-from-remote-communities" class="md-nav__link">
+    4.2b Query documents from remote communities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43a-retrieve-documents-from-the-cara-community" class="md-nav__link">
+    4.3a Retrieve documents from the CARA community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-retrieve-documents-from-remote-communities" class="md-nav__link">
+    4.3b Retrieve documents from remote communities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-publish-documents-for-a-patient-by-a-healthcare-professional" class="md-nav__link">
+    5. Publish documents for a patient by a healthcare professional
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Publish documents for a patient by a healthcare professional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confidentiality-code-in-metadata" class="md-nav__link">
+    confidentiality code in metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-in-portal" class="md-nav__link">
+    metadata in portal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provide-a-document-with-a-technical-user-tcu" class="md-nav__link">
+    provide a document with a technical user (TCU)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-metadata-of-existing-documents-2223" class="md-nav__link">
+    change metadata of existing documents (2.223)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-a-document" class="md-nav__link">
+    Replace a document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-entryuuids" class="md-nav__link">
+    Using entryUUIDs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-providing-auditevents" class="md-nav__link">
+    6. Providing AuditEvents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-query-and-modify-the-healthcare-professional-directory-hpd" class="md-nav__link">
+    7. Query and modify the Healthcare Professional Directory (HPD)
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Query and modify the Healthcare Professional Directory (HPD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-query-entries" class="md-nav__link">
+    7.1 Query entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-add-an-entry" class="md-nav__link">
+    7.2 Add an entry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-modify-an-entry" class="md-nav__link">
+    7.3 Modify an entry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-delete-an-entry" class="md-nav__link">
+    7.4 Delete an entry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-oid-configuration" class="md-nav__link">
+    8. OID Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transferts/" class="md-nav__link">
+        Transferts Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pmp/" class="md-nav__link">
+        PMP Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        CARA Requirements
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        CARA INT Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog_eprik/" class="md-nav__link">
+        EPRIK Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-integrate-the-strong-authentication-into-the-primary-system-with-and-idp" class="md-nav__link">
+    1. Integrate the strong authentication into the primary system with and IdP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-search-for-patients-in-the-community" class="md-nav__link">
+    2. Search for patients in the community
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Search for patients in the community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-check-if-the-patient-has-an-epr-based-on-ahvn13navs" class="md-nav__link">
+    2.1 Check if the patient has an EPR based on AHVN13/NAVS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-demographics-query" class="md-nav__link">
+    2.2 Demographics Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-register-a-patient-from-the-primary-system-in-the-community-and-query-the-patient-community-id" class="md-nav__link">
+    3. Register a patient from the primary system in the community and query the patient community id
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Register a patient from the primary system in the community and query the patient community id">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-register-local-patient-id-in-the-community" class="md-nav__link">
+    3.1 Register local patient Id in the community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-query-mpi-pid-and-epr-spid-based-on-local-id" class="md-nav__link">
+    3.2 Query MPI-PID and EPR-SPID based on local ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-query-and-retrieve-documents-for-a-patient-from-the-epr" class="md-nav__link">
+    4. Query and retrieve documents for a patient from the EPR
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Query and retrieve documents for a patient from the EPR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-authorization" class="md-nav__link">
+    4.1 Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42a-query-documents-from-the-cara-community" class="md-nav__link">
+    4.2a Query documents from the CARA community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42b-query-documents-from-remote-communities" class="md-nav__link">
+    4.2b Query documents from remote communities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43a-retrieve-documents-from-the-cara-community" class="md-nav__link">
+    4.3a Retrieve documents from the CARA community
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-retrieve-documents-from-remote-communities" class="md-nav__link">
+    4.3b Retrieve documents from remote communities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-publish-documents-for-a-patient-by-a-healthcare-professional" class="md-nav__link">
+    5. Publish documents for a patient by a healthcare professional
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Publish documents for a patient by a healthcare professional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confidentiality-code-in-metadata" class="md-nav__link">
+    confidentiality code in metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-in-portal" class="md-nav__link">
+    metadata in portal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provide-a-document-with-a-technical-user-tcu" class="md-nav__link">
+    provide a document with a technical user (TCU)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-metadata-of-existing-documents-2223" class="md-nav__link">
+    change metadata of existing documents (2.223)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace-a-document" class="md-nav__link">
+    Replace a document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-entryuuids" class="md-nav__link">
+    Using entryUUIDs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-providing-auditevents" class="md-nav__link">
+    6. Providing AuditEvents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-query-and-modify-the-healthcare-professional-directory-hpd" class="md-nav__link">
+    7. Query and modify the Healthcare Professional Directory (HPD)
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Query and modify the Healthcare Professional Directory (HPD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-query-entries" class="md-nav__link">
+    7.1 Query entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-add-an-entry" class="md-nav__link">
+    7.2 Add an entry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-modify-an-entry" class="md-nav__link">
+    7.3 Modify an entry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-delete-an-entry" class="md-nav__link">
+    7.4 Delete an entry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-oid-configuration" class="md-nav__link">
+    8. OID Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>EPR Primary System Integration</h1>
+
+<p>For a deep EPR integration into a primary systems the following usecases should be covered</p>
+<ol>
+<li>Integrate the strong authentication into the primary system with an IdP (Level 1)</li>
+<li>Search for patients in the community (Level 2.1)</li>
+<li>Register a patient from the primary system in the community (Level 2.1)</li>
+<li>Query and retrieve documents for a patient from the EPR including authorization (Level 2.2)</li>
+<li>Publish documents for a patient by a healthcare professional (Level 2.2)</li>
+<li>Providing AuditEvents (Level 2.1)</li>
+<li>Query and update the Healthcare Professional Directory (HPD) (Level 2.3)</li>
+<li>OID configuration</li>
+</ol>
+<p>The levels of integration are described by eHealth Suisse, see
+checklist <a href="https://selbstdeklaration.e-health-suisse.ch/upload/documents/Aide_mise_oeuvre_checkliste_anbindung_primaesystemen_F.pdf">[fr]</a>
+and <a href="https://selbstdeklaration.e-health-suisse.ch/upload/documents/Umsetzungshilfe_Checklist_Anbindung_Primaersystemen.pdf">[de]</a>.</p>
+<p>eHealth Suisse has described the different steps with
+examples <a href="https://www.e-health-suisse.ch/fr/technique-semantique/raccordement-dep/responsables-informatiques.html">[fr]</a>, <a href="https://www.e-health-suisse.ch/technik-semantik/epd-anbindung/informatikverantwortliche.html">[de]</a>.</p>
+<p>You find test patients which you can use for publication of documents <a href="../testpatients/">here</a>.</p>
+<p>Please find below additional information relevant for CARA and EPRIK:</p>
+<h2 id="1-integrate-the-strong-authentication-into-the-primary-system-with-and-idp">1. Integrate the strong authentication into the primary system with and IdP</h2>
+<p>Authenticate a user at an identity provider certified for the Swiss EPR. Primary systems need to use this transaction to
+retrieve a IdP assertion. The IdP assertion is required to retrieve the XUA Assertion to be used with EPR transactions.
+See detailed description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/AuthenticateUser.md">here</a>.</p>
+<p>See EPRIK example
+for <a href="https://test.ahdis.ch/eprik-cara/#/transaction/bd0e0019-53f1-4525-9bd2-3164ce79162c">AuthnRequest</a>
+and <a href="https://test.ahdis.ch/eprik-cara/#/transaction/0d4c9995e29edd8b7475e4562534f7ad503ee4cc">ArtifactResolve</a>.</p>
+<p>If you have a test user you can <a href="usecases/#use-the-idp-assertion-from-eprik">use the IdP Assertion from EPRIK</a> until you
+have done the IdP integration yourself.</p>
+<h2 id="2-search-for-patients-in-the-community">2. Search for patients in the community</h2>
+<p><img alt="Sequence diagram for managing identities" src="../img/managing_identities.svg" /></p>
+<p>This sequence diagram shows the preferred way of managing patient identities.
+The first case, <em>EPR set in PS</em> is the case where you have already linked your local patient identity to an EPR 
+patient identity and fed your local identifier to the MPI.
+To get the MPI-PID and the EPR-SPID, you just have to query the MPI with your local identifier (described in section 
+3.2).</p>
+<p>The second case, <em>EPR not set in PS</em>, is the case where you have to reconciliate the patient identities.
+You can query the MPI for patient demographics (like name, birthdate, gender, etc., described in section 2.2) and 
+manually match demographics.
+Once that is done, you can feed your patient local identifier to the MPI (described in section 3.1).</p>
+<h3 id="21-check-if-the-patient-has-an-epr-based-on-ahvn13navs">2.1 Check if the patient has an EPR based on AHVN13/NAVS</h3>
+<p>With the PIX V3 query You can use AHVN13/NAVS13 to check if the patient has an EPR (EPR-SPID is returned), and if the
+patient
+is already registered in the community (MPI-PID is returned). See
+example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/b7429b34-ffd5-4c57-a04a-702fab2f54b5">request</a> for patient
+Gassmann, which returns EPR-SPID and MPI-PID in the id elements. For a test patient who has no EPR (as of 31.3.2023)
+with AHVN13 7560739410295 no EPR-SPID and MPI-PID is returned,
+see <a href="https://test.ahdis.ch/eprik-cara/#/transaction/8a1323d4-3f0c-470d-89f6-d16126fd3dea">request</a>. If the the AHVN13 is
+not found, an Application Error (AE) will
+be <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/ccdc62d8-7451-49fe-99c3-846091713f41">returned</a>. For a test
+patient who has an EPR but not in CARA int (as of 31.3.2023) with AHVN13 7560520619845 only EPR-SPID is returned,
+see <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/ac000d64-e795-400c-8bcb-63a889a7bfc4">request</a>.</p>
+<h3 id="22-demographics-query">2.2 Demographics Query</h3>
+<p>A search for a patient is done via a demographics query. See detailed
+description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PDQ.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/cd50db51-d218-4157-8848-d2b28be8ae67">request, response</a>.
+This example search is done on the family name, other demographics query parameters are possible. Please note that Swiss
+Extension requires that an error is returned if more than 5 matched would be returned. You need to provide creationTime,
+sender OID and receiver OID in addition to the query parameters in the request. For the communication you need a client
+certificate but with EPRIK a client certificate is not necessary.</p>
+<h2 id="3-register-a-patient-from-the-primary-system-in-the-community-and-query-the-patient-community-id">3. Register a patient from the primary system in the community and query the patient community id</h2>
+<h3 id="31-register-local-patient-id-in-the-community">3.1 Register local patient Id in the community</h3>
+<p>Register a patient in a community. Primary systems need to use this transaction to register patient data and then to be
+able to provide and retrieve documents to the patients EPR. See detailed
+description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXFeed.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/a3e50707-6662-4fc4-a593-3ee7ea300c7c">request, response</a>.
+This example registers the local id from the primary system P003 of the patient identity domain 2.16.756.5.30.1.145.1.3
+in the MPI. You need to provide creationTime, sender OID and receiver OID in addition to the patient parameters (
+EPR-SPID, MPI-ID) in the request. For the communication you need a client certificate, but with EPRIK a client
+certificate is not necessary.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Never feed a patient identifier with a domain that is not yours, and especially a domain equal to the configured
+receiver OID of the plateform. It would make the patient unreachable from PDQ queries.</p>
+</div>
+<h3 id="32-query-mpi-pid-and-epr-spid-based-on-local-id">3.2 Query MPI-PID and EPR-SPID based on local ID</h3>
+<p>The primary systems needs to query the master patient ID (MPI-ID) for patients to retrieve or provide documents for,
+based on the local id registered above. See detailed
+description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/f9c72b8d-15d8-47df-81e1-cb38e082f6aa">request, response</a>.</p>
+<h2 id="4-query-and-retrieve-documents-for-a-patient-from-the-epr">4. Query and retrieve documents for a patient from the EPR</h2>
+<p><img alt="Sequence diagram for searching and retrieving documents" src="../img/search_and_get.svg" /></p>
+<p>This sequence diagram shows the search and retrieval of documents.
+Searching documents in CARA is described in section 4.2a, searching in other communities is described in section 4.2b.
+Retrieving a document is described in sections 4.3a and 4.3b, depending on the community.
+The PIXv3 query is shown as a reminder.
+For these calls, another mandatory step is the Get X-User Assertion call to get a XUA token from the EPR.</p>
+<h3 id="41-authorization">4.1 Authorization</h3>
+<p>To query and retrieve documents the HCP needs to be authorized based on the IdP token, the patient (resourceID with
+EPR-SPID), purposeOfUse (NORM, EMER) and role (HCP).
+See detailed description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/GetXAssertion.md">here</a>.</p>
+<p>EPRIK
+example <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/a6b31484-c1d4-4701-9f0d-58e837e9eab6">request, response</a>.</p>
+<p>Example STS requests with <a href="../requests/sts-eprik.http">IdP</a> or <a href="../requests/sts-idp-httpheader-eprik.http">EPRIK-httpheader</a>.</p>
+<h3 id="42a-query-documents-from-the-cara-community">4.2a Query documents from the CARA community</h3>
+<p>Retrieve the document metadata for the documents stored in a patients EPR for the CARA community. See detailed
+description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RegistryStoredQuery.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/3ece4177-ab0a-47ab-9431-6ebad553aa75">request, response</a>.
+For the Query the MPI-ID of the patient needs to be added. This example requests includes the security token necessary.
+With the EPRIK you can do the user authentication there and reuse the
+token <a href="usecases/#use-the-idp-assertion-from-eprik">see</a>. For the communication you need a client certificate but with
+EPRIK a client certificate is not necessary.</p>
+<h3 id="42b-query-documents-from-remote-communities">4.2b Query documents from remote communities</h3>
+<p>To retrieve the document metadata for the documents stored in a patients EPR but registered in remote communities, the
+initiating gateway has to be called with an IIT-18 query. EPRIK
+example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/c2e8503a-97c6-4446-b233-155d57cf8e5e">request, response</a>.
+Gassmann has an example document in the remote community urn:oid:2.16.756.5.30.1.177.1.0.</p>
+<h3 id="43a-retrieve-documents-from-the-cara-community">4.3a Retrieve documents from the CARA community</h3>
+<p>To retrieve documents from a patients EPR the IHE XDS.b profile and transactions needs to be used. See detailed
+description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/RetrieveDocumentSet.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/62065f91-91ec-4125-9dd8-aa8f3d90027a">request,response</a>.
+With EPRIK you can do the user authentication there and reuse the
+token <a href="usecases/#use-the-idp-assertion-from-eprik">see</a>. For the communication you need a client certificate but with
+EPRIK a client certificate is not necessary. You will need to add the HomeCommunityId, RepositoryUniqueId and
+DocumentUniqueId.</p>
+<h3 id="43b-retrieve-documents-from-remote-communities">4.3b Retrieve documents from remote communities</h3>
+<p>To retrieve the documents stored in remote communities, the initiating gateway has to be called with an ITI-43 query
+with the homeCommunityId added from result 4.2b. EPRIK
+example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/b5e221c3-7f83-4418-a53d-1bfbe3500ad5">request, response</a>.</p>
+<h2 id="5-publish-documents-for-a-patient-by-a-healthcare-professional">5. Publish documents for a patient by a healthcare professional</h2>
+<p><img alt="Sequence diagram for publishing documents" src="../img/upload.svg" /></p>
+<p>This sequence diagram shows the publication of a document by a healthcare professional.</p>
+<p>To provide documents and metadata about the documents the IHE XDS.b profile and transactions needs to be used. See
+detailed description <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/ProvideAndRegister.md">here</a>.</p>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/5e770d0b-db8c-4fda-8ed5-8a2128a162c8">request,response</a>.
+With EPRIK you can do the user authentication there and reuse the
+token <a href="usecases/#use-the-idp-assertion-from-eprik">see</a>. For the communication you need a client certificate but with
+EPRIK a client certificate is not necessary. You will need to add metadata for the document.</p>
+<h3 id="confidentiality-code-in-metadata">confidentiality code in metadata</h3>
+<p>The patient can set the default level of confidentiality to normally accessible , restricted accessible or secret. This
+need to be taken into account when
+publishing (<a href="https://ehealthsuisse.ihe-europe.net/docs/sequence_diagrams/2_03_EPR_HPStoreDocuments.plantuml.png">sequence diagram</a>).
+If a publication fails for normally accessible it has to be retried with restricted accessible. It is only possible to
+publish a document with confidentiality secret if the user has set the default confidentiality code to secret. To test
+this three different patients have been setup with different confidentiality codes: GASSMANN-IMHOLZ (normally
+accessible, EPR-SPID: 761337613645876216), SOARES JESUS (restricted accessible, EPR-SPID 761337616638768604) et
+Ratchawat (secret: EPR-SPID 761337610888245779)</p>
+<table>
+<thead>
+<tr>
+<th>Publication with</th>
+<th>normal</th>
+<th>restricted</th>
+<th>secret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gassmann (normally accessible)</td>
+<td>ok</td>
+<td>ok</td>
+<td>error</td>
+</tr>
+<tr>
+<td>SOARES JESUS (restricted accessible)</td>
+<td>error</td>
+<td>ok</td>
+<td>error</td>
+</tr>
+<tr>
+<td>Ratchawat (secret)</td>
+<td>error</td>
+<td>error</td>
+<td>ok</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-in-portal">metadata in portal</h3>
+<p>The portal displays the metadata provided in the publication. The patient name is only visible if it is provided in
+PID-5
+in <a href="https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.3.2.23">sourcePatientInfo</a>. <a href="https://test.ahdis.ch/eprik-cara/#/transaction/e1159556-36e9-41c1-b9d4-740d21d0bf8b">example</a></p>
+<p>The institution can be filtered by the portal only if the <code>authorInstitution</code> contains an OID in the XON.10 field.</p>
+<h3 id="provide-a-document-with-a-technical-user-tcu">provide a document with a technical user (TCU)</h3>
+<p><img alt="Sequence diagram for publishing documents by a TCU" src="../img/upload_tcu.svg" /></p>
+<p>This sequence diagram shows the publication of a document by a technical user.</p>
+<p>Instead of using an authenticated user for publishing documents, the ERP allows to publish documents with a technical
+user <a href="https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/F/fiche-dinformation-utilisateur-technique-dep.pdf">see factsheet in french</a>.
+You are required to create a client certificate for this technical user and let it register in the HPD. See
+the <a href="https://developer.post.ch/en/e-health/basic-epr-workflows">developer platform</a> for exact steps.</p>
+<p>EPRIK allows you to work with a specific test technical user during integration. You can get the TCU IdP SAML2 assertion
+from <a href="https://test.ahdis.ch/eprik-cara/camel/tcu">here</a>. This assertion is valid for 10 minutes. With this assertion you
+can get then the XUA (STS) token for the XDS requests, for the urn:e-health-suisse:principal-id you need to put the GLN
+to 2000040030829 when using EPRIK's technical user.
+<a href="https://test.ahdis.ch/eprik-cara/#/transaction/e1159556-36e9-41c1-b9d4-740d21d0bf8b">example</a></p>
+<h3 id="change-metadata-of-existing-documents-2223">change metadata of existing documents (2.223)</h3>
+<p>If a document has been added the metadata can be changed with the IHE Restricted Metadata Update
+Profile <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RMU.pdf">(RMU)</a>. See an example message here,
+where the document title
+is <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/d6e2b67b-8f0f-44ca-b7f0-36e56391922c">changed</a>. A new
+ITI-18 query shows the
+changed <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/6ab0d5fb-6c20-4ee1-ae83-d82fbbf1ec32">title (Line 312)</a>.
+If you are working with a Technical User you would need to store the DocumentEntry including entryUUID during the
+provide and register transaction, because you cannot read it with ITI-18.</p>
+<h3 id="replace-a-document">Replace a document</h3>
+<p>To replace a document, the same ITI-41 transaction is used as for the publication of a new document, with the 
+addition of a specific <code>Association</code> element that shows which document is to be replaced:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;rim:Association</span><span class="w"> </span><span class="na">associationType=</span><span class="s">&quot;urn:ihe:iti:2007:AssociationType:RPLC&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                 </span><span class="na">sourceObject=</span><span class="s">&quot;urn:uuid:fa9b4f10-3ea1-436f-a988-ebbb8a2cfffc&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                 </span><span class="na">targetObject=</span><span class="s">&quot;urn:uuid:42fbb7ad-fe7a-4585-95c6-15d91a476c40&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">                 </span><span class="na">id=</span><span class="s">&quot;(a unique id)&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>EPRIK example <a href="https://test.ahdis.ch/eprik-cara/#/transaction/5e770d0b-db8c-4fda-8ed5-8a2128a162c8">request,response</a>.</p>
+<h3 id="using-entryuuids">Using entryUUIDs</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The documents entryUUIDs may change at any time: if the metadata changes (through an ITI-92 transaction, or if 
+the patient changes the confidentiality level), or if the document is replaced, a new entryUUID will be generated.</p>
+</div>
+<p>To change the metadata of a document, or to replace it with a new document, the entryUUID of the currently approved 
+DocumentEntry is required, and may be different from the submitted entryUUID in the original publication. In some 
+cases, it may prove impossible to retrieve the right entryUUID. In those cases, the help from CARA's administrators 
+can be requested, or the document may be republished as a new document.</p>
+<p>To retrieve the currently approved entryUUID of a document that has not been replaced, if a healthcare professional 
+is logged in, the ITI-18 search can be used with the document unique ID. If a technical user is logged in, there is 
+no possibility. Depending on the configured confidentiality levels, the document may not be returned in the search.</p>
+<p>To retrieve the currently approved entryUUID of a document that has been replaced, the ITI-18 <em>GetRelatedDocuments</em> 
+search can be used to retrieve the document that replaced the original document. A loop may be needed, if the 
+document has been replaced multiple times.</p>
+<h2 id="6-providing-auditevents">6. Providing AuditEvents</h2>
+<p>Each IHE Transaction has AuditEvent requirements.
+This is described for each transaction (see example for
+ITI-45 <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/files/PIXQuery.md#audit-log">here</a> or
+in <a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/02bc28f6-03b6-4d8b-ae7f-34a889267152">eprik</a>).
+This AuditEvents need to be registered in the community.
+With <a href="https://ehealthsuisse.ihe-europe.net/evs/atna/validator.seam?standard=21">EVSClient</a> you can validate if the
+content of the AuditMessages is correct.
+See for sending message via syslog protocol also guidance about not using BOM
+in <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.4.1.2">IHE 3.20.4.1.2 Message Semantics</a>.</p>
+<p>The specifications for generating the audit messages are given in the following documents:</p>
+<ol>
+<li><a href="https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.html">DICOM PS3.15 A.5</a>: the
+   foundation of audit messages.</li>
+<li><a href="https://profiles.ihe.net/ITI/TF/Volume2/index.html">IHE profile for each transaction</a>: in the section 'Security
+   Considerations' of each transaction, you'll find IHE requirements.</li>
+<li><a href="https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes">EPDV-EDI Annex 5 Complement 1</a>: there are some Swiss
+   requirements too. §1.5.2 describes generic requirements and §1.6.4.3.5.1 describes requirements for transactions
+   that use a SAML assertion (XUA).</li>
+</ol>
+<p><a href="https://github.com/ehealthsuisse/EPD-by-example">EPD-by-example</a> has some examples of audit messages.</p>
+<h2 id="7-query-and-modify-the-healthcare-professional-directory-hpd">7. Query and modify the Healthcare Professional Directory (HPD)</h2>
+<p>The HPD is an LDAP directory, and interactions with it are wrapped in DSMLv2 objects.
+It contains three different objects: professionals (<em>ou=HCProfessional</em>), organizations (<em>ou=HCRegulatedOrganization</em>)
+and relationship between them (<em>ou=Relationship</em>).</p>
+<h3 id="71-query-entries">7.1 Query entries</h3>
+<p>With the <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf">ITI-58</a> transaction, you can query the
+Healthcare Professional Directory (HPD) for the entries you are interested in.
+You can query entries with LDAP filters on LDAP attributes and select the attributes to return.
+<a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/50b2a089-cb39-45f6-90f3-16c3c98f8b74">Example</a>, <a href="https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-58-int-eprik.http">request</a>.</p>
+<h3 id="72-add-an-entry">7.2 Add an entry</h3>
+<p>With the <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf">ITI-59</a> transaction, you can add an
+entry to the HPD with an <em>addRequest</em>.
+<a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/301e8560-1a1a-4a0d-ad4c-622847eccf29">Example</a>, <a href="https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-add.http">request</a>.</p>
+<h3 id="73-modify-an-entry">7.3 Modify an entry</h3>
+<p>With the <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf">ITI-59</a> transaction, you can update an
+entry in the HPD with a <em>modifyRequest</em>.
+<a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/705d8021-bb71-4c7c-bc5c-debf0245d630">Example</a>, <a href="https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-modify.http">request</a>.</p>
+<h3 id="74-delete-an-entry">7.4 Delete an entry</h3>
+<p>With the <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_HPD.pdf">ITI-59</a> transaction, you can delete an
+entry from the HPD with a <em>delRequest</em>.
+<a href="https://test.ahdis.ch/eprik-cara/index.html#/transaction/cc0597ef-dd71-41bd-809d-105883fa5af4">Example</a>, <a href="https://github.com/ahdis/epr-integration-cara/tree/main/docs/requests/iti-59-int-delete.http">request</a>.</p>
+<h2 id="8-oid-configuration">8. OID Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Integration</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPI OID Patient</td>
+<td>2.16.756.5.30.1.191.1.0.2.1</td>
+<td>2.16.756.5.30.1.191.3.0.2.1</td>
+</tr>
+<tr>
+<td>HL7 v3 Receiver Device ID</td>
+<td>2.16.756.5.30.1.191.1.0.12.1.101.2</td>
+<td>2.16.756.5.30.1.191.3.0.12.1.101.2</td>
+</tr>
+<tr>
+<td>Repository unique ID</td>
+<td>2.16.756.5.30.1.191.1.0.12.1.101.31</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

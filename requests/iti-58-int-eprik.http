@@ -1,0 +1,100 @@
+### https://test.ahdis.ch/eprik-cara/index.html#/transaction/db5e0aa9-e2c0-4de5-a2d6-75ba9a39e25b
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+	<soap:Header>
+		<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2010:ProviderInformationQuery</Action>
+		<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:accece9c-1ba6-4291-ab04-c19103338cf4</MessageID>
+		<To xmlns="http://www.w3.org/2005/08/addressing">https://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService</To>
+		<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+			<Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+		</ReplyTo>
+	</soap:Header>
+	<soap:Body>
+		<batchRequest xmlns="urn:oasis:names:tc:DSML:2:0:core" requestID="1357846720">
+			<searchRequest dn="ou=HCRegulatedOrganization,dc=HPD" scope="singleLevel" derefAliases="neverDerefAliases" requestID="1095340955">
+				<filter>
+					<or>
+						<substrings name="hcIdentifier">
+							<initial>RefData:OID:2.16.756.5.30.1.128</initial>
+						</substrings>
+						<substrings name="hcIdentifier">
+							<initial>RefData:OID:2.16.756.5.30.1.196</initial>
+						</substrings>
+					</or>
+				</filter>
+				<attributes>
+					<attribute name="hcIdentifier"/>
+				</attributes>
+			</searchRequest>
+		</batchRequest>
+	</soap:Body>
+</soap:Envelope>
+
+
+### Search by UID
+### https://test.ahdis.ch/eprik-cara/index.html#/transaction/cbe127e7-3c33-4288-b908-f42b76c48a66
+
+POST http://test.ahdis.ch/eprik-cara/camel/cara/HPD/services/HPDService HTTP/1.1
+content-type: application/soap+xml; charset=UTF-8
+accept: */*
+user-agent: Apache-CXF/3.5.5
+cache-control: no-cache
+pragma: no-cache
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:urn="urn:oasis:names:tc:DSML:2:0:core">
+    <soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Action>urn:ihe:iti:2010:ProviderInformationQuery</wsa:Action>
+        <wsa:MessageID>uuid:af86df02-09b0-4d7b-9a37-ef129dcc12c9</wsa:MessageID>
+        <wsa:To>https://ws.epr.zu.test.post-ehealth.ch/HPD/services/HPDService</wsa:To>
+    </soap:Header>
+    <soap:Body>
+        <batchRequest requestID="3" xmlns="urn:oasis:names:tc:DSML:2:0:core">
+            <searchRequest derefAliases="neverDerefAliases" dn="ou=HCProfessional,dc=HPD,o=BAG,c=CH" requestID="1" scope="wholeSubtree">
+                <filter>
+                    <substrings name="uid">
+                        <initial>Post0919:</initial>
+                    </substrings>
+                </filter>
+                <attributes>
+                    <attribute name="uid"/>
+                    <attribute name="hcIdentifier"/>
+                    <attribute name="hcProfession"/>
+                    <attribute name="hpdProviderStatus"/>
+                    <attribute name="displayName"/>
+                    <attribute name="title"/>
+                    <attribute name="givenName"/>
+                    <attribute name="initials"/>
+                    <attribute name="sn"/>
+                    <attribute name="cn"/>
+                    <attribute name="hpdProviderLanguageSupported"/>
+                    <attribute name="gender"/>
+                    <attribute name="hpdMedicalRecordsDeliveryEmailAddress"/>
+                    <attribute name="mail"/>
+                    <attribute name="userSMIMECertificate"/>
+                    <attribute name="hcSigningCertificate"/>
+                    <attribute name="userCertificate"/>
+                    <attribute name="physicalDeliveryOfficeName"/>
+                    <attribute name="hpdProviderMailingAddress"/>
+                    <attribute name="hpdProviderBillingAddress"/>
+                    <attribute name="hpdProviderPracticeAddress"/>
+                    <attribute name="hcPracticeLocation"/>
+                    <attribute name="telephoneNumber"/>
+                    <attribute name="mobile"/>
+                    <attribute name="pager"/>
+                    <attribute name="facsimileTelephoneNumber"/>
+                    <attribute name="hcSpecialisation"/>
+                    <attribute name="hpdProviderLegalAddress"/>
+                    <attribute name="hcRegistrationStatus"/>
+                    <attribute name="objectClass"/>
+                </attributes>
+            </searchRequest>
+        </batchRequest>
+    </soap:Body>
+</soap:Envelope>

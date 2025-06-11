@@ -1,0 +1,96 @@
+### GET an STS Token for GLN 2000040030829
+# @name sts 
+POST https://ws.b2b.cara.int.post-ehealth.ch/b2bsts/SecurityTokenService/ HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+   <soapenv:Header>
+      <wsa:To xmlns:wsa="http://www.w3.org/2005/08/addressing">https://localhost:7443/STS/services/SecurityTokenService</wsa:To>
+      <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:861ec531-9b62-4bf2-98a9-46411dab88d2</wsa:MessageID>
+      <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+         <ns7:RequestType xmlns:ns7="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+                          xmlns:s1="http://www.w3.org/2001/XMLSchema"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:type="s1:anyURI">http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</ns7:RequestType>
+         <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+      </wst:RequestSecurityToken>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+### getPatientDocumentList
+# @name rcdc
+POST https://ws.b2b.cara.int.post-ehealth.ch/rcdc/Rcdc/ HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/soap+xml;charset=UTF-8;action="getPatientDocumentList"
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:rcdc="http://rcdc.ehealth.post.ch/">
+   <soap:Header>
+  	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+ 
+	</wsse:Security>
+   </soap:Header>
+   <soap:Body>
+        <GetDocumentListRequest xmlns="http://post.ch/ehealth/cia/rcdc">
+            <Recipient>
+                <GLN>2000040030829</GLN>
+            </Recipient>
+        </GetDocumentListRequest>
+    </soap:Body>
+</soap:Envelope>
+
+
+### getPatientDocument
+POST https://ws.b2b.cara.int.post-ehealth.ch/Repository/services/RepositoryService HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+   <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:ReplyTo soapenv:mustUnderstand="1">
+         <wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>
+      </wsa:ReplyTo>
+      <wsa:To>https://ws.b2b.cara.test.post-ehealth.ch/Repository/services/RepositoryService</wsa:To>
+      <wsa:MessageID>urn:uuid:7a6fb6b3-7976-4f4d-b06e-30fb06239523</wsa:MessageID>
+      <wsa:Action>urn:ihe:iti:2007:RetrieveDocumentSet</wsa:Action>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+
+		  </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns3:RetrieveDocumentSetRequest xmlns:ns3="urn:ihe:iti:xds-b:2007">
+         <ns3:DocumentRequest>
+            <ns3:RepositoryUniqueId>2.16.756.5.30.1.191.0.1.12.1.1.31</ns3:RepositoryUniqueId>
+            <ns3:DocumentUniqueId>{{rcdc.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='GetDocumentListResponse']/*[local-name()='Document'][1]/*[local-name()='UniqueID']}}</ns3:DocumentUniqueId> <!-- required: DocumentUniqueId -->
+         </ns3:DocumentRequest>
+      </ns3:RetrieveDocumentSetRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+### deleteDocumentList
+POST https://test.ahdis.ch/eprik-cara/camel/tra/rcdc/Rcdc/ HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:rcdc="http://rcdc.ehealth.post.ch/">
+   <soap:Header>
+  	<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+ 
+	</wsse:Security>
+   </soap:Header>
+   <soap:Body>
+        <DeleteDocumentListRequest xmlns="http://post.ch/ehealth/cia/rcdc">
+            <Recipient>
+                <GLN>2000040030829</GLN>
+            </Recipient>
+            <UniqueID>{{rcdc.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='GetDocumentListResponse']/*[local-name()='Document'][1]/*[local-name()='UniqueID']}}</UniqueID>
+        </DeleteDocumentListRequest>
+    </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,578 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="eprik-config/">
+      
+      <link rel="icon" href="assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>EPR Integration Kit for CARA</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="matchbox" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#primary-system-integration-with-cara" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="EPR Integration Kit for CARA" class="md-header__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EPR Integration Kit for CARA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Primary system integration with CARA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="EPR Integration Kit for CARA" class="md-nav__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    EPR Integration Kit for CARA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Primary system integration with CARA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Primary system integration with CARA
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-tls-connection-with-cara-int" class="md-nav__link">
+    Testing the TLS connection with CARA INT
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the TLS connection with CARA INT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syslog-connection" class="md-nav__link">
+    Syslog connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webservices-connection" class="md-nav__link">
+    Webservices connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eprik-config/" class="md-nav__link">
+        EPRIK Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usecases/" class="md-nav__link">
+        EPRIK Usecases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="primarysystems-epr/" class="md-nav__link">
+        EPR Primary System Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="transferts/" class="md-nav__link">
+        Transferts Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pmp/" class="md-nav__link">
+        PMP Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="requirements/" class="md-nav__link">
+        CARA Requirements
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog/" class="md-nav__link">
+        CARA INT Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog_eprik/" class="md-nav__link">
+        EPRIK Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-tls-connection-with-cara-int" class="md-nav__link">
+    Testing the TLS connection with CARA INT
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the TLS connection with CARA INT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syslog-connection" class="md-nav__link">
+    Syslog connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webservices-connection" class="md-nav__link">
+    Webservices connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="primary-system-integration-with-cara">Primary system integration with CARA</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>10.06.2025 ATNA IP changed for eprik-cara, it is now 83.228.201.24 (or atna.test.ahdis.ch)</p>
+<p>22.9.2023 Release  5.0.2: No changes in API </p>
+<p>29.3.2023: Release 5.0.0 on CARA INT: The EPR CARA integration version is newer than the production version, see <a href="changelog/">changelog</a> for differences.</p>
+</div>
+<p>This documentation describes how the <a href="https://test.ahdis.ch/eprik-cara/index.html">Integration Kit</a> can be used to test
+the integration of a primary system with the <a href="https://www.cara.ch/">CARA</a> integration system.</p>
+<p>CARA offers different services:</p>
+<ul>
+<li>EPR <a href="https://epr.cara.int.post-ehealth.ch">https://epr.cara.int.post-ehealth.ch</a></li>
+<li>Transferts <a href="https://b2b.cara.int.post-ehealth.ch/">https://b2b.cara.int.post-ehealth.ch/</a>.</li>
+<li>PMP (eMedication
+  Service) <a href="https://cara-ch.github.io/emed-service-guide/">https://cara-ch.github.io/emed-service-guide/</a></li>
+</ul>
+<p>To access the integration system you will need to sign a contract/CGUE with <a href="https://www.cara.ch/">CARA</a> and provide an
+OID concept for your organization,
+in return you will get:</p>
+<ul>
+<li>an HCP test user for which you need an online authentication yourself (e.g. HIN ID) and connect that HCP test user
+  with your online authentication</li>
+<li>two test patients for you with patient access, public test patients are listed <a href="testpatients/">here</a></li>
+<li>access to the <a href="https://developer.post.ch/en/e-health">Post E-Health Platform – developer portal</a> for the EPR
+  integration.</li>
+</ul>
+<p>This will allow you to start the integration of the primary system.</p>
+<p>The <a href="https://test.ahdis.ch/eprik-cara/index.html">Integration Kit</a> (short <strong>EPRIK</strong>) provides the
+following <a href="usecases/">functionality</a>:</p>
+<ul>
+<li>Authenticate an User and obtain an IdP assertion</li>
+<li>Proxy and log IHE transactions without client certificates and with basic validation of request / response</li>
+</ul>
+<figure>
+<p><img alt="Image title" src="img/eprik-architecture.png" width="499" />
+  </p>
+<figcaption>Integration architecture</figcaption>
+</figure>
+<p>This allows a primary system to do a stepwise integration. The integration kit is only
+an add-on during development, testing and <strong>CANNOT BE</strong> used with a production environment.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Use only test data and no real patient data! EPRIK is completely open 
+and every request / response to the integration system made is retrievable.</p>
+</div>
+<h2 id="testing-the-tls-connection-with-cara-int">Testing the TLS connection with CARA INT</h2>
+<p>There are two different TLS connections with CARA INT you can test: the Syslog connection (to send ATNA messages) 
+and the webservices connection (to send IHE requests).</p>
+<p>In these tests, you have to use your own certificate and private key.
+Note that they may be stored in the same <em><a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">.pem</a></em> file.</p>
+<h3 id="syslog-connection">Syslog connection</h3>
+<p>You can test the Syslog connection with <code>openssl</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>syslog-int.post-ehealth.ch:7003<span class="w"> </span>-cert<span class="w"> </span>cert.pem<span class="w"> </span>-key<span class="w"> </span>private_key.pem
+</code></pre></div></p>
+<p>In case of success, you will see "<em>read R BLOCK</em>" as last line of the output, and you should be able to send data in 
+the connection (the command should not have returned).</p>
+<p>If the command returns, and/or the last output line is "<em>closed</em>", then the connection failed.
+In case of error, you can increase the log levels with the parameters <code>-state -debug -msg -prexit</code>.</p>
+<h3 id="webservices-connection">Webservices connection</h3>
+<p>You can test the webservices connection with <code>curl</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>--cert<span class="w"> </span>cert.pem<span class="w"> </span>--key<span class="w"> </span>private_key.pem<span class="w"> </span>https://ws.epr.cara.int.post-ehealth.ch:443
+</code></pre></div></p>
+<p>In case of success, you will see the content of the "HTTP 404 - Not Found" page of the Post.
+In case of error, you may see an error like "<em>curl: (56) OpenSSL SSL_read: error:14094410:SSL 
+routines:ssl3_read_bytes:sslv3 alert handshake failure, errno 0</em>".</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We had errors testing the Webservices connection with <code>openssl</code>, although it is working fine for the Syslog 
+connection at the same time.</p>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

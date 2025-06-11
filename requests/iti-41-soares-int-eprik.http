@@ -1,0 +1,344 @@
+### Need first to get an IDP Token, use https://test.ahdis.ch/eprik-cara/ to Login and copy saml2 asseriton on Line 6
+### to get the token (will be only valid for short time)
+
+@eprspid = 761337618424274719
+
+
+# @name pix 
+POST https://test.ahdis.ch/eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201309UV02</Action><MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:177ba6dc-fc2b-460f-a563-af4d3fc83d55</MessageID><To xmlns="http://www.w3.org/2005/08/addressing">http://test.ahdis.ch/eprik-cara/services/iti45Endpoint</To><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo></soap:Header><soap:Body><PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+    <id extension="1663085902758" root="1.3.6.1.4.1.21367.2017.2.1.104"/>
+    <creationTime value="20220922053322"/>
+    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.6"/>
+    <processingCode code="T"/>
+    <processingModeCode code="T"/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="2.16.756.5.30.1.191.1.0.12.1.101.2"/>
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id root="2.16.756.5.30.1.196.3.2.1"/>
+        </device>
+    </sender>
+    <controlActProcess classCode="CACT" moodCode="EVN">
+        <code code="PRPA_TE201309UV02" codeSystem="2.16.840.1.113883.1.6"/>
+        <authorOrPerformer typeCode="AUT">
+            <assignedPerson classCode="ASSIGNED">
+                <id root="2.16.756.5.30.1.196.3.2.1"/>
+            </assignedPerson>
+        </authorOrPerformer>
+        <queryByParameter>
+            <queryId extension="1663085902759" root="1.3.6.1.4.1.21367.2017.2.1.104"/>
+            <statusCode code="new"/>
+            <responsePriorityCode code="I"/>
+            <parameterList>
+                <dataSource>
+                    <value root="2.16.756.5.30.1.191.1.0.2.1"/>
+                    <semanticsText>DataSource.id</semanticsText>
+                </dataSource>
+                <patientIdentifier>
+                    <value extension="{{eprspid}}" root="2.16.756.5.30.1.127.3.10.3"/>
+                    <semanticsText>Patient.id</semanticsText>
+                </patientIdentifier>
+            </parameterList>
+        </queryByParameter>
+    </controlActProcess>
+</PRPA_IN201309UV02></soap:Body></soap:Envelope>
+###
+# @name sts 
+POST https://test.ahdis.ch/eprik-cara/camel/cara/STS/services/SecurityTokenService HTTP/1.1
+Content-Type: application/soap+xml;charset=UTF-8
+
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+   <env:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
+   <wsa:MessageID>6ed3440a-0164-49c4-b9d2-235422819e90</wsa:MessageID>
+   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+<saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_ee1a678c820cabfbfdb66e8c4e7275ef327d1328" IssueInstant="2023-04-03T10:04:57.198Z" Version="2.0"><saml2:Issuer>test.epr.fed.hin.ch</saml2:Issuer><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference URI="#Assertion_ee1a678c820cabfbfdb66e8c4e7275ef327d1328"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>UIFmeEK6ZOviIQB6rWsAWFKsyqZW5FGdT2+51+3eC94=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>1zMQ5gTISz66P5Rjnt+y3knM3JPd1LuCzaN27MrvHRqhfhvrlsTE975HGmyKcHXGdkPh4zHI/glutDxEFpvhqfcj4n9jKbWPeFTBv1GZ5r048wzz6m/srEFalpp9c4CrmkntDKWsWFgGIAV1QDOWzoSS/o9xiaOzgLA20KzqkKf38EYdhMEXwIMhJSBZADXUAZbF6I5sQl/IOxcN79dMev3zMLq5QYbu8tsYW0OPP2hLtOXCgWf0ku97qZMCSJEEdzK/kxej2qldYfV5S9GcAv0OD+hxOJdeEbvkf6QqSIkLkGWC1j0szM9hWhev46XgVNRB3iIxziJkFLSK7mNJnFA2LENeM9WuZXF5VA3nRXfy/dCg4cl5f2f92rG1B58BO406N01lRucQ+9MtA/FzFZwB5QPaATTkIsT2m2mZVp5FOcsGixqbHcsbPLuZJuyJKIaYMAHaiDGqcOr5V8RgwdDcONcatIx3yz3FG+FG3LuH407kyprfJHoSNLSmFHZJTOKpkKe2IZ3chFFYRPvKimdBCsfEQyUa/4nB1PH0p0leWKwbz9NShLBd6pCw2/lyw0jTWhfybjAqEzMWpJO4WZPa7nixh3RcDGXNWxYE2/okZzfq4D3ijhuCh1Qt6Lk9ylWKJQgB3YjOm5CSXg/XJssRBU7/jSoD+FQIsrMA/7g=</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIJhzCCB2+gAwIBAgIUAM9OcCwUtr/FK+v0lWHpMWNmlpgwDQYJKoZIhvcNAQELBQAwVjELMAkG
+A1UEBhMCTkwxIDAeBgNVBAoMF1F1b1ZhZGlzIFRydXN0bGluayBCLlYuMSUwIwYDVQQDDBxRdW9W
+YWRpcyBFdXJvcGUgRVYgU1NMIENBIEcxMB4XDTIzMDIyMTEwMTcwNVoXDTI0MDIyMTEwMTIwMFow
+gdgxEzARBgsrBgEEAYI3PAIBAxMCQ0gxGDAWBgsrBgEEAYI3PAIBAgwHWsO8cmljaDEdMBsGA1UE
+DwwUUHJpdmF0ZSBPcmdhbml6YXRpb24xGDAWBgNVBAUTD0NIRS0xMDMuNDg5LjIxODELMAkGA1UE
+BhMCQ0gxEDAOBgNVBAgMB1rDvHJpY2gxFDASBgNVBAcMC1dhbGxpc2VsbGVuMRswGQYDVQQKDBJI
+ZWFsdGggSW5mbyBOZXQgQUcxHDAaBgNVBAMME3Rlc3QuZXByLmZlZC5oaW4uY2gwggIiMA0GCSqG
+SIb3DQEBAQUAA4ICDwAwggIKAoICAQDd3Scx3p6qkXqJOjfu7aN7WA2vYbFybRqbrTuZ/hRPz6To
+XwQwOX59TNnw0s3FplUz54LY9TYaJtCEyqHwm0DJQu53Qe1Ht6uus7GIpgJZM3Y09sYDwSo0RQop
+ImEAJfShpOwMyrj/zk3KxTa8Rwdl1AyxWM2IK2pCtwoJ++76P4hytREd++/yxAIn6ose41tukvmN
+plvsnBdOwhZIdydDgcUAaAFtVQMhTyvRgtiwEi4+EPONVGL9YwmxRFlt7nbsM09ovtLhvpK/M33I
+jFk+iGogUBCkA4whEmlw43317PfZJhCdWt1RFqJSFAjh87BdetFzJH/l+KHy4bsDZI8iS0KA+f0E
+unQ3eJMOFyz8SAZgjD1Md7xmxW5L22HxkuCYwiuFxuOMn+0RME6rRgLIVJ/VlyqfhfW9fxLD7hcE
+t46ud8pskhidgC1Q89iK2hocxajIviz87PrH8Ou2Jwm8sbjJawJhIO6kMxX3QppKEcIhpYq8C4M9
+dYM2B4KV20jh0MTC0cjKO2u/Vy43J+9qJ7WOmKO6CP/Ixq8wxnZGfs9hs/l+5vLY2blivTKXrz43
+Ui5SjPstk/5MbTWDs5CqxHQoyi+l9XDCI12TiMZ2NAlSOH8/3vsEoWiIkX28E5FsHe7GOLSV0Fua
+wlj2fltzaO2gjVIba7OcZkNtcz8m4wIDAQABo4IDyDCCA8QwDAYDVR0TAQH/BAIwADAfBgNVHSME
+GDAWgBRJPQ7cecXL2xKj1Q2r8s+pr+NmqTCBgwYIKwYBBQUHAQEEdzB1MEcGCCsGAQUFBzAChjto
+dHRwOi8vdHJ1c3QucXVvdmFkaXNnbG9iYWwuY29tL3F1b3ZhZGlzZXVyb3BlZXZzc2xjYWcxLmNy
+dDAqBggrBgEFBQcwAYYeaHR0cDovL29jc3AucXVvdmFkaXNnbG9iYWwuY29tMB4GA1UdEQQXMBWC
+E3Rlc3QuZXByLmZlZC5oaW4uY2gwWgYDVR0gBFMwUTBGBgwrBgEEAb5YAAJkAQIwNjA0BggrBgEF
+BQcCARYoaHR0cDovL3d3dy5xdW92YWRpc2dsb2JhbC5jb20vcmVwb3NpdG9yeTAHBgVngQwBATAd
+BgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwSgYDVR0fBEMwQTA/oD2gO4Y5aHR0cDovL2Ny
+bC5xdW92YWRpc2dsb2JhbC5jb20vcXVvdmFkaXNldXJvcGVldnNzbGNhZzEuY3JsMB0GA1UdDgQW
+BBQhPEKJFQRSkUKPYZgv4C3HEOcR0jAOBgNVHQ8BAf8EBAMCBaAwggH1BgorBgEEAdZ5AgQCBIIB
+5QSCAeEB3wB3ANq2v2s/tbYin5vCu1xr6HCRcWy7UYSFNL2kPTBI1/urAAABhnODPnIAAAQDAEgw
+RgIhAJcmzKMY97SMxoRgel9zVkUfRnYGOr4kg82FjXegJHmlAiEAhe5DySc9eDfE+DmIQp261l+J
+TUOzrPuAUgHErRHUe1cAdgDuzdBk1dsazsVct520zROiModGfLzs3sNRSFlGcR+1mwAAAYZzgz6F
+AAAEAwBHMEUCIFyJMjxvFRC61m/X7YKzldpKZDNWz2oTQsCkSgUREFpZAiEAiGbvimRPUZWFCE+U
+WrmgccISGU5bv+uIm3YPERTPOAcAdQBz2Z6JG0yWeKAgfUed5rLGHNBRXnEZKoxrgBB6wXdytQAA
+AYZzgz9HAAAEAwBGMEQCIEWne25ydfuUUiuacK4mA1VPdeJdHUoSA8M2enxNFQE/AiAVVh4LNO/b
+uIbdFudVkST3kHONlW50IfvUJm1g7SSBIwB1AHb/iD8KtvuVUcJhzPWHujS0pM27KdxoQgqf5mdM
+Wjp0AAABhnODPgEAAAQDAEYwRAIgPSLM9vaRhHhwACxU0kUBNlQqlCZEiDuQxllF7OtNWswCICK1
+ag3mymWaXJS+zhYGothShJTqxHAnviCLIgPEyIMzMA0GCSqGSIb3DQEBCwUAA4ICAQAtUBSj3egJ
+epZ1Axz1K8QTlk3ISckCodPTNzU6zg2iF3vI2syPT30IK3wvy8anPUSv2ia4xN+5By2bbQF3OEr3
+NCFdN3YXO27n/xblKO6VRKpXK2/weTH1twVcK6LqJP+n61tD/GsrgW23/ajeAmL75ng/YSkc2qUZ
+ZZGJ/VZS2iC6anHDbJMHQwXgOCKKU5nIYF7oieAMQIbJzDLYDPzFQFYH2rBKU/sm9Mulmi7HhX62
+0YtrKAdk5V9jBEmhEjNGg1p65mWUr7a+1fNb7lvEn3T75dnDEuhImIKnMclQNmaoGnx9fcn04PN9
+3bEYUX+YNFuvt1YJFWnlDo+TqcfgCEVDHugsLPK72a2WFcmUg9opKbozKb/K/Wj/2G36KZQUFFJk
+DNEKY38kBpPVqSFANfhra9OOnHfrEsrO00etW709XSFl9Px5dYAVmo9e1mteietM3UGcURWL/Cac
+YtY4UIE72WWp3eu3obsQ1rfHmlaEodbU8FGgvvwRFEq2WjP1EzZcFoZaiyqmsGSLlMpxR+bDXmck
++YJRI3j2kkPJw0ZNlr/0yMog75OVRO+6X4oTdIP4O+y/BeWqLNzQhLTwE1B8RpS1PV/eWoBSC7SW
+TmraI2UHNVyT8dzHVvR52pmAxEJ++gtR7Y/CVqioom4tE/pNwU6Y+zuuyB9Yw5YbZg==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature><saml2:Subject><saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">HIN_8a48175e776d770c414b37f1236b4a03553f6da1a94ccb7d990fe3c1b75941c1</saml2:NameID><saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><saml2:SubjectConfirmationData InResponseTo="a4fc2bf8fggg0i61362feci8h72a4dh" NotOnOrAfter="2023-04-03T12:04:57.199Z" Recipient="https://test.ahdis.ch/eprik-cara/saml/SSO/alias/hin"/></saml2:SubjectConfirmation></saml2:Subject><saml2:Conditions NotBefore="2023-04-03T10:04:57.198Z" NotOnOrAfter="2023-04-03T10:09:57.198Z"><saml2:AudienceRestriction><saml2:Audience>https://test.ahdis.ch/eprik-cara/saml/SSO/alias/hin</saml2:Audience></saml2:AudienceRestriction></saml2:Conditions><saml2:AuthnStatement AuthnInstant="2023-04-03T10:04:57.198Z" SessionNotOnOrAfter="2023-04-03T12:04:57.198Z"><saml2:AuthnContext><saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml2:AuthnContextClassRef></saml2:AuthnContext></saml2:AuthnStatement><saml2:AttributeStatement><saml2:Attribute Name="X-HIN-ASAS-UserId"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">68545</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-USERTYPE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Personal</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-POSTALCODE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">8005</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-LOGIN-NAME"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">oliegg1</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-POSTAL-CODE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">8005</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-ADDRESS-1"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Sihlquai 131</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-ORGANIZATION"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">ahdis ag</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-MAIL"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">test-oliver.egger@hintest.ch</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-ASAS-UserId"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">68545</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="dateofbirth"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">1900-01-01+01:00</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-COUNTRY"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">ch</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-GIVEN-NAME"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Oliver</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="GLN" NameFormat="urn:oasis:names:tc:ebcore:partyid-type:DataUniversalNumberingSystem:0060"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">2000040030829</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-PERSON-CODE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">24</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-AUTH-METHOD"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">FUTURAE</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Oliver</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-TEST-CODE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">1</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-SESSION-IDENTIFIER"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">3f1c10ac480aarUBHGAHcb3X0P+H+Gj0jcaeTU3n3M+rxLCCwv8qI2E=</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-LOCATION"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Zürich</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-COMMON-NAME"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Oliver Egger</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-USEREXTID"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">68545</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-INSTITUTION-CODE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">1</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-LANGUAGE"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">de</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Egger</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-EAN-NO-MEDICAL"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">2000040030829</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="X-HIN-SURNAME"><saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Egger</saml2:AttributeValue></saml2:Attribute></saml2:AttributeStatement></saml2:Assertion>
+   </wsse:Security></env:Header>
+   <env:Body>
+      <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+         <wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</wst:RequestType>
+         <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+               <wsa:Address>https://test.ahdis.ch/mag-cara</wsa:Address>
+            </wsa:EndpointReference>
+         </wsp:AppliesTo>
+         <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+         <wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2">
+         <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">{{eprspid}}^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:anyType"><PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal Access" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema"><Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Healthcare professional" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute></wst:Claims>
+      </wst:RequestSecurityToken>
+   </env:Body>
+</env:Envelope>
+
+### ITI-41 Publish Document Set
+
+@uuid = {{$guid}}
+@uuid2 = {{$guid}}
+@uuid3 = {{$guid}}
+
+@uuid4 = {{$guid}}
+
+@uuid5 = {{$guid}}
+
+@uniqueId = {{$randomInt 200000 900000}}
+
+@mpipid = {{pix.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='PRPA_IN201310UV02']/*[local-name()='controlActProcess']/*[local-name()='subject']/*[local-name()='registrationEvent']/*[local-name()='subject1']/*[local-name()='patient']/*[local-name()='id']//@extension}}
+
+// Normally accessible	
+//@confcode = 17621005
+//@confcodesystem = 2.16.840.1.113883.6.96
+
+// Restricted accessible	
+@confcode = 263856008
+@confcodesystem = 2.16.840.1.113883.6.96
+
+// Secret
+//@confcode = 1141000195107
+//@confcodesystem = 2.16.756.5.30.1.127.3.4
+
+
+#name iti41
+POST https://test.ahdis.ch/eprik-cara/camel/cara/Repository/services/RepositoryService HTTP/1.1
+Content-Type: multipart/related; boundary="uuid:71766996-d9d7-484d-868d-8658c0c85d9a";type="application/xop+xml"; start=" <root.message@cxf.apache.org>";start-info="application/soap+xml; charset=utf-8"
+
+--uuid:71766996-d9d7-484d-868d-8658c0c85d9a
+Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
+Content-Transfer-Encoding: binary
+Content-ID: <root.message@cxf.apache.org>
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Header><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+
+
+{{sts.response.body./*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='RequestSecurityTokenResponseCollection']/*[local-name()='RequestSecurityTokenResponse']/*[local-name()='RequestedSecurityToken']}}
+
+</wsse:Security>
+
+<Action soap:mustUnderstand="true" xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</Action><MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:ce9fcaa5-7a7d-4d5a-99c6-7cb1a9e09482</MessageID><To xmlns="http://www.w3.org/2005/08/addressing">http://test.ahdis.ch/eprik-proxy-cara/camel/cara/Repository/services/RepositoryService</To><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo></soap:Header><soap:Body><ns4:ProvideAndRegisterDocumentSetRequest xmlns:ns7="urn:ihe:iti:rmd:2017" xmlns:ns6="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" xmlns:ns5="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0" xmlns:ns4="urn:ihe:iti:xds-b:2007" xmlns:ns3="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" xmlns:ns2="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"><ns5:SubmitObjectsRequest><ns3:RequestSlotList/><ns2:RegistryObjectList><ns2:ExtrinsicObject mimeType="application/pdf" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:{{uuid}}"><ns2:Slot name="creationTime"><ns2:ValueList><ns2:Value>20230110085913</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="hash"><ns2:ValueList><ns2:Value>43f1d50f24d14965661fc2b077df9327b87c0136</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="languageCode"><ns2:ValueList><ns2:Value>de-CH</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="repositoryUniqueId"><ns2:ValueList><ns2:Value>2.16.756.5.30.1.191.1.0.12.1.101.31</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="size"><ns2:ValueList><ns2:Value>4944</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="sourcePatientId"><ns2:ValueList><ns2:Value>3450294^^^&amp;2.16.756.5.30.1.191.1.0.12.3.101&amp;ISO</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="sourcePatientInfo"><ns2:ValueList><ns2:Value>PID-3|{{mpipid}}^^^&amp;2.16.756.5.30.1.191.1.0.2.1&amp;ISO~3450294^^^&amp;2.16.756.5.30.1.191.1.0.12.3.101&amp;ISO</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="urn:e-health-suisse:2020:originalProviderRole"><ns2:ValueList><ns2:Value>HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="Test PDF"/></ns2:Name><ns2:Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="405624007" id="urn:uuid:304ec109-f9dc-4e3e-b93b-5e2170ec15d4"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.840.1.113883.6.96</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="Administrative documentation"/></ns2:Name></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="urn:che:epr:EPR_Unstructured_Document" id="urn:uuid:42b974ce-31dd-4504-93e8-fb09f2b9fb60"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.756.5.30.1.127.3.10.10</ns2:Value></ns2:ValueList></ns2:Slot></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="264358009" id="urn:uuid:92539e8f-d779-47d0-b697-546d2d26e003"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.840.1.113883.6.96</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="General practice premises(environment)"/></ns2:Name></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="394802001" id="urn:uuid:73b694e3-5dc8-45ba-a890-52d890750dac"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.840.1.113883.6.96</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="General medicine(qualifier value)"/></ns2:Name></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="419891008" id="urn:uuid:db779c14-6c83-4f62-83ed-8976c13c7af5"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.840.1.113883.6.96</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="Record artifact"/></ns2:Name></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:{{uuid}}" nodeRepresentation="{{confcode}}" id="urn:uuid:70b86de2-0214-4c61-aa87-4b840ee37124"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>{{confcodesystem}}</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="Normally accessible"/></ns2:Name></ns2:Classification><ns2:ExternalIdentifier registryObject="urn:uuid:{{uuid}}" identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" value="{{mpipid}}^^^&amp;2.16.756.5.30.1.191.1.0.2.1&amp;ISO" id="urn:uuid:56ce4821-412d-469c-8a60-f04c09c19e51"><ns2:Name><ns2:LocalizedString value="XDSDocumentEntry.patientId"/></ns2:Name></ns2:ExternalIdentifier><ns2:ExternalIdentifier registryObject="urn:uuid:{{uuid}}" identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" value="{{uuid5}}" id="urn:uuid:b70bf707-ffe4-4114-bb69-888028ef9228"><ns2:Name><ns2:LocalizedString value="XDSDocumentEntry.uniqueId"/></ns2:Name></ns2:ExternalIdentifier></ns2:ExtrinsicObject><ns2:RegistryPackage id="urn:uuid:{{uuid4}}"><ns2:Slot name="submissionTime"><ns2:ValueList><ns2:Value>20230110085959</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Classification classificationScheme="urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d" classifiedObject="urn:uuid:{{uuid4}}" nodeRepresentation="" id="urn:uuid:59b60d40-45e2-468c-86a1-c6de5d8358ef"><ns2:Slot name="authorPerson"><ns2:ValueList><ns2:Value>^---</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Slot name="authorRole"><ns2:ValueList><ns2:Value>HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</ns2:Value></ns2:ValueList></ns2:Slot></ns2:Classification><ns2:Classification classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500" classifiedObject="urn:uuid:{{uuid4}}" nodeRepresentation="71388002" id="urn:uuid:b7297bae-95a7-43ee-8842-953898b11407"><ns2:Slot name="codingScheme"><ns2:ValueList><ns2:Value>2.16.840.1.113883.6.96</ns2:Value></ns2:ValueList></ns2:Slot><ns2:Name><ns2:LocalizedString xml:lang="en" charset="UTF-8" value="Procedure (procedure)"/></ns2:Name></ns2:Classification><ns2:ExternalIdentifier registryObject="urn:uuid:{{uuid4}}" identificationScheme="urn:uuid:6b5aea1a-874d-4603-a4bc-96a0a7b38446" value="{{mpipid}}^^^&amp;2.16.756.5.30.1.191.1.0.2.1&amp;ISO" id="urn:uuid:0e82f039-a757-47f7-8938-fc2effc1d42c"><ns2:Name><ns2:LocalizedString value="XDSSubmissionSet.patientId"/></ns2:Name></ns2:ExternalIdentifier><ns2:ExternalIdentifier registryObject="urn:uuid:{{uuid4}}" identificationScheme="urn:uuid:96fdda7c-d067-4183-912e-bf5ee74998a8" value="2.25.{{uniqueId}}" id="urn:uuid:6d15d06a-ce3d-4121-a079-08b50e412b83"><ns2:Name><ns2:LocalizedString value="XDSSubmissionSet.uniqueId"/></ns2:Name></ns2:ExternalIdentifier><ns2:ExternalIdentifier registryObject="urn:uuid:{{uuid4}}" identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832" value="2.16.756.5.30.1.145.20.1" id="urn:uuid:24a67372-23be-4a2e-91b4-2000560235f0"><ns2:Name><ns2:LocalizedString value="XDSSubmissionSet.sourceId"/></ns2:Name></ns2:ExternalIdentifier></ns2:RegistryPackage><ns2:Classification classifiedObject="urn:uuid:{{uuid4}}" classificationNode="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" id="urn:uuid:49664fc7-ccd7-4a69-a7e3-ed288c75e54d"/><ns2:Association associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" sourceObject="urn:uuid:{{uuid4}}" targetObject="urn:uuid:{{uuid}}" id="urn:uuid:{{uuid2}}"><ns2:Slot name="SubmissionSetStatus"><ns2:ValueList><ns2:Value>Original</ns2:Value></ns2:ValueList></ns2:Slot></ns2:Association></ns2:RegistryObjectList></ns5:SubmitObjectsRequest><ns4:Document id="urn:uuid:{{uuid}}"><xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:e57f250b-5f63-43c3-b294-f9be589aca16-1@urn%3Aihe%3Aiti%3Axds-b%3A2007"/></ns4:Document></ns4:ProvideAndRegisterDocumentSetRequest></soap:Body></soap:Envelope>
+--uuid:71766996-d9d7-484d-868d-8658c0c85d9a
+Content-Type: application/pdf
+Content-Transfer-Encoding: binary
+Content-ID: <e57f250b-5f63-43c3-b294-f9be589aca16-1@urn:ihe:iti:xds-b:2007>
+
+%PDF-1.4
+%����
+1 0 obj
+<</Creator (Mozilla/5.0 \(Macintosh; Intel Mac OS X 10_15_7\) AppleWebKit/537.36 \(KHTML, like Gecko\) Chrome/105.0.0.0 Safari/537.36)
+/Producer (Skia/PDF m105)
+/CreationDate (D:20220928113512+00'00')
+/ModDate (D:20220928113512+00'00')>>
+endobj
+3 0 obj
+<</ca 1
+/BM /Normal>>
+endobj
+5 0 obj
+<</Filter /FlateDecode
+/Length 181>> stream
+x�mO�
+�0��W�Y0�$M�B��CA%��-��nڃ=�����d�(c�����ڌyʪpE��>ћ��T&�
+6�ǰ�;���n;��n��U�b�o�#4"�G�d)9Z���ahN�x`X�֕����Q�IߜZ���nJ)�E$|��F�&*��gIdv������
+u�.�/h8�
+endstream
+endobj
+2 0 obj
+<</Type /Page
+/Resources <</ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/ExtGState <</G3 3 0 R>>
+/Font <</F4 4 0 R>>>>
+/MediaBox [0 0 594.95996 840.95996]
+/Contents 5 0 R
+/StructParents 0
+/Parent 6 0 R>>
+endobj
+6 0 obj
+<</Type /Pages
+/Count 1
+/Kids [2 0 R]>>
+endobj
+10 0 obj
+<</Type /StructElem
+/S /NonStruct
+/P 9 0 R
+/K [<</Type /MCR
+/Pg 2 0 R
+/MCID 0>>]
+/ID (node00000010)>>
+endobj
+9 0 obj
+<</Type /StructElem
+/S /NonStruct
+/P 8 0 R
+/K [10 0 R]
+/ID (node00000011)>>
+endobj
+8 0 obj
+<</Type /StructElem
+/S /Document
+/Lang (en-GB)
+/P 7 0 R
+/K [9 0 R]
+/ID (node00000001)>>
+endobj
+11 0 obj
+[10 0 R]
+endobj
+12 0 obj
+<</Type /ParentTree
+/Nums [0 11 0 R]>>
+endobj
+13 0 obj
+<</Limits [(node00000001) (node00000011)]
+/Names [(node00000001) 8 0 R (node00000010) 10 0 R (node00000011) 9 0 R]>>
+endobj
+14 0 obj
+<</Kids [13 0 R]>>
+endobj
+7 0 obj
+<</Type /StructTreeRoot
+/K 8 0 R
+/ParentTreeNextKey 1
+/ParentTree 12 0 R
+/IDTree 14 0 R>>
+endobj
+15 0 obj
+<</Type /Catalog
+/Pages 6 0 R
+/MarkInfo <</Type /MarkInfo
+/Marked true>>
+/StructTreeRoot 7 0 R>>
+endobj
+16 0 obj
+<</Length1 3304
+/Filter /FlateDecode
+/Length 1847>> stream
+x��Vkp�>ww-�YlG~ɉlyW�]��:�d�1$�Vk���I HP'1�q������8i�3�Q�2)m���n��f�d��5�����阙Rhi:��GJ�~wW2���L���v�9��o�=�ӑ��U4G"u�������At�C3��1g?� ����cדmD҃�s`t�]#�_��U"��zlxp赍�Ʀ0�}��r�������<�~I$� �{��+�]����b|~rpvJ�)��~P>=89����1�*�O�q`&{��7-���7w<����OR���t�������i��I�(�&>�k�=D%�*�<�ux;���?�fTpK*A���Q:H�i��Ĉue�9|��3������/�y4����[�o���M��S����i
+|��\i�.־��<�|�c
+�D�$B�ȉjM7!Ǚ\.o��r���{+q !Z�/�bKXn�a��5&�p��yTem�k�\�8(��9tD���v��w�D���eKT������sd���C+�߽������%j�^���C���{����_���S�Ҫٗ!G�[�=�̰ܱu�/B����|��g�;���L�*,�TzӢ޻#�%����~(��*c�CiI��N%�J�v&�q�)�����Us8��<�,�Ty�	�W0���SҢџ�1��������UUz����5��,�j���x;�b���p�,;�.O�����ijz.�򤰏���0�`�+@%8���d�\�54���TME��n����ۙ�A�j��w��4�.����3\��V`[ϸH{�fqވ`L��S���`<U0�,#C��Xg1.����mNo�;��F5ح+\=���=�TJ���|����y�Du�@dX��R@�l����k���-��2���XK{������weUM�ʁ`@T][X����9m�[����Yӄu���
+?��h�
+벯>~ߕ�|�@X}"��X�פ�ֳ��م
+����>&�{���t]����ɽ!�*. o�^y�x�� �7E$Z�D�Å�W�V����r(�{�����c���z;��0�nF���q�Q���3�����@��~���`�N�����r�"��/�0 �ۀ0���g����<�a^���Z5-敧X�F	n���&D����/dU���ড����}��.��Մ�ʯ_(?{��v��SG���w��_|�U�h�ø��C'�r�s�$�x���X��PP�f��f`��7�v��.`8|8	|
+X ��X��
+�w ^('��a���<WøH��]��ǁ��"�C�" ������~tU���kל���k<�a��
+t�@���(N�ei�ۗV�(B�"$(B�"$(B�"$(B�"$(B�"$(B�7�?�|�5�0��"U�[a2�d�����'�O�>|2�d����P�l΋��KH�
+�0�;`l�0�<���ҡ+�~�([-�2yV\�&tjtj���	>|&�L��3�g���i�t3��Qw���=�f��� �\���3�"F��lu�Ymw
+��̫zS������&�F�l~��?���$���S�k6T�fo�}����~z��Zԥ���M���j���n���}8�F�­ZE$���#�R��������vG��D�-�vi	�����4q�ū}4�l�i�G���_AY&������y�m��T��"�	�n�ٿ}��6,�����a]U��z/�̥٭f�]y�p�9�~���۲޺@d��z~9P��F�h�yZ�>qȧkZv�鱉�z5����k{��
+8PS4�#��HFr
+endstream
+endobj
+17 0 obj
+<</Type /FontDescriptor
+/FontName /AAAAAA+Courier
+/Flags 7
+/Ascent 753.90625
+/Descent 246.09375
+/StemV 182.12891
+/CapHeight 586.91406
+/ItalicAngle 0
+/FontBBox [-654.78516 -409.17969 1062.98828 1089.35547]
+/FontFile2 16 0 R>>
+endobj
+18 0 obj
+<</Type /Font
+/FontDescriptor 17 0 R
+/BaseFont /AAAAAA+Courier
+/Subtype /CIDFontType2
+/CIDToGIDMap /Identity
+/CIDSystemInfo <</Registry (Adobe)
+/Ordering (Identity)
+/Supplement 0>>
+/W [0 87 600.09766]
+/DW 0>>
+endobj
+19 0 obj
+<</Filter /FlateDecode
+/Length 250>> stream
+x�]��j� ��>�YN�If2�EʔB�д`�$cy�zIS�������Bo�c������à�t8��	�G�IY�T�o*�b�� w��qj�`H� ����ޭpx���;B_�D����[t�X��ja$�gn_��@vle�_���K|��J���#q�\��zD��0h��a���W����]L��!]��Eu�O�R'vK���^��d(��Ӗ�~,��O$��0i�i�ؿҸ/��x @a
+endstream
+endobj
+4 0 obj
+<</Type /Font
+/Subtype /Type0
+/BaseFont /AAAAAA+Courier
+/Encoding /Identity-H
+/DescendantFonts [18 0 R]
+/ToUnicode 19 0 R>>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000000015 00000 n 
+0000000556 00000 n 
+0000000268 00000 n 
+0000004329 00000 n 
+0000000305 00000 n 
+0000000776 00000 n 
+0000001391 00000 n 
+0000001040 00000 n 
+0000000949 00000 n 
+0000000831 00000 n 
+0000001143 00000 n 
+0000001168 00000 n 
+0000001223 00000 n 
+0000001356 00000 n 
+0000001496 00000 n 
+0000001609 00000 n 
+0000003542 00000 n 
+0000003783 00000 n 
+0000004008 00000 n 
+trailer
+<</Size 20
+/Root 15 0 R
+/Info 1 0 R>>
+startxref
+4468
+%%EOF
+--uuid:71766996-d9d7-484d-868d-8658c0c85d9a--

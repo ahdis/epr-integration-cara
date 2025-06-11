@@ -1,0 +1,737 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../usecases/">
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>EPRIK Configuration - EPR Integration Kit for CARA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="matchbox" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#epr-endpoints" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="EPR Integration Kit for CARA" class="md-header__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EPR Integration Kit for CARA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EPRIK Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EPR Integration Kit for CARA" class="md-nav__button md-logo" aria-label="EPR Integration Kit for CARA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    EPR Integration Kit for CARA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Primary system integration with CARA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          EPRIK Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        EPRIK Configuration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#epr-endpoints" class="md-nav__link">
+    EPR Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transferts-tra-endpoints" class="md-nav__link">
+    transferts (TRA) Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pmp-endpoints" class="md-nav__link">
+    PMP Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-validation" class="md-nav__link">
+    External validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usecases/" class="md-nav__link">
+        EPRIK Usecases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primarysystems-epr/" class="md-nav__link">
+        EPR Primary System Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transferts/" class="md-nav__link">
+        Transferts Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pmp/" class="md-nav__link">
+        PMP Integration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        CARA Requirements
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        CARA INT Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog_eprik/" class="md-nav__link">
+        EPRIK Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#epr-endpoints" class="md-nav__link">
+    EPR Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transferts-tra-endpoints" class="md-nav__link">
+    transferts (TRA) Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pmp-endpoints" class="md-nav__link">
+    PMP Endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-validation" class="md-nav__link">
+    External validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>EPRIK Configuration</h1>
+
+<p>The EPR Integration Kit is available at <a href="https://test.ahdis.ch/eprik-cara/">https://test.ahdis.ch/eprik-cara/</a>.</p>
+<figure>
+<p><img alt="Image title" src="../img/eprik-transaction.png" width="600" />
+  </p>
+<figcaption>Transaction List</figcaption>
+</figure>
+<p>By default it lists all transactions made during the day. You can filter by IHE transaction type or time range.</p>
+<h2 id="epr-endpoints">EPR Endpoints</h2>
+<p>That the requests are routed through <strong>EPRIK</strong> the following endpoints need to be configured in your primary system
+for EPRIK instead of CARA INT for an EPR integration:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>EPRIK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>test.ahdis.ch</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>443 (https) or 80 (http)</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html">[ITI-18]</a></td>
+<td>/eprik-cara/camel/cara/Registry/services/RegistryService</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html">[ITI-18]</a> Initiating Gateway</td>
+<td>/eprik-cara/camel/cara/XCA/services/InitiatingGatewayService</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html">[ITI-41]</a></td>
+<td>/eprik-cara/camel/cara/Repository/services/RepositoryService</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html">[ITI-43]</a></td>
+<td>/eprik-cara/camel/cara/Repository/services/RepositoryService</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html">[ITI-43]</a> Initiating Gateway</td>
+<td>/eprik-cara/camel/XCA/services/InitiatingGatewayService</td>
+</tr>
+<tr>
+<td>XDS MU <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html">[ITI-57]</a></td>
+<td>/eprik-cara/camel/cara/Registry/services/RegistryService</td>
+</tr>
+<tr>
+<td>XDS RMU <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-92.html">[ITI-92]</a></td>
+<td>/eprik-cara/camel/cara/Registry/services/RegistryService</td>
+</tr>
+<tr>
+<td>XDS-I RAD <a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2.pdf">[ITI-69]</a></td>
+<td>/eprik-cara/camel/cara/Repository/services/RepositoryService</td>
+</tr>
+<tr>
+<td>PIX V3 <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html">[ITI-44]</a></td>
+<td>/eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService</td>
+</tr>
+<tr>
+<td>PIX V3 <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html">[ITI-45]</a></td>
+<td>/eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService</td>
+</tr>
+<tr>
+<td>PDQ V3 <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html">[ITI-47]</a></td>
+<td>/eprik-cara/camel/cara/UPIProxy/services/PIXPDQV3ManagerService</td>
+</tr>
+<tr>
+<td>HPD <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-58.html">[ITI-58]</a></td>
+<td>/eprik-cara/camel/cara/HPD/services/HPDService</td>
+</tr>
+<tr>
+<td>HPD <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html">[ITI-59]</a></td>
+<td>/eprik-cara/camel/cara/HPD/services/HPDService</td>
+</tr>
+<tr>
+<td>CH:PPQ <a href="https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf">[PPQ-1]</a></td>
+<td>/eprik-cara/camel/cara/HPD/services/PR</td>
+</tr>
+<tr>
+<td>CH:PPQ <a href="https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/ergaenzung_2.1_anhang_5_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E2.1_DE_Ausgabe_4.pdf">[PPQ-2]</a></td>
+<td>/eprik-cara/camel/cara/HPD/services/PR</td>
+</tr>
+<tr>
+<td>XUA <a href="https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_ausgabe_4.pdf.download.pdf/EPDV-EDI_Anhang_5_E1_DE_Ausgabe_4.pdf">[ITI-40]</a></td>
+<td>/eprik-cara/camel/cara/STS/services/SecurityTokenService</td>
+</tr>
+<tr>
+<td>TCU SAML2</td>
+<td>/eprik-cara/camel/tcu</td>
+</tr>
+<tr>
+<td>ATC <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf">[ITI-81]</a></td>
+<td>/eprik-cara/camel/cara/ARR/fhir/AuditEvent</td>
+</tr>
+<tr>
+<td>ATNA <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html">[ITI-20]</a>                                               <br/></td>
+<td>atna.test.ahdis.ch:8080 or :80 (currently 37.156.40.86) unsecured TCP according to <a href="https://www.rfc-editor.org/rfc/rfc5425">RFC5425</a></td>
+</tr>
+<tr>
+<td>SVS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-48.html">[ITI-48]</a></td>
+<td>/eprik-cara/camel/cara/ValueSetRepository/services/ValueSetRepositoryService</td>
+</tr>
+<tr>
+<td>SVS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-60.html">[ITI-60]</a></td>
+<td>/eprik-cara/camel/cara/ValueSetRepository/services/ValueSetRepositoryService</td>
+</tr>
+</tbody>
+</table>
+<p>You find an overview of the current relevant specifications and the associated links for the Swiss Electronic Patient
+Record EPR
+also <a href="https://www.e-health-suisse.ch/en/technik-semantik/epr-projectathon/epr-programming-aids/relevant-specifications.html">here</a>
+and in the <a href="https://developer.post.ch/en/e-health">Post E-Health Platform – developer portal</a>.</p>
+<h2 id="transferts-tra-endpoints">transferts (TRA) Endpoints</h2>
+<p>That the requests are routed through <strong>EPRIK</strong> the following endpoints need to be configured in your primary system
+for EPRIK instead of CARA INT for an transferts integration:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>EPRIK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>test.ahdis.ch</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>443 (https) or 80 (http)</td>
+</tr>
+<tr>
+<td>TRA PIX V3 <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html">[ITI-44]</a></td>
+<td>/eprik-cara/camel/tra/PIXPDQ/services/PIXPDQV3ManagerService</td>
+</tr>
+<tr>
+<td>TRA PIX V3 <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html">[ITI-45]</a></td>
+<td>/eprik-cara/camel/tra/PIXPDQ/services/PIXPDQV3ManagerService</td>
+</tr>
+<tr>
+<td>TRA HPD <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-58.html">[ITI-58]</a></td>
+<td>/eprik-cara/camel/tra/HPD/services/HPDService/</td>
+</tr>
+<tr>
+<td>TRA HPD <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-598.html">[ITI-59]</a></td>
+<td>/eprik-cara/camel/tra/HPD/services/HPDService/</td>
+</tr>
+<tr>
+<td>TRA STS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-40.html">[ITI-40]</a></td>
+<td>/eprik-cara/camel/tra/b2bsts/SecurityTokenService/</td>
+</tr>
+<tr>
+<td>TRA TCU STS</td>
+<td>/eprik-cara/camel/tra/2000040030829</td>
+</tr>
+<tr>
+<td>TRA <a href="../transferts/wsdl/SourceAdaptorService.wsdl">submitDocuments</a>*</td>
+<td>/eprik-cara/camel/tra/rcdc/SourceAdaptor/</td>
+</tr>
+<tr>
+<td>TRA <a href="../transferts/wsdl/RecipientCentricDocumentConsumer.wsdl">GetDocumentList</a>*</td>
+<td>/eprik-cara/camel/tra/rcdc/Rcdc/</td>
+</tr>
+<tr>
+<td>TRA XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html">[ITI-18]</a>*</td>
+<td>/eprik-cara/camel/tra/Registry/services/RegistryService</td>
+</tr>
+<tr>
+<td>TRA XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html">[ITI-41]</a>*</td>
+<td>/eprik-cara/camel/tra/Repository/services/RepositoryService</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Webservice call needs STS token</li>
+</ul>
+<h2 id="pmp-endpoints">PMP Endpoints</h2>
+<p>That the requests are routed through <strong>EPRIK</strong> the following endpoints need to be configured in your primary system
+for EPRIK instead of CARA INT for a PMP integration for the following XDS transactions:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>EPRIK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>test.ahdis.ch</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>443 (https) or 80 (http)</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html">[ITI-18]</a></td>
+<td>/eprik-cara/camel/pmp-int/pmp/services/xds/iti18</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html">[ITI-41]</a></td>
+<td>/eprik-cara/camel/pmp-int/pmp/services/xds/iti41</td>
+</tr>
+<tr>
+<td>XDS <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html">[ITI-43]</a></td>
+<td>/eprik-cara/camel/pmp-int/pmp/services/xds/iti43</td>
+</tr>
+<tr>
+<td>XDS MU <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-57.html">[ITI-57]</a></td>
+<td>/eprik-cara/camel/pmp-int/pmp/services/xds/iti57</td>
+</tr>
+<tr>
+<td>CMPD <a href="https://www.ihe.net/uploadedFiles/Documents/Pharmacy/IHE_Pharmacy_Suppl_CMPD.pdf">[PHARM-1]</a></td>
+<td>/eprik-cara/camel/pmp-int/pmp/services/cmpd/chpharm1</td>
+</tr>
+</tbody>
+</table>
+<p>The other PMP host is available at the path <code>/eprik-cara/camel/pmp-dev/pmp/...</code>; see 
+https://cara-ch.github.io/emed-service-guide/endpoints/ for more details.</p>
+<h2 id="external-validation">External validation</h2>
+<p>The EPRIK can use the Swiss EVS Client validator to validate various transactions and resources (like XUA assertions 
+and ATNA messages). Due to limited resources and rate limiting, the external validation is disabled by default. You 
+can enable it for a specific client in the <em>Clients</em> table. It will stay enabled for 8 hours and will be disabled 
+automatically.</p>
+<p>If the external validation is not enabled, a warning will be shown in the <em>Validation</em> part of the transaction details.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
